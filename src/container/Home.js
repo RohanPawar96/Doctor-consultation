@@ -31,12 +31,7 @@ function Home() {
   useEffect(() => {
     axios
       .get(
-        "https://h5vx3l2vwdiaobjnp3rp4hcyni0nkaid.lambda-url.ap-south-1.on.aws/",
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
+        "https://h5vx3l2vwdiaobjnp3rp4hcyni0nkaid.lambda-url.ap-south-1.on.aws/"
       )
       .then((response) => {
         setAppointments(response.data);
