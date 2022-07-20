@@ -1,22 +1,37 @@
 import React, { useState, useEffect } from "react";
-import Banner from "../assets/img/banner.png";
-import WhatsAppLogo from "../assets/img/whatsapp-logo-1.png";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
+import { showdateFormat } from "../utils/common";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
-import axios from "axios";
-import { getDateFormat } from "../utils/common";
+import Buttons from "./Buttons";
+import Popup from "./Popup";
+import validator from "validator";
 
 function Home() {
-  const date_format = new Date();
+  const a = "AM";
+  const b = "PM";
+  const pattern = /^(d{3})s*d{3}(?:-|s*)d{4}$/;
+  const todayTime = new Date();
+  const date = new Date();
+  let hours = todayTime.getHours();
+  let minutes = todayTime.getMinutes();
+
+  let nowTime = `${hours}:${minutes}`;
+
+  const [value, setValue] = React.useState(new Date());
   const [appointments, setAppointments] = useState([]);
-  const [appointmentDate, setAppointmentDate] = useState(date_format);
+  const [sortedTime, setSortedTime] = useState([]);
+  const [token, setToken] = useState([]);
+  let orderedList = [];
+  const [filteredList, setFilteredList] = useState([]);
   // eslint-disable-next-line
-  const [service_id, setServiceID] = useState("");
+  const [serviceId, setServiceID] = useState(""); //eslint-disable-line
+  const [status, setStatus] = useState(""); //eslint-disable-line
   const [time, setTime] = useState([]);
+  const [isactive, setIsActive] = useState(false); //eslint-disable-line
   // eslint-disable-next-line
-  const [date, setDate] = useState("");
   const [allValues, setAllValues] = useState({
     firstname: "",
     lastname: "",
@@ -26,242 +41,301 @@ function Home() {
     time: "",
   });
   const changeHandler = (e) => {
-    setAllValues({ ...allValues, [e.target.name]: e.target.value });
+    if (e.target.name == "time") {
+      setAllValues({
+        ...allValues,
+        [e.target.name]: e.target.value.substring(0, 5),
+      });
+    } else {
+      setAllValues({ ...allValues, [e.target.name]: e.target.value });
+    }
   };
+
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, "0");
+  let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let yyyy = today.getFullYear();
+  today = dd + "/" + mm + "/" + yyyy;
+
+  const convertTime12to24 = (time12h) => {
+    const [time, modifier] = time12h.split(" ");
+
+    let [hours, minutes] = time.split(":");
+
+    if (hours === "12") {
+      hours = "00";
+    }
+
+    if (modifier === "PM") {
+      hours = parseInt(hours, 10) + 12;
+    }
+
+    return `${hours}:${minutes}`;
+  };
+
+  const handleChange = (newValue) => {
+    console.log(`working ${newValue}, ${appointments.length}`);
+    appointments.length !== "null" &&
+      // eslint-disable-next-line
+      appointments.map((slot) => {
+        console.log("appointments");
+        // setServiceID(slot.service_id);
+        // eslint-disable-next-line
+        console.log(`Selected date ${value}`);
+        slot.service_slots.map((timing) => {
+          if (timing["date"] === showdateFormat({ date: value })) {
+            setTime([...timing.slots]);
+          }
+        });
+        // setOrderedList([]);
+        orderedList = [];
+        time.map((e) => {
+          if (e >= "10:00" && e < "12:00") {
+            //const newList = [...orderedList, `${e} AM`];
+            console.log(`orderedlist ${orderedList.length}`);
+            // setOrderedList((ol) => [...ol, `${e} AM`]);
+            orderedList = [...orderedList, `${e} AM`];
+            console.log(`after orderedlist ${orderedList.length}`);
+          }
+        });
+        time.map((e) => {
+          if (e >= "12:00" && e <= "12:40") {
+            orderedList = [...orderedList, `${e} PM`];
+            // setOrderedList((ol) => [...ol, `${e} PM`]);
+          }
+        });
+        time.map((e) => {
+          if (e >= "01:00" && e < "10:00") {
+            orderedList = [...orderedList, `${e} PM`];
+            // setOrderedList((ol) => [...ol, `${e} PM`]);
+          }
+        });
+        console.log(orderedList.length, "orderedlist");
+        setFilteredList([]);
+        orderedList.map((e) => {
+          if (showdateFormat({ date: value }) === today) {
+            if (convertTime12to24(nowTime) < convertTime12to24(e)) {
+              console.log(`Filtered Time ${e}`);
+              setFilteredList((fl) => [...fl, e]);
+            }
+          } else {
+            setFilteredList((fl) => [...fl, e]);
+          }
+        });
+      });
+  };
+
+  const endindex = time[time.indexOf(allValues.time) + 1];
+
   useEffect(() => {
+    console.log("Running UseEffect");
     axios
       .get(
         "https://h5vx3l2vwdiaobjnp3rp4hcyni0nkaid.lambda-url.ap-south-1.on.aws/"
       )
       .then((response) => {
-        setAppointments(response.data);
-        setServiceID(
-          response.data.map((slots) => {
-            return slots.service_id;
-          })
-        );
-        appointments.length !== "null" &&
-          // eslint-disable-next-line
-          appointments.map((slot) => {
-            // eslint-disable-next-line
-            slot.service_slots.map((timing) => {
-              setTime(timing.slots);
-              setDate(timing.date);
-            });
-          });
-      });
-    // eslint-disable-next-line
-  }, []);
+        console.log(response.data, "response");
+        setAppointments([...response.data]);
+        console.log(appointments, "appoint");
 
-  console.log(time);
-
-  const submitHandler = () => {
-    axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      data: {
-        Customer: {
-          first_name: allValues.firstname,
-          last_name: "test",
-          email_id: allValues.email,
-          cell_phone: allValues.contact,
-          comment: allValues.comment,
-          additional_fields: {
-            "Generated from": "Postman",
-          },
-        },
-        Appointment: {
-          service_key: service_id,
-          start_time:
-            getDateFormat({ date: appointmentDate }) + "T" + allValues.time,
-          // end_time: getDateFormat({ date: appointmentDate }) + "T" + { appointmentTime },
-        },
-      },
-    })
-      .then((response) => {
-        window.location.reload();
-        console.log(response);
-      })
+        handleChange(value);
+      }) //eslint-disable-line
       .catch((error) => {
         console.log(error);
       });
-    // window.location.reload();
-    alert("Button Clicked");
-    // console.log(
-    //   "start_time",
-    //   getDateFormat({ date: appointmentDate }) + "T" + allValues.time
-    // );
-    // setAllValues("");
+
+    axios
+      .get("https://developer.setmore.com/api/v1/o/oauth2/token", {
+        params: {
+          refreshToken: "r1/cb72dbe0098HDmS_Ax0lw1FK4iDn3S0H056uWSl55q9vl",
+        },
+      })
+      .then((response) => {
+        // console.log(response.data.data);
+        // console.log(response.data.data.token);
+        // console.log(response.data.data.token.access_token)
+        setToken(response.data.data.token.access_token);
+        setStatus(response.status);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const validateForm = () => {
+    console.log(allValues.time);
+    if (!serviceId) {
+      alert("Please Select Service");
+    } else if (
+      allValues.firstname === "" ||
+      /\d/.test(allValues.firstname) === true
+    ) {
+      alert("Please enter valid First Name");
+    } else if (
+      allValues.lastname === "" ||
+      /\d/.test(allValues.lastname) === true
+    ) {
+      alert("Please enter valid Last Name");
+    } else if (
+      allValues.contact === "" ||
+      allValues.contact.length !== 10 ||
+      pattern.test(allValues.contact) ||
+      allValues.contact.charAt(0) == "-"
+    ) {
+      alert("Please enter valid contact");
+    } else if (
+      allValues.email === "" ||
+      validator.isEmail(allValues.email) !== true
+    ) {
+      alert("Please enter valid email");
+    } else if (allValues.time === "") {
+      alert("Please enter time");
+    } else {
+      console.log();
+      setIsActive(true);
+      console.log(allValues.contact.length < 10);
+    }
   };
 
   return (
     <div>
+      {isactive && (
+        <div className="popup-background">
+          <Popup
+            allValues={allValues}
+            serviceId={serviceId}
+            endindex={endindex}
+            value={value}
+            setIsActive={setIsActive}
+            convertTime12to24={convertTime12to24}
+          />
+        </div>
+      )}
       <div className="banner">
-        <img src={Banner} alt="" />
+        <img
+          src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/banner.png"
+          alt=""
+        />
       </div>
       <div className="title">
-        <p>Book a free ayurvedic consultation with experienced</p>
-        <p className="single-line">
+        <p>Ayurvedic consultation with experienced</p>
+        <div className="inline">
           <hr />
-          doctors and nutritionists
+          <p className="single-line">doctors and nutritionists</p>
           <hr />
-        </p>
+        </div>
       </div>
       <div className="options">
-        <h1>Choose Therapy</h1>
-        <div className="therapys">
-          <ul>
-            <li>
-              <button
-                type="button"
-                className="btn btn-outline-success btn-lg option-button"
-              >
-                <p className="buttons">Weight management</p>
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="btn btn-outline-success btn-lg option-button"
-              >
-                <p className="buttons">Sexual wellness</p>
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="btn btn-outline-success btn-lg option-button"
-              >
-                <p className="buttons">chronic conditions</p>
-              </button>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <button
-                type="button"
-                className="btn btn-outline-success btn-lg option-button"
-              >
-                <p className="buttons">Skin & Hair</p>
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="btn btn-outline-success btn-lg option-button"
-              >
-                <p className="buttons">Digestion</p>
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="btn btn-outline-success btn-lg option-button"
-              >
-                <p className="buttons">general wellness</p>
-              </button>
-            </li>
-          </ul>
-        </div>
+        {status === 200 ? (
+          <Buttons token={token} setServiceID={setServiceID} />
+        ) : (
+          "Loading......"
+        )}
         <hr />
         <div className="form">
-          <div className="main">
-            <TextField
-              id="outlined-basic"
-              label="Name"
+          <div className="name">
+            <input
+              type="text"
+              placeholder="First Name"
               name="firstname"
-              variant="outlined"
+              className="border"
+              value={allValues.firstname}
               onChange={changeHandler}
+              required
             />
-          </div>
-          <div className="form-1">
-            <div className="name">
-              <TextField
-                id="outlined-basic"
-                label="Contact no"
-                name="contact"
-                variant="outlined"
-                inputProps={{ maxLength: 10 }}
-                style={{ width: "35%", marginBottom: "3%" }}
-                onChange={changeHandler}
-              />
-            </div>
-            <div className="name">
-              <TextField
-                id="outlined-basic"
-                label="Email ID"
-                name="email"
-                variant="outlined"
-                style={{ width: "35%", marginBottom: "3%" }}
-                onChange={changeHandler}
-              />
-            </div>
+            <input
+              type="text"
+              placeholder="Last Name"
+              name="lastname"
+              className="border"
+              value={allValues.lastname}
+              onChange={changeHandler}
+              required
+            />
+            <input
+              type="number"
+              placeholder="Contact No"
+              name="contact"
+              className="border"
+              value={allValues.contact}
+              onChange={changeHandler}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              className="border"
+              value={allValues.email}
+              onChange={changeHandler}
+              required
+            />
           </div>
 
           <p className="whatsapp-text">
             <input type="checkbox" />
-            Get updates on <img src={WhatsAppLogo} alt="whatsapp" />
+            Get updates on
+            <img
+              src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/whatsapp-logo-1.png"
+              alt="whatsapp"
+            />
             <span>whatsapp</span> You may opt out anytime
           </p>
           <div className="main">
-            <TextField
-              id="outlined-multiline-flexible"
-              label="Any Comments?"
+            <textarea
+              placeholder="Comments ?"
               name="comment"
-              multiline
-              rows={5}
-              style={{ width: "75%", borderRadius: "20px", marginBottom: "3%" }}
+              value={allValues.comment}
               onChange={changeHandler}
             />
           </div>
-          <div className="date-time">
-            <div className="date">
-              <p className="date-time-text spacing">Choose A Slot</p>
-              <p className="additional-text spacing date-height"></p>
-              <div className="adjustment">
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <MobileDatePicker
-                    label="date"
-                    name="date"
-                    value={appointmentDate}
-                    inputFormat="MM/dd/yyyy"
-                    onChange={setAppointmentDate}
-                    renderInput={(date) => <TextField {...date} />}
-                    formatDate="DD-MM-YYYY"
-                  />
-                </LocalizationProvider>
-              </div>
+          <div className="name">
+            <div>
+              <p className="date-time-text ">Choose A Date</p>
+              <p className="additional-text time-height date-adjustment"></p>
             </div>
-            <div className="time">
-              <p className="date-time-text ">
-                Choose A Time for <br /> Appointment
+            <div>
+              <p className="date-time-text ">Choose A Slot</p>
+              <p className="additional-text time-height date-adjustment">
+                (1 hour slots between <br /> 10AM - 7PM)
               </p>
-              <p className="additional-text time-height">
-                (1 hour slots between 10 Am to 7pm )
-              </p>
+            </div>
+
+            <div className="date-adjustment">
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <MobileDatePicker
+                  label="Date mobile"
+                  inputFormat="MM/dd/yyyy"
+                  style={{ fontSize: "23px" }}
+                  value={value}
+                  disablePast={true}
+                  onChange={(value) => setValue(value)}
+                  onAccept={handleChange}
+                  onOpen={handleChange}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
+            </div>
+            <div className="date-adjustment">
               <select
                 name="time"
                 id="time"
-                defaultValue={""}
+                style={{ fontWeight: "500" }}
+                // autoComplete="off"
                 onChange={changeHandler}
               >
-                <option value={""}>none</option>
-                {time.length !== null
-                  ? time.map((t) => {
-                      console.log(t);
-                      return <option value={t}>{t}</option>;
-                    })
-                  : ""}
+                <option value={""}>None</option>
+                {filteredList.map((t) => {
+                  return <option value={t}>{t}</option>;
+                })}
               </select>
             </div>
           </div>
         </div>
-        <button className="submit-btn" onClick={() => submitHandler()}>
-          Submit
-        </button>
+        <input
+          onClick={() => validateForm()}
+          type="submit"
+          className="submit-btn"
+          name="Submit"
+        />
       </div>
     </div>
   );
