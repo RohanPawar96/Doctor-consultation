@@ -186,7 +186,7 @@ function Home() {
       validator.isEmail(allValues.email) !== true
     ) {
       alert("Please enter valid email");
-    } else if (value.getDate() !== new Date().getDate()) {
+    } else if (value.getDate() < new Date().getDate()) {
       alert("Invalid Date");
     } else if (allValues.time === "") {
       alert("Please enter time");
