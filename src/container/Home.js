@@ -178,7 +178,7 @@ function Home() {
       allValues.contact === "" ||
       allValues.contact.length !== 10 ||
       pattern.test(allValues.contact) ||
-      allValues.contact.charAt(0) == "-"
+      allValues.contact.charAt(0) === "-"
     ) {
       alert("Please enter valid contact");
     } else if (
@@ -186,6 +186,8 @@ function Home() {
       validator.isEmail(allValues.email) !== true
     ) {
       alert("Please enter valid email");
+    } else if (value.getDate() !== new Date().getDate()) {
+      alert("Invalid Date");
     } else if (allValues.time === "") {
       alert("Please enter time");
     } else {

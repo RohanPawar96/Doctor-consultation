@@ -53,9 +53,19 @@ const Popup = ({
     })
       .then((response) => {
         if (response.status === 200) {
-          // alert(response.data.message);
-          // console.log(response.data.appointment_details);
-          setIsActive(false);
+          if (response.data.staff !== null) {
+            alert("Appointment booked Successfully...");
+            setIsActive(false);
+            window.location.reload();
+          } else {
+            if (response.data.error !== null) {
+              alert(response.data.error);
+            } else {
+              alert(
+                "Appointment booking is unavailable please try again after some time"
+              );
+            }
+          }
         }
       })
       .catch((error) => {
