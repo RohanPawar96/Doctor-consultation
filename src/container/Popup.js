@@ -9,6 +9,7 @@ const Popup = ({
   endindex,
   setIsActive,
   convertTime12to24,
+  UtmSorce,
 }) => {
   let endTime = "";
   let startTime = "";
@@ -25,6 +26,9 @@ const Popup = ({
 
   endTime = convertAmpm(endindex);
   startTime = convertAmpm(allValues.time);
+  if (allValues.time === "06:40") {
+    endindex = "07:00";
+  }
 
   const submitHandler = () => {
     axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
@@ -41,6 +45,7 @@ const Popup = ({
             email_id: allValues.email,
             cell_phone: "+91" + allValues.contact,
             comment: allValues.comment,
+            utm_source: UtmSorce,
           },
           Appointment: {
             service_key: serviceId,
@@ -57,19 +62,17 @@ const Popup = ({
             alert("Appointment booked Successfully...");
             setIsActive(false);
             window.location.reload();
-          } else {
-            if (response.data.error !== null) {
-              alert(response.data.error);
-            } else {
-              alert(
-                "Appointment booking is unavailable please try again after some time"
-              );
-            }
           }
+        } else {
+          alert(
+            "Appointment booking is unavailable please try again after some time"
+          );
         }
       })
       .catch((error) => {
-        console.log(error);
+        if (error) {
+          alert("Slots not available..");
+        }
       });
   };
 

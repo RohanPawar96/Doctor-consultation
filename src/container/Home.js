@@ -10,6 +10,7 @@ import Popup from "./Popup";
 import validator from "validator";
 
 function Home() {
+  console.log(new Date());
   const a = "AM";
   const b = "PM";
   const pattern = /^(d{3})s*d{3}(?:-|s*)d{4}$/;
@@ -17,9 +18,18 @@ function Home() {
   const date = new Date();
   let hours = todayTime.getHours();
   let minutes = todayTime.getMinutes();
-
   let nowTime = `${hours}:${minutes}`;
-
+  let UtmSorce = "";
+  let UtmMedium = "";
+  let queryString = window.location.search;
+  if (queryString !== "") {
+    UtmSorce = queryString.split("=")[1].split("&")[0];
+    UtmMedium = queryString.split("&")[1].split("&")[0];
+    UtmMedium = UtmMedium.split("=")[1];
+  } else {
+    UtmSorce = "";
+    UtmMedium = "";
+  }
   const [value, setValue] = React.useState(new Date());
   const [appointments, setAppointments] = useState([]);
   const [sortedTime, setSortedTime] = useState([]);
@@ -40,6 +50,11 @@ function Home() {
     comment: "",
     time: "",
   });
+
+  let date2 = value;
+  let date1 = new Date();
+  let diffDays = date2.getDate() - date1.getDate();
+  let diffYears = date2.getFullYear() - date1.getFullYear();
   const changeHandler = (e) => {
     if (e.target.name == "time") {
       setAllValues({
@@ -73,15 +88,12 @@ function Home() {
     return `${hours}:${minutes}`;
   };
 
-  const handleChange = (newValue) => {
-    console.log(`working ${newValue}, ${appointments.length}`);
+  function handleChange() {
     appointments.length !== "null" &&
       // eslint-disable-next-line
       appointments.map((slot) => {
-        console.log("appointments");
         // setServiceID(slot.service_id);
         // eslint-disable-next-line
-        console.log(`Selected date ${value}`);
         slot.service_slots.map((timing) => {
           if (timing["date"] === showdateFormat({ date: value })) {
             setTime([...timing.slots]);
@@ -92,10 +104,8 @@ function Home() {
         time.map((e) => {
           if (e >= "10:00" && e < "12:00") {
             //const newList = [...orderedList, `${e} AM`];
-            console.log(`orderedlist ${orderedList.length}`);
             // setOrderedList((ol) => [...ol, `${e} AM`]);
             orderedList = [...orderedList, `${e} AM`];
-            console.log(`after orderedlist ${orderedList.length}`);
           }
         });
         time.map((e) => {
@@ -110,12 +120,10 @@ function Home() {
             // setOrderedList((ol) => [...ol, `${e} PM`]);
           }
         });
-        console.log(orderedList.length, "orderedlist");
         setFilteredList([]);
         orderedList.map((e) => {
           if (showdateFormat({ date: value }) === today) {
             if (convertTime12to24(nowTime) < convertTime12to24(e)) {
-              console.log(`Filtered Time ${e}`);
               setFilteredList((fl) => [...fl, e]);
             }
           } else {
@@ -123,20 +131,17 @@ function Home() {
           }
         });
       });
-  };
+  }
 
   const endindex = time[time.indexOf(allValues.time) + 1];
 
   useEffect(() => {
-    console.log("Running UseEffect");
     axios
       .get(
         "https://h5vx3l2vwdiaobjnp3rp4hcyni0nkaid.lambda-url.ap-south-1.on.aws/"
       )
       .then((response) => {
-        console.log(response.data, "response");
         setAppointments([...response.data]);
-        console.log(appointments, "appoint");
 
         handleChange(value);
       }) //eslint-disable-line
@@ -158,7 +163,11 @@ function Home() {
         setStatus(response.status);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [value]);
+
+  // useEffect(() => {
+  //   setValue(value);
+  // }, [value]);
 
   const validateForm = () => {
     console.log(allValues.time);
@@ -186,16 +195,52 @@ function Home() {
       validator.isEmail(allValues.email) !== true
     ) {
       alert("Please enter valid email");
-    } else if (value.getDate() < new Date().getDate()) {
-      alert("Invalid Date");
+    } else if (
+      value.toLocaleDateString() < new Date().toLocaleDateString() ||
+      (diffDays < 14 && diffYears !== 0)
+    ) {
+      console.log(`${diffDays} days & ${diffYears} years `);
+      alert("Please enter the valid Date");
     } else if (allValues.time === "") {
       alert("Please enter time");
     } else {
+      onChecked();
       console.log();
       setIsActive(true);
       console.log(allValues.contact.length < 10);
     }
   };
+
+  function onChecked() {
+    let is_checked = document.getElementById("whatsapp");
+    if (is_checked.checked) {
+      axios("https://api.webengage.com/v1/accounts/~15ba20105/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer 83ca9bef-1471-4e61-ba2e-4c2fde6e3300",
+        },
+        data: {
+          userId: allValues.email,
+          eventName: "dc_get_updates_on_whatsapp",
+          eventData: { checked: 1 },
+        },
+      });
+    } else {
+      axios("https://api.webengage.com/v1/accounts/~15ba20105/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer 83ca9bef-1471-4e61-ba2e-4c2fde6e3300",
+        },
+        data: {
+          userId: allValues.email,
+          eventName: "dc_get_updates_on_whatsapp",
+          eventData: { checked: 0 },
+        },
+      });
+    }
+  }
 
   return (
     <div>
@@ -208,6 +253,8 @@ function Home() {
             value={value}
             setIsActive={setIsActive}
             convertTime12to24={convertTime12to24}
+            onChecked={onChecked}
+            UtmSorce={UtmSorce}
           />
         </div>
       )}
@@ -273,7 +320,7 @@ function Home() {
           </div>
 
           <p className="whatsapp-text">
-            <input type="checkbox" />
+            <input type="checkbox" name="whatsapp" id="whatsapp" />
             Get updates on
             <img
               src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/whatsapp-logo-1.png"
@@ -292,23 +339,22 @@ function Home() {
           <div className="name">
             <div>
               <p className="date-time-text ">Choose A Date</p>
-              <p className="additional-text time-height date-adjustment"></p>
             </div>
             <div>
               <p className="date-time-text ">Choose A Slot</p>
-              <p className="additional-text time-height date-adjustment">
-                (1 hour slots between <br /> 10AM - 7PM)
-              </p>
             </div>
 
             <div className="date-adjustment">
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <MobileDatePicker
-                  label="Date mobile"
+                  label="-"
                   inputFormat="MM/dd/yyyy"
                   style={{ fontSize: "23px" }}
                   value={value}
+                  toolbarPlaceholder="Please select date"
+                  placeholder="Please select date"
                   disablePast={true}
+                  disableToolbar
                   onChange={(value) => setValue(value)}
                   onAccept={handleChange}
                   onOpen={handleChange}
