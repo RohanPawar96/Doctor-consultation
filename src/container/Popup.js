@@ -58,15 +58,19 @@ const Popup = ({
     })
       .then((response) => {
         if (response.status === 200) {
-          if (response.data.staff !== null) {
+          if (response.data.error === "Slot not available") {
+            console.log(response.error);
+            alert("Slots not available..");
+          } else if (response.data.staff !== null) {
+            console.log();
             alert("Appointment booked Successfully...");
             setIsActive(false);
             window.location.reload();
+          } else {
+            alert(
+              "Appointment booking is unavailable please try again after some time"
+            );
           }
-        } else {
-          alert(
-            "Appointment booking is unavailable please try again after some time"
-          );
         }
       })
       .catch((error) => {
