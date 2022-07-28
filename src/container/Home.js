@@ -17,7 +17,9 @@ function Home() {
   const todayTime = new Date();
   const date = new Date();
   let hours = todayTime.getHours();
+  hours = ("0" + hours).slice(-2);
   let minutes = todayTime.getMinutes();
+  minutes = ("0" + minutes).slice(-2);
   let nowTime = `${hours}:${minutes}`;
   let UtmSorce = "";
   let UtmMedium = "";
@@ -88,6 +90,22 @@ function Home() {
     return `${hours}:${minutes}`;
   };
 
+  const convertTime12to24fornowTime = (time12h) => {
+    const [time, modifier] = time12h.split(" ");
+
+    let [hours, minutes] = time.split(":");
+
+    if (hours === "12") {
+      hours = "12";
+    }
+
+    if (modifier === "PM") {
+      hours = parseInt(hours, 10) + 12;
+    }
+
+    return `${hours}:${minutes}`;
+  };
+
   function handleChange() {
     appointments.length !== "null" &&
       // eslint-disable-next-line
@@ -121,9 +139,17 @@ function Home() {
           }
         });
         setFilteredList([]);
+
         orderedList.map((e) => {
           if (showdateFormat({ date: value }) === today) {
-            if (convertTime12to24(nowTime) < convertTime12to24(e)) {
+            console.log(
+              `Current Time: ${convertTime12to24fornowTime(
+                nowTime
+              )}, SelectedTime: ${convertTime12to24(e)}, compare:${
+                convertTime12to24fornowTime(nowTime) < convertTime12to24(e)
+              }`
+            );
+            if (convertTime12to24fornowTime(nowTime) < convertTime12to24(e)) {
               setFilteredList((fl) => [...fl, e]);
             }
           } else {
