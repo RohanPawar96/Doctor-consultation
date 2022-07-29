@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const Buttons = ({ token, setServiceID }) => {
+const Buttons = ({ token, setServiceID, setValue, serviceId, setSlots }) => {
   const [serviceName, setServiceName] = useState([]);
 
   useEffect(() => {
@@ -20,6 +20,18 @@ const Buttons = ({ token, setServiceID }) => {
   // console.log(serviceName);
   // console.log(serviceName);
 
+  const setService = (service) => {
+    setServiceID(service);
+    // console.log(service);
+    axios
+      .get("https://kapiva.app/api/get_availability_slots.php", {
+        params: { service_id: service },
+      })
+      .then((resposnse) => {
+        setSlots(resposnse.data.service_slots);
+      });
+  };
+
   return (
     <div className="therapys">
       <ul>
@@ -34,7 +46,7 @@ const Buttons = ({ token, setServiceID }) => {
                   value="Weight Management"
                   data-bs-toggle="button"
                   //   aria-aria-pressed="true"
-                  onClick={() => setServiceID(services.key)}
+                  onClick={() => setService(services.key)}
                 >
                   <p className="buttons" name="service">
                     {services.service_name}

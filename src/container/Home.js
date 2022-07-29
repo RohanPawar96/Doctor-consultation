@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
-import { showdateFormat } from "../utils/common";
+import { showdateFormat, getDateFormat } from "../utils/common";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -10,12 +10,13 @@ import Popup from "./Popup";
 import validator from "validator";
 
 function Home() {
-  console.log(new Date());
   const a = "AM";
   const b = "PM";
   const pattern = /^(d{3})s*d{3}(?:-|s*)d{4}$/;
   const todayTime = new Date();
   const date = new Date();
+  const [slots, setSlots] = useState([]);
+  console.log(slots);
   let hours = todayTime.getHours();
   hours = ("0" + hours).slice(-2);
   let minutes = todayTime.getMinutes();
@@ -32,9 +33,27 @@ function Home() {
     UtmSorce = "";
     UtmMedium = "";
   }
+  const convertAmpm = (_time) => {
+    if (_time >= "10:00" && _time < "12:00") {
+      return `${_time} AM`;
+    } else {
+      if (_time.split(":")[0] === "12") {
+        return `${_time} PM`;
+      } else {
+        let int_time = parseInt(_time.split(":")[0]);
+        int_time = int_time - 12;
+        if (int_time < 12) {
+          _time = int_time.toString().padStart(2, "0") + _time.substring(2);
+        }
+
+        return `${_time} PM`;
+      }
+    }
+  };
   const [value, setValue] = React.useState(new Date());
+  const futureDate = new Date();
+  futureDate.setDate(futureDate.getDate() + 14);
   const [appointments, setAppointments] = useState([]);
-  const [sortedTime, setSortedTime] = useState([]);
   const [token, setToken] = useState([]);
   let orderedList = [];
   const [filteredList, setFilteredList] = useState([]);
@@ -42,6 +61,7 @@ function Home() {
   const [serviceId, setServiceID] = useState(""); //eslint-disable-line
   const [status, setStatus] = useState(""); //eslint-disable-line
   const [time, setTime] = useState([]);
+  let slot_list = [];
   const [isactive, setIsActive] = useState(false); //eslint-disable-line
   // eslint-disable-next-line
   const [allValues, setAllValues] = useState({
@@ -107,59 +127,90 @@ function Home() {
   };
 
   function handleChange() {
-    appointments.length !== "null" &&
-      // eslint-disable-next-line
-      appointments.map((slot) => {
-        // setServiceID(slot.service_id);
-        // eslint-disable-next-line
-        slot.service_slots.map((timing) => {
-          if (timing["date"] === showdateFormat({ date: value })) {
-            setTime([...timing.slots]);
-          }
-        });
-        // setOrderedList([]);
-        orderedList = [];
-        time.map((e) => {
-          if (e >= "10:00" && e < "12:00") {
-            //const newList = [...orderedList, `${e} AM`];
-            // setOrderedList((ol) => [...ol, `${e} AM`]);
-            orderedList = [...orderedList, `${e} AM`];
-          }
-        });
-        time.map((e) => {
-          if (e >= "12:00" && e <= "12:40") {
-            orderedList = [...orderedList, `${e} PM`];
-            // setOrderedList((ol) => [...ol, `${e} PM`]);
-          }
-        });
-        time.map((e) => {
-          if (e >= "01:00" && e < "10:00") {
-            orderedList = [...orderedList, `${e} PM`];
-            // setOrderedList((ol) => [...ol, `${e} PM`]);
-          }
-        });
-        setFilteredList([]);
-
-        orderedList.map((e) => {
-          if (showdateFormat({ date: value }) === today) {
-            console.log(
-              `Current Time: ${convertTime12to24fornowTime(
-                nowTime
-              )}, SelectedTime: ${convertTime12to24(e)}, compare:${
-                convertTime12to24fornowTime(nowTime) < convertTime12to24(e)
-              }`
-            );
-            if (convertTime12to24fornowTime(nowTime) < convertTime12to24(e)) {
-              setFilteredList((fl) => [...fl, e]);
-            }
-          } else {
-            setFilteredList((fl) => [...fl, e]);
-          }
-        });
-      });
+    if (
+      value.toLocaleDateString() < new Date().toLocaleDateString() ||
+      (diffDays < 14 && diffYears !== 0)
+    ) {
+      console.log(`${diffDays} days & ${diffYears} years `);
+      alert("Please enter the valid Date");
+    }
   }
 
-  const endindex = time[time.indexOf(allValues.time) + 1];
+  const SlotLoot = (timing) => {
+    timing.map((e) => {
+      if (convertTime12to24fornowTime(nowTime) < convertTime12to24(e)) {
+        setFilteredList((fl) => [...fl, convertAmpm(e)]);
+        slot_list.concat(filteredList);
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (slots.length !== 0) {
+      for (const i in slots) {
+        console.log(`${slots[i]}`);
+        if (slots[i]["date"] === getDateFormat({ date: value })) {
+          console.log(`current date`);
+          setFilteredList([]);
+          console.log(slots[i]["date"] === getDateFormat({ date: value }));
+
+          SlotLoot(slots[i].slots);
+
+          break;
+        }
+      }
+    }
+    // slots.length !== 0 &&
+    //slots.map((timing) => {
+    // timing.slots.map((e) => {
+    //   if (e >= "10:00" && e < "12:00") {
+    //     //const newList = [...orderedList, `${e} AM`];
+    //     // setOrderedList((ol) => [...ol, `${e} AM`]);
+    //     orderedList = [...orderedList, `${e} AM`];
+    //   }
+    // });
+    // timing.slots.map((e) => {
+    //   if (e >= "12:00" && e <= "12:40") {
+    //     orderedList = [...orderedList, `${e} PM`];
+    //     // setOrderedList((ol) => [...ol, `${e} PM`]);
+    //   }
+    // });
+    // timing.slots.map((e) => {
+    //   if (e >= "13:00" && e < "10:00") {
+    //     orderedList = [...orderedList, `${e} PM`];
+    //     // setOrderedList((ol) => [...ol, `${e} PM`]);
+    //   }
+    // });
+    // setFilteredList([]);
+    // console.log(timing["date"] === getDateFormat({ date: value }));
+
+    // if (timing["date"] === getDateFormat({ date: value })) {
+    //   SlotLoot(timing.slots);
+    // }
+    //});
+  }, [slots, value]);
+
+  const endTime = (endtime) => {
+    var splitTime = endtime.split(":");
+    console.log(splitTime);
+    var endTime = "";
+    if (splitTime[1] === "40") {
+      if (splitTime[0] === "12") {
+        endTime = `01:00`;
+      } else {
+        endTime = `${(parseInt(splitTime[0]) + 1)
+          .toString()
+          .padStart(2, "0")}:00`;
+      }
+    } else {
+      endTime = `${splitTime[0]}:${parseInt(splitTime[1]) + 20}`;
+    }
+    return endTime;
+  };
+
+  console.log(allValues.time);
+
+  const endindex = endTime(allValues.time);
 
   useEffect(() => {
     axios
@@ -221,12 +272,6 @@ function Home() {
       validator.isEmail(allValues.email) !== true
     ) {
       alert("Please enter valid email");
-    } else if (
-      value.toLocaleDateString() < new Date().toLocaleDateString() ||
-      (diffDays < 14 && diffYears !== 0)
-    ) {
-      console.log(`${diffDays} days & ${diffYears} years `);
-      alert("Please enter the valid Date");
     } else if (allValues.time === "") {
       alert("Please enter time");
     } else {
@@ -300,7 +345,13 @@ function Home() {
       </div>
       <div className="options">
         {status === 200 ? (
-          <Buttons token={token} setServiceID={setServiceID} />
+          <Buttons
+            token={token}
+            setServiceID={setServiceID}
+            setValue={setValue}
+            serviceId={serviceId}
+            setSlots={setSlots}
+          />
         ) : (
           "Loading......"
         )}
@@ -374,12 +425,14 @@ function Home() {
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <MobileDatePicker
                   label="-"
-                  inputFormat="MM/dd/yyyy"
+                  inputFormat="dd/MM/yyyy"
                   style={{ fontSize: "23px" }}
                   value={value}
                   toolbarPlaceholder="Please select date"
                   placeholder="Please select date"
                   disablePast={true}
+                  minDate={value}
+                  maxDate={futureDate}
                   disableToolbar
                   onChange={(value) => setValue(value)}
                   onAccept={handleChange}
