@@ -16,7 +16,6 @@ function Home() {
   const todayTime = new Date();
   const date = new Date();
   const [slots, setSlots] = useState([]);
-  console.log(slots);
   let hours = todayTime.getHours();
   hours = ("0" + hours).slice(-2);
   let minutes = todayTime.getMinutes();
@@ -131,16 +130,20 @@ function Home() {
       value.toLocaleDateString() < new Date().toLocaleDateString() ||
       (diffDays < 14 && diffYears !== 0)
     ) {
-      console.log(`${diffDays} days & ${diffYears} years `);
       alert("Please enter the valid Date");
     }
   }
 
   const SlotLoot = (timing) => {
+    console.log(value.toLocaleDateString() === new Date().toLocaleDateString());
     timing.map((e) => {
-      if (convertTime12to24fornowTime(nowTime) < convertTime12to24(e)) {
+      if (value.toLocaleDateString() === new Date().toLocaleDateString()) {
+        if (convertTime12to24fornowTime(nowTime) < convertTime12to24(e)) {
+          setFilteredList((fl) => [...fl, convertAmpm(e)]);
+          slot_list.concat(filteredList);
+        }
+      } else {
         setFilteredList((fl) => [...fl, convertAmpm(e)]);
-        slot_list.concat(filteredList);
       }
     });
   };
@@ -148,11 +151,8 @@ function Home() {
   useEffect(() => {
     if (slots.length !== 0) {
       for (const i in slots) {
-        console.log(`${slots[i]}`);
         if (slots[i]["date"] === getDateFormat({ date: value })) {
-          console.log(`current date`);
           setFilteredList([]);
-          console.log(slots[i]["date"] === getDateFormat({ date: value }));
 
           SlotLoot(slots[i].slots);
 
@@ -160,39 +160,10 @@ function Home() {
         }
       }
     }
-    // slots.length !== 0 &&
-    //slots.map((timing) => {
-    // timing.slots.map((e) => {
-    //   if (e >= "10:00" && e < "12:00") {
-    //     //const newList = [...orderedList, `${e} AM`];
-    //     // setOrderedList((ol) => [...ol, `${e} AM`]);
-    //     orderedList = [...orderedList, `${e} AM`];
-    //   }
-    // });
-    // timing.slots.map((e) => {
-    //   if (e >= "12:00" && e <= "12:40") {
-    //     orderedList = [...orderedList, `${e} PM`];
-    //     // setOrderedList((ol) => [...ol, `${e} PM`]);
-    //   }
-    // });
-    // timing.slots.map((e) => {
-    //   if (e >= "13:00" && e < "10:00") {
-    //     orderedList = [...orderedList, `${e} PM`];
-    //     // setOrderedList((ol) => [...ol, `${e} PM`]);
-    //   }
-    // });
-    // setFilteredList([]);
-    // console.log(timing["date"] === getDateFormat({ date: value }));
-
-    // if (timing["date"] === getDateFormat({ date: value })) {
-    //   SlotLoot(timing.slots);
-    // }
-    //});
   }, [slots, value]);
 
   const endTime = (endtime) => {
     var splitTime = endtime.split(":");
-    console.log(splitTime);
     var endTime = "";
     if (splitTime[1] === "40") {
       if (splitTime[0] === "12") {
@@ -208,8 +179,6 @@ function Home() {
     return endTime;
   };
 
-  console.log(allValues.time);
-
   const endindex = endTime(allValues.time);
 
   useEffect(() => {
@@ -222,9 +191,7 @@ function Home() {
 
         handleChange(value);
       }) //eslint-disable-line
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
 
     axios
       .get("https://developer.setmore.com/api/v1/o/oauth2/token", {
@@ -233,9 +200,6 @@ function Home() {
         },
       })
       .then((response) => {
-        // console.log(response.data.data);
-        // console.log(response.data.data.token);
-        // console.log(response.data.data.token.access_token)
         setToken(response.data.data.token.access_token);
         setStatus(response.status);
       })
@@ -247,7 +211,6 @@ function Home() {
   // }, [value]);
 
   const validateForm = () => {
-    console.log(allValues.time);
     if (!serviceId) {
       alert("Please Select Service");
     } else if (
@@ -260,6 +223,11 @@ function Home() {
       /\d/.test(allValues.lastname) === true
     ) {
       alert("Please enter valid Last Name");
+    } else if (
+      value.toLocaleDateString() < new Date().toLocaleDateString() ||
+      (diffDays < 14 && diffYears !== 0)
+    ) {
+      alert("Please enter the valid Date");
     } else if (
       allValues.contact === "" ||
       allValues.contact.length !== 10 ||
@@ -276,9 +244,7 @@ function Home() {
       alert("Please enter time");
     } else {
       onChecked();
-      console.log();
       setIsActive(true);
-      console.log(allValues.contact.length < 10);
     }
   };
 
@@ -431,7 +397,7 @@ function Home() {
                   toolbarPlaceholder="Please select date"
                   placeholder="Please select date"
                   disablePast={true}
-                  minDate={value}
+                  minDate={new Date()}
                   maxDate={futureDate}
                   disableToolbar
                   onChange={(value) => setValue(value)}

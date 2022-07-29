@@ -13,16 +13,12 @@ const Buttons = ({ token, setServiceID, setValue, serviceId, setSlots }) => {
         },
       })
       .then((response) => {
-        // console.log(response.data.data.services);
         setServiceName(response.data.data.services);
       });
   }, [token]);
-  // console.log(serviceName);
-  // console.log(serviceName);
 
   const setService = (service) => {
     setServiceID(service);
-    // console.log(service);
     axios
       .get("https://kapiva.app/api/get_availability_slots.php", {
         params: { service_id: service },
