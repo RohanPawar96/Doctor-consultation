@@ -37,9 +37,9 @@ const Buttons = ({ token, setServiceID, setValue, serviceId, setSlots }) => {
               <li key={services.key}>
                 <button
                   type="button"
-                  className={"btn btn-outline-success btn-lg option-button "}
+                  className={"btn btn-outline-success btn-lg option-button"}
                   name="service"
-                  value="Weight Management"
+                  value={services.service_name}
                   data-bs-toggle="button"
                   //   aria-aria-pressed="true"
                   onClick={() => setService(services.key)}

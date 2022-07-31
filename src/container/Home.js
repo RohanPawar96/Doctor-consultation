@@ -206,45 +206,106 @@ function Home() {
       .catch((error) => console.log(error));
   }, [value]);
 
-  // useEffect(() => {
-  //   setValue(value);
-  // }, [value]);
-
   const validateForm = () => {
     if (!serviceId) {
-      alert("Please Select Service");
+      document.getElementById("services").style = "display : block";
+      // alert("Please Select Service");
     } else if (
       allValues.firstname === "" ||
       /\d/.test(allValues.firstname) === true
     ) {
-      alert("Please enter valid First Name");
+      // alert("Please enter valid First Name");
+      document.getElementById("services").style = "display : none";
+      document.getElementById("firstname").style = "display : block";
+      document.getElementById("firstnameblock").style =
+        "border : 1px solid red !important";
     } else if (
       allValues.lastname === "" ||
       /\d/.test(allValues.lastname) === true
     ) {
-      alert("Please enter valid Last Name");
-    } else if (
-      value.toLocaleDateString() < new Date().toLocaleDateString() ||
-      (diffDays < 14 && diffYears !== 0)
-    ) {
-      alert("Please enter the valid Date");
+      document.getElementById("services").style = "display : none";
+      document.getElementById("firstname").style = "display : none";
+      document.getElementById("firstnameblock").style =
+        "border : 1px solid red";
+      document.getElementById("lastname").style = "display : block";
+      document.getElementById("lastnameblock").style =
+        "border : 1px solid red !important";
     } else if (
       allValues.contact === "" ||
       allValues.contact.length !== 10 ||
       pattern.test(allValues.contact) ||
       allValues.contact.charAt(0) === "-"
     ) {
-      alert("Please enter valid contact");
+      document.getElementById("services").style = "display : none";
+      document.getElementById("firstname").style = "display : none";
+      document.getElementById("firstnameblock").style =
+        "border : 1px solid red";
+      document.getElementById("lastname").style = "display : none";
+      document.getElementById("lastnameblock").style = "border : 1px solid red";
+      document.getElementById("contact").style = "display : block";
+      document.getElementById("contactblock").style =
+        "border : 1px solid red !important";
     } else if (
       allValues.email === "" ||
       validator.isEmail(allValues.email) !== true
     ) {
-      alert("Please enter valid email");
+      document.getElementById("services").style = "display : none";
+      document.getElementById("firstname").style = "display : none";
+      document.getElementById("firstnameblock").style =
+        "border : 1px solid red";
+      document.getElementById("lastname").style = "display : none";
+      document.getElementById("lastnameblock").style = "border : 1px solid red";
+      document.getElementById("contact").style = "display : none";
+      document.getElementById("contactblock").style = "border : 1px solid red";
+      document.getElementById("email").style = "display : block";
+      document.getElementById("emailblock").style =
+        "border : 1px solid red !important";
+      // alert("Please enter valid email");
+    } else if (
+      value.toLocaleDateString() < new Date().toLocaleDateString() ||
+      (diffDays < 14 && diffYears !== 0)
+    ) {
+      document.getElementById("services").style = "display : none";
+      document.getElementById("firstname").style = "display : none";
+      document.getElementById("firstnameblock").style =
+        "border : 1px solid red";
+      document.getElementById("lastname").style = "display : none";
+      document.getElementById("lastnameblock").style = "border : 1px solid red";
+      document.getElementById("contact").style = "display : none";
+      document.getElementById("contactblock").style = "border : 1px solid red";
+      document.getElementById("email").style = "display : none";
+      document.getElementById("emailblock").style = "border : 1px solid red";
+      // alert("Please enter the valid Date");
     } else if (allValues.time === "") {
-      alert("Please enter time");
+      document.getElementById("services").style = "display : none";
+      document.getElementById("firstname").style = "display : none";
+      document.getElementById("firstnameblock").style =
+        "border : 1px solid red";
+      document.getElementById("lastname").style = "display : none";
+      document.getElementById("lastnameblock").style = "border : 1px solid red";
+      document.getElementById("contact").style = "display : none";
+      document.getElementById("contactblock").style = "border : 1px solid red";
+      document.getElementById("email").style = "display : none";
+      document.getElementById("emailblock").style = "border : 1px solid red";
+      // alert("Please enter time");
+      document.getElementById("time").style = "display : block";
+      document.getElementById("timeblock").style =
+        "border : 1px solid red !important";
     } else {
       onChecked();
       setIsActive(true);
+      document.getElementById("services").style = "display : none";
+      document.getElementById("firstname").style = "display : none";
+      document.getElementById("firstnameblock").style =
+        "border : 1px solid red";
+      document.getElementById("lastname").style = "display : none";
+      document.getElementById("lastnameblock").style = "border : 1px solid red";
+      document.getElementById("email").style = "display : none";
+      document.getElementById("emailblock").style = "border : 1px solid red";
+      document.getElementById("contact").style = "display : none";
+      document.getElementById("contactblock").style = "border : 1px solid red";
+      document.getElementById("time").style = "display : none";
+      document.getElementById("timeblock").style = "border : 1px solid red";
     }
   };
 
@@ -310,6 +371,9 @@ function Home() {
         </div>
       </div>
       <div className="options">
+        <p className="error" id="services">
+          Please select the Service...
+        </p>
         {status === 200 ? (
           <Buttons
             token={token}
@@ -324,44 +388,67 @@ function Home() {
         <hr />
         <div className="form">
           <div className="name">
-            <input
-              type="text"
-              placeholder="First Name"
-              name="firstname"
-              className="border"
-              value={allValues.firstname}
-              onChange={changeHandler}
-              required
-            />
-            <input
-              type="text"
-              placeholder="Last Name"
-              name="lastname"
-              className="border"
-              value={allValues.lastname}
-              onChange={changeHandler}
-              required
-            />
-            <input
-              type="number"
-              placeholder="Contact No"
-              name="contact"
-              className="border"
-              value={allValues.contact}
-              onChange={changeHandler}
-              required
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              className="border"
-              value={allValues.email}
-              onChange={changeHandler}
-              required
-            />
+            <div className="detail">
+              <input
+                type="text"
+                placeholder="First Name"
+                id="firstnameblock"
+                name="firstname"
+                className="border"
+                value={allValues.firstname}
+                onChange={changeHandler}
+                required
+              />
+              <p className="error" id="firstname">
+                Enter Valid First Name...
+              </p>
+            </div>
+            <div className="detail">
+              <input
+                type="text"
+                id="lastnameblock"
+                placeholder="Last Name"
+                name="lastname"
+                className="border"
+                value={allValues.lastname}
+                onChange={changeHandler}
+                required
+              />
+              <p className="error" id="lastname">
+                Enter Valid Last Name...
+              </p>
+            </div>
+            <div className="detail">
+              <input
+                type="number"
+                id="contactblock"
+                placeholder="Contact No"
+                name="contact"
+                className="border"
+                value={allValues.contact}
+                onChange={changeHandler}
+                required
+              />
+              <p className="error" id="contact">
+                Enter Valid Contact...
+              </p>
+            </div>
+            <div className="detail">
+              <input
+                type="email"
+                placeholder="Email"
+                id="emailblock"
+                name="email"
+                className="border"
+                value={allValues.email}
+                onChange={changeHandler}
+                required
+              />
+              <p className="error" id="email">
+                Enter Valid Email...
+              </p>
+            </div>
           </div>
-
           <p className="whatsapp-text">
             <input type="checkbox" name="whatsapp" id="whatsapp" />
             Get updates on
@@ -408,18 +495,23 @@ function Home() {
               </LocalizationProvider>
             </div>
             <div className="date-adjustment">
-              <select
-                name="time"
-                id="time"
-                style={{ fontWeight: "500" }}
-                // autoComplete="off"
-                onChange={changeHandler}
-              >
-                <option value={""}>None</option>
-                {filteredList.map((t) => {
-                  return <option value={t}>{t}</option>;
-                })}
-              </select>
+              <div className="detail">
+                <select
+                  name="time"
+                  id="timeblock"
+                  style={{ fontWeight: "500" }}
+                  // autoComplete="off"
+                  onChange={changeHandler}
+                >
+                  <option value={""}>None</option>
+                  {filteredList.map((t) => {
+                    return <option value={t}>{t}</option>;
+                  })}
+                </select>
+                <p className="error" id="time">
+                  Please select the slot...
+                </p>
+              </div>
             </div>
           </div>
         </div>
