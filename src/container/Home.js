@@ -16,6 +16,7 @@ function Home() {
   const todayTime = new Date();
   const date = new Date();
   const [slots, setSlots] = useState([]);
+  const [submit, setSubmit] = useState("Submit");
   let hours = todayTime.getHours();
   hours = ("0" + hours).slice(-2);
   let minutes = todayTime.getMinutes();
@@ -208,14 +209,16 @@ function Home() {
 
   const validateForm = () => {
     if (!serviceId) {
-      document.getElementById("services").style = "display : block";
+      document.getElementById("submit").style = "display: block";
+      document.getElementById("submit").textContent =
+        "Please Select Services...";
       // alert("Please Select Service");
     } else if (
       allValues.firstname === "" ||
       /\d/.test(allValues.firstname) === true
     ) {
-      // alert("Please enter valid First Name");
-      document.getElementById("services").style = "display : none";
+      document.getElementById("submit").style = "display: none";
+      document.getElementById("submit").textContent = "";
       document.getElementById("firstname").style = "display : block";
       document.getElementById("firstnameblock").style =
         "border : 1px solid red !important";
@@ -293,7 +296,6 @@ function Home() {
         "border : 1px solid red !important";
     } else {
       onChecked();
-      setIsActive(true);
       document.getElementById("services").style = "display : none";
       document.getElementById("firstname").style = "display : none";
       document.getElementById("firstnameblock").style =
@@ -306,6 +308,7 @@ function Home() {
       document.getElementById("contactblock").style = "border : 1px solid red";
       document.getElementById("time").style = "display : none";
       document.getElementById("timeblock").style = "border : 1px solid red";
+      submitHandler();
     }
   };
 
@@ -340,6 +343,56 @@ function Home() {
     }
   }
 
+  const submitHandler = () => {
+    setSubmit("Submitting...");
+    axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      data: {
+        data: {
+          Customer: {
+            first_name: allValues.firstname,
+            last_name: allValues.lastname,
+            email_id: allValues.email,
+            cell_phone: "+91" + allValues.contact,
+            comment: allValues.comment,
+            utm_source: UtmSorce,
+          },
+          Appointment: {
+            service_key: serviceId,
+            start_time:
+              getDateFormat({ date: value }) + "T" + allValues.time + "Z",
+            end_time: getDateFormat({ date: value }) + "T" + endindex + "Z",
+          },
+        },
+      },
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          if (response.data.error === "Slot not available") {
+            document.getElementById("submit").textContent =
+              "Slot not Available";
+          } else if (response.data.staff !== null) {
+            setSubmit("Submit");
+            // setIsActive(true);
+            document.getElementById("submit").textContent =
+              "Appointment Booked Succesfully.....";
+          } else {
+            document.getElementById("submit").textContent =
+              "Appointment booking is unavailable please try again after some time";
+          }
+        }
+      })
+      .catch((error) => {
+        if (error) {
+          document.getElementById("submit").textContent = "Slot not Available";
+        }
+      });
+  };
+
   return (
     <div>
       {isactive && (
@@ -371,9 +424,6 @@ function Home() {
         </div>
       </div>
       <div className="options">
-        <p className="error" id="services">
-          Please select the Service...
-        </p>
         {status === 200 ? (
           <Buttons
             token={token}
@@ -515,11 +565,13 @@ function Home() {
             </div>
           </div>
         </div>
+        <p className="error" id="submit"></p>
         <input
           onClick={() => validateForm()}
           type="submit"
           className="submit-btn"
-          name="Submit"
+          name={submit}
+          value={submit}
         />
       </div>
     </div>

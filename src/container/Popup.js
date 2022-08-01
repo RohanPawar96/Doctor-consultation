@@ -1,109 +1,88 @@
 import React from "react";
-import { getDateFormat, showdateFormat } from "../utils/common";
-import axios from "axios";
+import { showdateFormat } from "../utils/common";
 
-const Popup = ({
-  allValues,
-  serviceId,
-  value,
-  endindex,
-  setIsActive,
-  convertTime12to24,
-  UtmSorce,
-}) => {
-  let endTime = "";
-  let startTime = "";
+const Popup = ({ allValues, value, setIsActive }) => {
+  const converTime = (time) => {
+    let hour = time.split(":")[0];
+    let min = time.split(":")[1];
+    let part = hour > 12 ? "pm" : "am";
 
-  const convertAmpm = (time) => {
-    if (time >= "10:00" && time < "12:00") {
-      return `${time} AM`;
-    } else if (time >= "12:00" && time <= "12:40") {
-      return `${time} PM`;
-    } else if (time >= "01:00" && time < "10:00") {
-      return `${time} PM`;
-    }
+    min = (min + "").length == 1 ? `0${min}` : min;
+    hour = hour > 12 ? hour - 12 : hour;
+    hour = (hour + "").length == 1 ? `0${hour}` : hour;
+
+    return `${hour}:${min} ${part}`;
   };
+  // const submitHandler = () => {
+  //   axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
 
-  endTime = convertAmpm(endindex);
-  startTime = convertAmpm(allValues.time);
-  if (allValues.time === "06:40") {
-    endindex = "07:00";
-  }
-
-  const submitHandler = () => {
-    axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      data: {
-        data: {
-          Customer: {
-            first_name: allValues.firstname,
-            last_name: allValues.lastname,
-            email_id: allValues.email,
-            cell_phone: "+91" + allValues.contact,
-            comment: allValues.comment,
-            utm_source: UtmSorce,
-          },
-          Appointment: {
-            service_key: serviceId,
-            start_time:
-              getDateFormat({ date: value }) + "T" + allValues.time + "Z",
-            end_time: getDateFormat({ date: value }) + "T" + endindex + "Z",
-          },
-        },
-      },
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          if (response.data.error === "Slot not available") {
-            console.log(response.error);
-            alert("Slots not available..");
-          } else if (response.data.staff !== null) {
-            console.log();
-            alert("Appointment booked Successfully...");
-            setIsActive(false);
-            window.location.reload();
-          } else {
-            alert(
-              "Appointment booking is unavailable please try again after some time"
-            );
-          }
-        }
-      })
-      .catch((error) => {
-        if (error) {
-          alert("Slots not available..");
-        }
-      });
-  };
+  //     data: {
+  //       data: {
+  //         Customer: {
+  //           first_name: allValues.firstname,
+  //           last_name: allValues.lastname,
+  //           email_id: allValues.email,
+  //           cell_phone: "+91" + allValues.contact,
+  //           comment: allValues.comment,
+  //           utm_source: UtmSorce,
+  //         },
+  //         Appointment: {
+  //           service_key: serviceId,
+  //           start_time:
+  //             getDateFormat({ date: value }) + "T" + allValues.time + "Z",
+  //           end_time: getDateFormat({ date: value }) + "T" + endindex + "Z",
+  //         },
+  //       },
+  //     },
+  //   })
+  //     .then((response) => {
+  //       if (response.status === 200) {
+  //         if (response.data.error === "Slot not available") {
+  //           console.log(response.error);
+  //           alert("Slots not available..");
+  //         } else if (response.data.staff !== null) {
+  //           console.log();
+  //           alert("Appointment booked Successfully...");
+  //           setIsActive(false);
+  //           window.location.reload();
+  //         } else {
+  //           alert(
+  //             "Appointment booking is unavailable please try again after some time"
+  //           );
+  //         }
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       if (error) {
+  //         alert("Slots not available..");
+  //       }
+  //     });
+  // };
 
   return (
     <div className="popup">
-      <img
-        className="popup-close"
-        on
-        src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/close.svg"
-        onClick={() => setIsActive(false)}
-        alt="close"
-      />
-      <ul className="popup-ul">
-        <li>First Name</li>
-        <li>{allValues.firstname}</li>
-        <li>last Name</li>
-        <li>{allValues.lastname}</li>
-        <li>Contact No</li>
-        <li>{allValues.contact}</li>
-        <li>Email</li>
-        <li>{allValues.email}</li>
-        <li>Appointment Date</li>
-        <li>{showdateFormat({ date: value })}</li>
-        <li>Appointment Time</li>
-        <li>{allValues.time}</li>
-      </ul>
-      <button className="popup-submit-button" onClick={() => submitHandler()}>
+      <div className="thankyou-content">
+        <h1>Thankyou ${allValues.firstname}</h1>
+        <br />
+        <h3>
+          Your Appointment is booked for ${showdateFormat(allValues.date)} at $
+          {converTime(allValues.time)}
+        </h3>
+        <br />
+        <h3>
+          Please Visit <a href="www.kapiva.in">Kapiva.in</a>
+          to know more about us and Products we have.
+        </h3>
+      </div>
+
+      <button
+        className="popup-submit-button"
+        onClick={() => window.location.reload()}
+      >
         Submit
       </button>
     </div>
