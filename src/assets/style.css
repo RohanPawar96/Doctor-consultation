@@ -2,6 +2,12 @@
   width: 100%;
 }
 
+.popup-Thankyou {
+  height: 50%;
+  text-align: center;
+  text-align: -webkit-center;
+}
+
 .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
   font-family: Poppins, sans-serif !important;
   font-size: 1.3rem !important;
@@ -103,11 +109,14 @@ p.error {
   border-radius: 25px;
 }
 
-.popup-ul {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  font-size: 18px;
-  text-align: initial;
+.popup {
+  position: absolute;
+  background: white;
+  width: 70%;
+  top: 15%;
+  padding: 2% 2%;
+  border-radius: 25px;
+  left: 15%;
 }
 
 button.popup-submit-button {

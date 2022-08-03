@@ -62,7 +62,7 @@ function Home() {
   const [status, setStatus] = useState(""); //eslint-disable-line
   const [time, setTime] = useState([]);
   let slot_list = [];
-  const [isactive, setIsActive] = useState(false); //eslint-disable-line
+  const [isactive, setIsActive] = useState(true); //eslint-disable-line
   // eslint-disable-next-line
   const [allValues, setAllValues] = useState({
     firstname: "",
@@ -296,7 +296,8 @@ function Home() {
         "border : 1px solid red !important";
     } else {
       onChecked();
-      document.getElementById("services").style = "display : none";
+      document.getElementById("submit").style = "display: none";
+      document.getElementById("submit").textContent = "";
       document.getElementById("firstname").style = "display : none";
       document.getElementById("firstnameblock").style =
         "border : 1px solid red";
@@ -373,14 +374,14 @@ function Home() {
       .then((response) => {
         if (response.status === 200) {
           if (response.data.error === "Slot not available") {
+            document.getElementById("submit").style = "display: block";
             document.getElementById("submit").textContent =
               "Slot not Available";
           } else if (response.data.staff !== null) {
             setSubmit("Submit");
-            // setIsActive(true);
-            document.getElementById("submit").textContent =
-              "Appointment Booked Succesfully.....";
+            setIsActive(true);
           } else {
+            document.getElementById("submit").style = "display: block";
             document.getElementById("submit").textContent =
               "Appointment booking is unavailable please try again after some time";
           }
@@ -388,6 +389,7 @@ function Home() {
       })
       .catch((error) => {
         if (error) {
+          document.getElementById("submit").style = "display: block";
           document.getElementById("submit").textContent = "Slot not Available";
         }
       });
@@ -404,8 +406,6 @@ function Home() {
             value={value}
             setIsActive={setIsActive}
             convertTime12to24={convertTime12to24}
-            onChecked={onChecked}
-            UtmSorce={UtmSorce}
           />
         </div>
       )}

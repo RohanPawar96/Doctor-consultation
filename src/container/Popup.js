@@ -11,8 +11,9 @@ const Popup = ({ allValues, value, setIsActive }) => {
     hour = hour > 12 ? hour - 12 : hour;
     hour = (hour + "").length == 1 ? `0${hour}` : hour;
 
-    return `${hour}:${min} ${part}`;
+    return ` ${hour}:${min} ${part} `;
   };
+
   // const submitHandler = () => {
   //   axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
   //     method: "POST",
@@ -65,20 +66,18 @@ const Popup = ({ allValues, value, setIsActive }) => {
 
   return (
     <div className="popup">
-      <div className="thankyou-content">
-        <h1>Thankyou ${allValues.firstname}</h1>
+      <div className="popup-Thankyou">
+        <h1>Thankyou {allValues.firstname} </h1>
         <br />
         <h3>
-          Your Appointment is booked for ${showdateFormat(allValues.date)} at $
+          Your Appointment is booked for {showdateFormat({ date: value })} at
           {converTime(allValues.time)}
         </h3>
         <br />
         <h3>
-          Please Visit <a href="www.kapiva.in">Kapiva.in</a>
-          to know more about us and Products we have.
+          Please Visit kapiva.in to know more about us and Products we have.
         </h3>
       </div>
-
       <button
         className="popup-submit-button"
         onClick={() => window.location.reload()}
