@@ -1,69 +1,122 @@
-.banner {
+* {
+  margin: 0;
+  max-width: 100%;
+  /* height: 4996.6px; */
+}
+
+.green {
+  color: #59702f;
+  font-weight: 700;
+}
+
+.unl {
+  text-decoration: underline;
+}
+
+.unl:hover {
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+h1 {
+  font-family: "Playfair Display";
+  font-size: 2.2rem;
+}
+
+p {
+  font-family: "Open Sans";
+}
+/************************************************/
+.dc-consultation {
+  background: scroll;
+  background-image: url("./img/dc-background.png");
+  background-size: 100%;
+  padding: 5%;
+}
+
+.dc-consultation .dc-banner {
+  display: grid;
+  width: 100%;
+  justify-content: right;
+  column-gap: 2%;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 2.5%;
+}
+
+.dc-banner .dc-banner-text {
+  width: 100%;
+}
+.dc-banner .dc-banner-text h2 {
+  margin: 0 0 2% 0;
+  font-size: 2.2rem;
+}
+.dc-banner .dc-banner-text p {
+  margin: 0 0 2% 0;
+  font-size: 1.2rem;
+}
+.dc-banner .dc-banner-img {
   width: 100%;
 }
 
-.popup-Thankyou {
-  height: 50%;
-  text-align: center;
+/*************************************************/
+
+.dc-consultation-form {
   text-align: -webkit-center;
-}
-
-.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
-  font-family: Poppins, sans-serif !important;
-  font-size: 1.3rem !important;
-  color: rgba(0, 0, 0, 0.6);
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.4375em;
-  letter-spacing: 0.00938em;
-  padding: 1% 0 !important;
-  position: relative;
-  display: block;
-  transform-origin: top left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: calc(100% - 24px);
-  position: absolute;
-  left: 0;
-  top: 0;
-  -webkit-transform: translate(14px, 16px) scale(1);
-  -moz-transform: translate(14px, 16px) scale(1);
-  -ms-transform: translate(14px, 16px) scale(1);
-  transform: translate(14px, 16px) scale(1);
-  -webkit-transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
-    -webkit-transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
-    max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
-    transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
-    max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.css-1x5jdmq {
-  font: inherit;
-  letter-spacing: inherit;
-  color: currentcolor;
-  border: 0px;
-  box-sizing: content-box;
-  background: none;
-  height: 1.4375em;
-  margin: 0px;
-  -webkit-tap-highlight-color: transparent;
-  display: block;
-  min-width: 0px;
-  height: 41px;
   width: 100%;
-  animation-name: mui-auto-fill-cancel;
-  animation-duration: 10ms;
-  padding: 16.5px 14px;
-  /* border: 0; */
+  margin-bottom: 5%;
 }
 
-.border {
-  border: none;
+.dc-consultation-form h1 {
+  margin: 0 0 3% 0;
+}
+
+.dc-consultation-form-step-1 {
+  width: 70%;
+  text-align: left;
+}
+
+form.row.g-3.needs-validation.was-validated {
+  margin: 2% 0;
+}
+
+.dc-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-end: 4;
+  column-gap: 4%;
+  row-gap: 14%;
+  width: 100%;
+  margin: 3% 0;
+  padding: 0 !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  border: 0;
+  padding: 4% 2% 4% 5% !important;
+  background-color: #fffbf6;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+input#concern {
+  padding: 2% 2% 2% 3% !important;
+  margin-bottom: 5%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"]::placeholder {
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 input::-webkit-outer-spin-button,
@@ -72,11 +125,39 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.detail {
-  width: 100%;
-  height: 100%;
+select {
+  font-size: 1rem;
+  font-weight: 500;
 }
 
+.dc-whatsapp-tick {
+  margin-bottom: 5%;
+}
+
+.dc-therepys {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 3%;
+  grid-row-gap: 12%;
+  margin-bottom: 8%;
+}
+
+.dc-therepys .therapy {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  height: 6rem;
+  text-align: center;
+}
+
+input.therapy-input {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  zoom: 1.3;
+  display: none;
+}
 p.error {
   color: red;
   font-family: Poppons, sans-serif;
@@ -84,976 +165,234 @@ p.error {
   display: none;
 }
 
-.root {
-  font-family: "Poppins", sans-serif !important;
-  position: relative !important;
+.dc-therepys .input [type="checkbox"]::-ms-check {
+  width: 50px;
 }
 
-.popup-background {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 45%);
-  z-index: 5;
-}
-
-.popup {
-  position: absolute;
-  background: white;
-  width: 35%;
-  left: 31.75%;
-  top: 15%;
-  padding: 2% 2%;
-  border-radius: 25px;
-}
-
-.popup {
-  position: absolute;
-  background: white;
-  width: 70%;
-  top: 15%;
-  padding: 2% 2%;
-  border-radius: 25px;
-  left: 15%;
-}
-
-button.popup-submit-button {
-  color: #60975f;
-  border: 2px solid #60975f;
-  background-color: rgb(255, 255, 255);
-  border-radius: 25px;
-  width: 60%;
-  height: 32px;
-  margin: 2% 0;
-}
-
-hr {
-  color: inherit;
-  border: 0;
-  border-top: 1px solid;
-  opacity: 100%;
-  width: 17%;
-  margin: 3% 1%;
-}
-select {
-  background-color: #eff8e2;
-  border: 0;
-  border: 1px solid rgba(0, 0, 0, 22%);
-  font-weight: 400;
-  height: 100%;
-  padding: 2% 7%;
-  width: 100%;
-  border-radius: 4px;
-}
-
-.inline {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-input[type="checkbox"] {
-  width: 20px; /*Desired width*/
-  height: 20px; /*Desired height*/
-  cursor: pointer;
-}
-
-.css-i44wyl {
-  display: inline-flex;
-  flex-direction: column;
-  position: relative;
-  min-width: 0px;
-  padding: 0px;
-  margin: 0px;
-  border: 0px;
-  vertical-align: top;
-  height: 100% !important;
-  width: 100% !important;
-  border-radius: 6px !important;
-}
-
-.css-1v4ccyo {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.4375em;
-  letter-spacing: 0.00938em;
-  color: rgba(0, 0, 0, 0.87);
-  box-sizing: border-box;
-  cursor: text;
-  display: inline-flex;
-  -webkit-box-align: center;
-  align-items: center;
-  position: relative;
-  border-radius: 4px;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-  height: 100% !important;
-  border-radius: inherit;
-}
-
-.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
-  height: 100% !important;
-}
-
-.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
-  border-radius: 6px !important;
-  background-color: #eff8e2 !important;
-}
-
-.css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root {
-  background-color: #eff8e2 !important;
-}
-
-.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-  border: 0 !important;
-  font-size: 23px !important;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.banner img {
-  width: 80%;
-}
-
-.border {
-  border: 1px solid grey;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="number"],
-textarea,
-select {
-  background-color: #eff8e2;
-  border-radius: 6px;
-  font-family: Poppins, sans-serif;
-  font-size: 1.3rem;
-  padding: 0% 1% 0% 6%;
-  width: 100%;
-  height: 100%;
-  border: 1px solid rgba(0, 0, 0, 22%) !important;
-}
-
-textarea {
-  padding: 1% 4% 1% 3%;
-  height: 200px;
-}
-
-.form {
-  margin: 0;
-  text-align: -webkit-center;
-}
-
-input[type="checkbox"] {
-  margin-right: 8px;
-}
-
-p.whatsapp-text {
-  width: 77%;
-  text-align: left;
-  margin-top: 1%;
-  margin-bottom: 1%;
-  font-size: 21px;
-}
-
-.name {
-  border-radius: 5px;
-  width: 82%;
-  height: 150px;
-  display: grid;
-  justify-items: center;
-  grid-row-gap: 18%;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 3%;
-  margin-bottom: 3%;
-}
-
-.title {
-  width: 100%;
-  margin-top: 12%;
-  margin-bottom: 5%;
-}
-
-.title p {
-  font-family: Recoleta;
-  font-size: 60px;
-  font-weight: 600;
-  letter-spacing: 0em;
-  margin: 0;
-}
-
-.title p.single-line {
-  display: flex;
-  justify-content: center;
-}
-
-.options hr {
-  align-self: center;
-  height: 0;
-  margin: 3% 4% 4.3%;
-  opacity: 1;
-  width: 92%;
-}
-.title p.single-line hr {
-  width: 290px;
-  height: 0px;
-  margin: 47px 15px 0 15px;
-  opacity: 1;
-}
-
-h1 {
-  width: 40%;
-  font-family: "Poppins", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 48px;
-  color: #000000;
-  margin-bottom: 1%;
-  text-align: unset;
-}
-
-p.button {
-  font-family: "Poppins", sans-serif;
-  font-style: normal;
-  line-height: 38px;
-  color: #60975f;
-}
-
-p.date-time-text {
-  font-family: "Poppins", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  color: #000000;
-  margin: 0;
-}
-
-.date-time {
-  width: 100%;
+.dc-therepys label {
+  border: 1px solid;
   display: flex;
   justify-content: space-evenly;
-}
-
-p.additional-text {
-  margin: 0;
-  font-size: 14px;
-}
-
-label#\:r9\:-label {
-  font-size: 17px;
-}
-
-.option-button {
-  width: 631px;
-  height: 98.87px;
-  padding: 1% 1%;
-}
-
-.therapys {
   width: 100%;
+  height: 100%;
+  align-items: center;
 }
 
-ul {
-  padding: 0;
-  margin: 0;
-  width: 95%;
-  margin: 0 2.5%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 2.5%;
+.dc-therepys img {
+  width: 30%;
+  height: 70%;
+  align-self: center;
+}
+.dc-therepys p {
+  width: 35%;
+  margin: 4% 0%;
+  font-size: 0.8rem;
 }
 
-li {
-  list-style: none;
-  margin: 6px 0;
-}
-
-.btn,
-.btn-lg {
-  --bs-btn-padding-y: none;
-  --bs-btn-padding-x: none;
-  --bs-btn-font-weight: 600;
-  --bs-btn-font-size: 25.4638px;
-  --bs-btn-border-radius: 0.5rem;
-  --bs-btn-font-family: "Poppins", sans-serif;
-  --bs-btn-font-style: normal;
-  --bs-btn-line-height: 38px;
-}
-
-.btn-outline {
-  --bs-btn-border-color: #60975f;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #60975f;
-  --bs-btn-hover-border-color: #60975f;
+input#date {
+  padding: 7% 2% 7% 5% !important;
 }
 
 .time,
 .date {
-  width: 45%;
+  display: grid;
+  row-gap: 25%;
+}
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  position: unset !important;
+}
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: none !important;
+}
+
+.dc-form-submit {
+  width: 100%;
+  text-align: center;
+}
+
+.dc-form-submit input[type="Submit"] {
+  width: 30%;
+  padding: 1% 1%;
+  background-color: #80a03c;
+  border: 0;
+  color: #ffffff;
+  font: bold 19px "Open Sans";
+}
+
+/***********************************************************/
+
+.dc-doctor-details {
+  text-align: center;
+}
+
+.dc-doctor-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 90%;
+  margin: 5% 5%;
+  column-gap: 5%;
+  justify-items: center;
+}
+
+.dc-card {
+  width: 100%;
+  padding: 5%;
   text-align: -webkit-center;
 }
 
-.date-height {
-  height: 47%;
+.dc-card .doctor-image {
+  width: 158px;
+  height: 180px;
 }
 
-.time-height {
-  height: 20%;
+.dc-card h2.doctor-name {
+  font-size: 1.5rem;
+  margin: 4% 0;
 }
 
-select::selection {
-  border: 1px solid blue;
+p.doctor-detail {
+  margin: 0;
 }
 
-.submit-btn {
-  margin: 1% 0 4%;
-  width: 20%;
-  height: 66px;
-  border-radius: 25px;
-  font-size: 26px;
-  font-weight: 700;
-  color: #60975f;
-  border: 2px solid #60975f;
-  background-color: rgb(255, 255, 255);
+.doctor-experience {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
 }
 
-input[type="submit"]:hover {
-  background-color: #60975f;
-  border: 2px solid rgb(255, 255, 255);
-  color: #fff;
+.doctor-experience p {
+  margin: 0;
 }
 
-button:hover {
-  background-color: #60975f;
-  border: 2px solid rgb(255, 255, 255);
-  color: #fff;
-}
+/**********************************************************/
 
-img.popup-close {
-  margin-left: 90%;
-}
-
-/* .submit-btn:hover {
-  background-color: #60975f;
-  border: 2px solid rgb(255, 255, 255);
-  color: #fff;
-} */
-
-.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-  width: 100% !important;
-}
-
-.main {
-  width: 82%;
+h3.dc-acheivement-head {
   text-align: center;
-  margin-bottom: 3%;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-.date-adjustment {
+.dc-acheivements {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 4% 2%;
+}
+
+.acheiventent {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.acheivement-img {
+  border-radius: 66px;
+  height: 105px;
+  text-align: center;
+}
+
+.acheivement-img img {
   width: 100%;
-  height: 100%;
+  margin: 6% 0;
 }
 
-input[type="date"],
-select {
+p.acheivement-description {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.dc-book-consulation {
+  text-align: -webkit-center;
+  margin: 5% 0;
+}
+
+button.btn-book {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  background-color: #6a8330;
+  padding: 1%;
+  border: 0;
+  align-items: baseline;
+  border-radius: 7px;
+}
+
+.btn-initial {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+p.btn-text {
+  color: wheat;
+  font-weight: 700;
+  margin: 0;
+}
+
+.btn-image {
+  width: 16%;
+}
+
+/**********************************************/
+
+.dc-treatments {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 4% 0;
+  text-align: center;
+  padding: 0 5%;
+  column-gap: 17%;
+}
+
+.treatment {
   width: 100%;
-  height: 100%;
-  padding: 2% 7%;
-  background-color: #eff8e2;
 }
 
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-  background-image: url("D:\Projects\Kapiva-Doctor-Consultation\consultation\src\assets\img\menu-board.svg");
-  width: 40%;
-  height: 100%;
-  background-size: 100% 100%;
+p.treatment-text {
+  width: 100%;
+  font-style: italic;
+  font-family: Playfair Display;
 }
 
-/************************************************************************/
-
-@media screen and (max-width: 350px) {
-  p.error {
-    color: red;
-    font-family: Poppons, sans-serif;
-    font-size: xx-small;
-    display: none;
-  }
-  .title p {
-    font-size: 12px;
-  }
-
-  .popup-ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    font-size: 0.5rem;
-    text-align: initial;
-  }
-
-  .popup {
-    position: absolute;
-    background: white;
-    width: 80%;
-    left: 10%;
-    top: 10%;
-    padding: 2% 2%;
-    border-radius: 25px;
-  }
-
-  .title p.single-line hr {
-    width: 61px;
-    margin: 10px 10px 0 10px;
-  }
-
-  .name {
-    margin-top: 2%;
-    width: 90%;
-    height: 67px;
-  }
-
-  input[type="email"],
-  input[type="text"],
-  input[type="number"],
-  select,
-  textarea {
-    font-size: 0.8rem !important;
-  }
-
-  .main {
-    margin-bottom: 3%;
-    text-align: center;
-    width: 90%;
-  }
-
-  textarea {
-    height: 112px;
-  }
-
-  h1 {
-    width: 38%;
-    font-size: 11px;
-    line-height: 14px;
-    margin-left: 5%;
-  }
-
-  .option-button {
-    width: 109px;
-    height: 33.87px;
-  }
-
-  .btn,
-  .btn-lg {
-    --bs-btn-font-size: 8.4638px;
-    --bs-btn-line-height: 32px;
-  }
-
-  p.whatsapp-text {
-    text-align: left;
-    margin-left: 19.5%;
-    font-size: 7px;
-  }
-  input[type="checkbox"] {
-    margin-right: 6px;
-    width: 10px;
-  }
-
-  p img {
-    width: 4%;
-  }
-
-  .date-height {
-    height: 41%;
-  }
-
-  p.date-time-text {
-    font-size: 8px;
-  }
-
-  p.additional-text {
-    font-size: 6px;
-  }
-
-  .time {
-    width: 40%;
-  }
-
-  .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
-    font-size: 10px !important;
-    line-height: 0 !important;
-    overflow: inherit !important;
-    top: -4px !important;
-  }
-
-  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
-    font-size: 10px !important;
-    line-height: 0 !important;
-    overflow: inherit !important;
-  }
-
-  label#\:r9\:-label {
-    font-size: 13px !important;
-    top: 2px !important;
-  }
-
-  .submit-btn {
-    width: 31%;
-    height: 30px;
-    font-size: 10px;
-  }
-  img.popup-close {
-    margin-left: 90%;
-    width: 7%;
-  }
+/************************************************/
+.dc-consult-queries {
+  text-align: center;
+  line-height: 40px;
 }
 
-/*******************************************************************************************************/
-
-@media screen and (min-width: 351px) and (max-width: 450px) {
-  p.error {
-    color: red;
-    font-family: Poppons, sans-serif;
-    font-size: x-small;
-    display: none;
-  }
-  .title p {
-    font-size: 21px;
-  }
-
-  .name {
-    width: 90%;
-    height: 100px;
-  }
-
-  img.popup-close {
-    margin-left: 90%;
-    width: 7%;
-  }
-
-  .popup {
-    position: absolute;
-    background: white;
-    width: 80%;
-    left: 10%;
-    top: 15%;
-    padding: 2% 2%;
-    border-radius: 25px;
-  }
-
-  .popup-ul {
-    font-size: 12px;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="number"],
-  textarea,
-  select {
-    font-size: 0.8rem;
-  }
-
-  p.whatsapp-text {
-    margin-top: 2%;
-    margin-bottom: 2%;
-    font-size: 0.76rem;
-    width: 86%;
-  }
-
-  hr {
-    margin: 1rem 0;
-    color: inherit;
-    border: 0;
-    border-top: 1px solid;
-    opacity: 100%;
-    width: 16%;
-    margin: 4.5% 2%;
-  }
-
-  .inline {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-  }
-
-  textarea {
-    height: 150px;
-  }
-
-  input[type="date"],
-  select {
-    background-color: #eff8e2;
-    border: 0;
-    border: 1px solid rgba(0, 0, 0, 0.22);
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    height: 100%;
-    padding: 8% 7%;
-    width: 100%;
-  }
-
-  .date-adjustment {
-    width: 100%;
-    height: 100%;
-  }
-
-  input[type="date"]::-webkit-inner-spin-button,
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    background-image: url("D:\Projects\Kapiva-Doctor-Consultation\consultation\src\assets\img\menu-board.svg");
-    width: 30%;
-    height: 100%;
-    background-size: 100% 100%;
-  }
-
-  .title p.single-line hr {
-    width: 55px;
-    margin: 17px 10px 0 10px;
-  }
-
-  h1 {
-    width: 29%;
-    font-size: 13px;
-    line-height: 14px;
-    margin-left: 3%;
-  }
-
-  .time-height {
-    height: 27%;
-  }
-
-  .option-button {
-    width: 167px;
-    height: 52.87px;
-    padding: 4%;
-  }
-
-  .options hr {
-    align-self: center;
-    width: 90%;
-    height: 0px;
-    opacity: 1;
-    margin: 3% 5% 4.3% 5%;
-  }
-
-  .main {
-    width: 90%;
-    margin: 0 5%;
-  }
-
-  .btn,
-  .btn-lg {
-    --bs-btn-font-size: 0.8rem;
-    --bs-btn-line-height: 1.2rem;
-  }
-
-  input[type="checkbox"] {
-    margin-right: 6px;
-    width: 15px;
-    height: 15px;
-  }
-
-  p img {
-    width: 4%;
-  }
-
-  .date-height {
-    height: 53%;
-  }
-
-  p.date-time-text {
-    font-size: 12px;
-  }
-
-  button.submit-btn {
-    margin: 15% 0;
-  }
-
-  p.additional-text {
-    font-size: 10px;
-    font-weight: 700;
-    height: 47%;
-  }
-
-  .time {
-    width: 40%;
-  }
-
-  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-    font-size: 13px !important;
-  }
-
-  .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
-    font-size: 10px !important;
-    line-height: 0 !important;
-    overflow: inherit !important;
-    top: -4px !important;
-  }
-
-  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
-    font-size: 10px !important;
-    line-height: 0 !important;
-    overflow: inherit !important;
-  }
-
-  label#\:r9\:-label {
-    font-size: 13px !important;
-    top: 2px !important;
-  }
-
-  .submit-btn {
-    width: 38%;
-    height: 38px;
-    font-size: 15px;
-  }
+.dc-consult-head {
+  margin-bottom: 2%;
 }
 
-/****************************************************************************************************/
-@media screen and (min-width: 451px) and (max-width: 650px) {
-  p.error {
-    color: red;
-    font-family: Poppons, sans-serif;
-    font-size: x-small;
-    display: none;
-  }
-  .title p {
-    font-size: 19px;
-  }
-
-  .popup {
-    position: absolute;
-    background: white;
-    width: 80%;
-    left: 10%;
-    top: 15%;
-    padding: 2% 2%;
-    border-radius: 25px;
-  }
-
-  .popup-ul {
-    font-size: 14px;
-  }
-
-  .title p.single-line hr {
-    width: 104px;
-    margin: 16px 10px 0 10px;
-  }
-
-  h1 {
-    font-size: 14px;
-    margin-left: 6%;
-  }
-
-  .option-button {
-    width: 201px;
-    height: 44.87px;
-  }
-
-  p.whatsapp-text {
-    font-size: 16px;
-  }
-
-  .btn,
-  .btn-lg {
-    --bs-btn-font-size: 11.4638px;
-  }
+.dc-selector {
+  margin: 3% 0;
+  padding: 0 6%;
 }
 
-/****************************************************************************************************/
-@media screen and (min-width: 651px) and (max-width: 850px) {
-  p.error {
-    color: red;
-    font-family: Poppons, sans-serif;
-    font-size: small;
-    display: none;
-  }
-  .title p {
-    font-size: 29px;
-  }
-
-  .title p.single-line hr {
-    width: 153px;
-    margin: 27px 10px 0 10px;
-  }
-
-  .popup {
-    position: absolute;
-    background: white;
-    width: 60%;
-    left: 20%;
-    top: 28%;
-    padding: 2% 2%;
-    border-radius: 25px;
-  }
-
-  input[type="date"]::-webkit-inner-spin-button,
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    background-image: url("D:\Projects\Kapiva-Doctor-Consultation\consultation\src\assets\img\menu-board.svg");
-    width: 20%;
-    height: 100%;
-    background-size: 100% 100%;
-  }
-
-  .date-adjustment {
-    width: 50%;
-    height: 87%;
-    border-radius: 10px;
-  }
-
-  h1 {
-    width: 31%;
-    font-size: 19px;
-    line-height: 14px;
-    margin-left: 5%;
-  }
-
-  .option-button {
-    width: 297px;
-    height: 53.87px;
-    padding: 3% 3%;
-  }
-
-  .main {
-    width: 79%;
-    margin: 0 11%;
-  }
-
-  .btn,
-  .btn-lg {
-    --bs-btn-font-size: 14.4638px;
-    --bs-btn-line-height: 32px;
-  }
-
-  p.whatsapp-text {
-    margin-left: 13.5%;
-    font-size: 10px;
-  }
-  input[type="checkbox"] {
-    margin-right: 6px;
-    width: 15px;
-  }
-
-  .adjustment {
-    width: 40%;
-    margin-left: 30%;
-  }
-
-  p img {
-    width: 4%;
-  }
-
-  .date-height {
-    height: 38%;
-  }
-
-  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-    padding: 3.5px 5px !important;
-  }
-
-  .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
-    font-size: 10px !important;
-    line-height: 0 !important;
-    overflow: inherit !important;
-    top: -4px !important;
-  }
-
-  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
-    font-size: 10px !important;
-    line-height: 0 !important;
-    overflow: inherit !important;
-  }
-
-  label#\:r9\:-label {
-    font-size: 13px !important;
-    top: 2px !important;
-  }
-
-  .submit-btn {
-    width: 31%;
-    height: 51px;
-    font-size: 17px;
-  }
+p.question {
+  margin: 1.5% 0;
+  padding: 0.5% 0;
+  border-bottom: 1px solid;
+  font-weight: 700;
+  background-image: url(./img/up-arrow.png);
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
-@media screen and (min-width: 851px) and (max-width: 1024px) {
-  .title p {
-    font-size: 30px;
-  }
-
-  .popup {
-    position: absolute;
-    background: white;
-    width: 60%;
-    left: 20%;
-    top: 28%;
-    padding: 2% 2%;
-    border-radius: 25px;
-  }
-
-  input[type="date"]::-webkit-inner-spin-button,
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    background-image: url("D:\Projects\Kapiva-Doctor-Consultation\consultation\src\assets\img\menu-board.svg");
-    width: 20%;
-    height: 100%;
-    background-size: 100% 100%;
-  }
-
-  .title p.single-line hr {
-    width: 187px;
-    margin: 27px 15px 0 15px;
-  }
-
-  .btn,
-  .btn-lg {
-    --bs-btn-font-size: 17.4638px;
-  }
-
-  .option-button {
-    width: 345px;
-    padding: 2% 1%;
-  }
-
-  p.whatsapp-text {
-    text-align: left;
-    margin-left: 9.5%;
-  }
+p.answer {
+  margin: 0;
+  padding: 1% 0;
+  font-size: 0.9rem;
+  font-weight: normal;
+  display: none;
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1206px) {
-  .title p {
-    font-family: Recoleta;
-    font-size: 38px;
-    font-weight: 600;
-    letter-spacing: 0em;
-    margin: 0;
-  }
+/****************************************************/
 
-  input[type="date"]::-webkit-inner-spin-button,
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    background-image: url("D:\Projects\Kapiva-Doctor-Consultation\consultation\src\assets\img\menu-board.svg");
-    width: 20%;
-    height: 100%;
-    background-size: 100% 100%;
-  }
+.dc-why-kapiva {
+  text-align: center;
+}
 
-  .title p.single-line hr {
-    width: 290px;
-    height: 0px;
-    margin: 34px 15px 0 15px;
-    opacity: 1;
-  }
-
-  .option-button {
-    width: 438px;
-    height: 51.87px;
-    padding: 1% 1%;
-  }
+h3.why-head {
+  font-weight: 300;
+  font-family: "Open Sans";
 }
