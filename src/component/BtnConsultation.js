@@ -15,7 +15,10 @@ function BtnConsultation() {
             <p className="btn-text">BOOK A FREE CONSULTATION</p>
           </div>
           <div className="btn-secondary">
-            <img src="./img/right-arrow.png" alt="" />
+            <img
+              src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/right-arrow.png"
+              alt=""
+            />
           </div>
         </button>
       </a>
