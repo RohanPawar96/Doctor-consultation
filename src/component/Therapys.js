@@ -27,21 +27,14 @@ function Therapys({ service, setServiceID, setSlots, slots }) {
     }
   }
 
-  function onlyOne(checkbox) {
-    var checkboxes = document.getElementsByName("check");
-    checkboxes.forEach((item) => {
-      if (item !== checkbox) item.checked = false;
-    });
-  }
   return (
     <div className="therapy">
       <input
         type="checkbox"
-        name={service.service_name}
+        name="check"
         onClick={(event) => {
           setService(event.currentTarget.value);
           checkData(event.currentTarget.id);
-          onlyOne(event.currentTarget.name);
         }}
         className="therapy-input"
         id={service.service_name}

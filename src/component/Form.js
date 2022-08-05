@@ -260,7 +260,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
   };
 
   useEffect(() => {
-    if (slots.length !== 0) {
+    if (slots) {
       for (const i in slots) {
         if (slots[i]["date"] === getDateFormat({ date: value })) {
           setFilteredList([]);
