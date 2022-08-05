@@ -1,7 +1,6 @@
 * {
   margin: 0;
   max-width: 100%;
-  /* height: 4996.6px; */
 }
 
 .green {
@@ -29,6 +28,14 @@ h1 {
 p {
   font-family: "Open Sans";
 }
+
+p.error {
+  color: red;
+  font-family: Poppons, sans-serif;
+  font-size: medium;
+  display: none;
+}
+
 /************************************************/
 .dc-consultation {
   background: scroll;
@@ -48,17 +55,72 @@ p {
 
 .dc-banner .dc-banner-text {
   width: 100%;
+  margin-left: 1%;
 }
+
 .dc-banner .dc-banner-text h2 {
   margin: 0 0 2% 0;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
 }
+
 .dc-banner .dc-banner-text p {
   margin: 0 0 2% 0;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
+
 .dc-banner .dc-banner-img {
   width: 100%;
+}
+
+@media screen and (max-width: 450px) {
+  .dc-consultation .dc-banner {
+    display: block;
+    justify-content: right;
+    margin-bottom: 2.5%;
+  }
+
+  .dc-banner .dc-banner-text h2 {
+    font-size: 1.25rem !important;
+    text-align: center;
+  }
+
+  .dc-banner .dc-banner-text p {
+    margin: 0 0 4% 0;
+    font-size: 0.8rem !important;
+    text-align: center;
+  }
+
+  .dc-banner .dc-banner-img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dc-consultation {
+    padding: 5% 10%;
+  }
+
+  .dc-banner .dc-banner-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .dc-banner .dc-banner-text p {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .dc-consultation {
+    padding: 5% 10% 5% 10%;
+  }
+
+  .dc-banner .dc-banner-text h2 {
+    font-size: 2rem !important;
+  }
+
+  .dc-banner .dc-banner-text p {
+    font-size: 1.1rem;
+  }
 }
 
 /*************************************************/
@@ -71,6 +133,7 @@ p {
 
 .dc-consultation-form h1 {
   margin: 0 0 3% 0;
+  font-weight: bold;
 }
 
 .dc-consultation-form-step-1 {
@@ -98,36 +161,17 @@ input[type="email"],
 input[type="number"],
 input[type="date"],
 select {
-  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 500;
   border: 0;
   padding: 4% 2% 4% 5% !important;
   background-color: #fffbf6;
-  font-size: 1rem;
-  font-weight: 500;
+  width: 100%;
 }
 
 input#concern {
   padding: 2% 2% 2% 3% !important;
   margin-bottom: 5%;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="number"]::placeholder {
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-select {
-  font-size: 1rem;
-  font-weight: 500;
 }
 
 .dc-whatsapp-tick {
@@ -158,12 +202,6 @@ input.therapy-input {
   zoom: 1.3;
   display: none;
 }
-p.error {
-  color: red;
-  font-family: Poppons, sans-serif;
-  font-size: medium;
-  display: none;
-}
 
 .dc-therepys .input [type="checkbox"]::-ms-check {
   width: 50px;
@@ -183,10 +221,20 @@ p.error {
   height: 70%;
   align-self: center;
 }
+
 .dc-therepys p {
   width: 35%;
   margin: 4% 0%;
   font-size: 0.8rem;
+}
+
+@media screen and (max-width: 370px) {
+  .dc-therepys img {
+    width: 50%;
+  }
+  .dc-therepys p {
+    font-size: 0.6rem !important;
+  }
 }
 
 input#date {
@@ -199,17 +247,10 @@ input#date {
   row-gap: 25%;
 }
 
-.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-  position: unset !important;
-}
-
-.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
-  border-radius: none !important;
-}
-
 .dc-form-submit {
   width: 100%;
   text-align: center;
+  margin-top: 8%;
 }
 
 .dc-form-submit input[type="Submit"] {
@@ -219,6 +260,94 @@ input#date {
   border: 0;
   color: #ffffff;
   font: bold 19px "Open Sans";
+}
+
+@media screen and (max-width: 450px) {
+  .dc-consultation-form h1 {
+    margin: 0 0 3% 0;
+    font-size: larger;
+  }
+
+  p.error {
+    color: red;
+    font-family: Poppons, sans-serif;
+    font-size: 0.5rem;
+    display: none;
+  }
+
+  .dc-consultation-form-step-1 {
+    width: 100%;
+    text-align: left;
+  }
+
+  .dc-consultation-form h3 {
+    font-size: larger;
+    text-align: center;
+  }
+
+  .dc-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-end: 4;
+    column-gap: 4%;
+    row-gap: 14%;
+    width: 100%;
+    margin: 3% 0;
+    padding: 0 !important;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="date"],
+  select {
+    font-size: 0.6rem;
+  }
+
+  .dc-whatsapp-tick {
+    padding: 0 !important;
+    margin-bottom: 5%;
+  }
+
+  .dc-whatsapp-tick label {
+    font-size: 13px;
+  }
+
+  .dc-therepys img {
+    width: 25%;
+    height: 38%;
+    margin-top: 12%;
+  }
+  .dc-form-submit input[type="Submit"] {
+    font: bold 0.8rem "Open Sans";
+  }
+}
+@media screen and (max-width: 768px) {
+  .dc-whatsapp-tick label {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .dc-therepys {
+    padding: 0 !important;
+  }
+
+  .dc-therepys label {
+    display: block;
+  }
+
+  .dc-therepys img {
+    width: 25%;
+    height: 46%;
+    margin-top: 12%;
+  }
+
+  .dc-therepys p {
+    width: 100%;
+    margin: 0% 0%;
+    font-size: 0.8rem;
+    padding: 0px;
+  }
 }
 
 /***********************************************************/
@@ -320,8 +449,9 @@ button.btn-book {
 .btn-initial {
   display: flex;
   justify-content: space-evenly;
-  align-items: baseline;
+  align-items: center;
 }
+
 p.btn-text {
   color: wheat;
   font-weight: 700;
@@ -332,35 +462,92 @@ p.btn-text {
   width: 16%;
 }
 
-/**********************************************/
+@media screen and (max-width: 450px) {
+  h3.dc-acheivement-head {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
 
-.dc-treatments {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin: 4% 0;
-  text-align: center;
-  padding: 0 5%;
-  column-gap: 17%;
-}
+  .dc-acheivements {
+    display: block;
+    margin: 4% 2%;
+  }
 
-.treatment {
-  width: 100%;
-}
+  p.acheivement-description {
+    font-size: 11.9px;
+  }
 
-p.treatment-text {
-  width: 100%;
-  font-style: italic;
-  font-family: Playfair Display;
-}
+  .acheivement-img {
+    height: 77px;
+  }
 
-/************************************************/
-.dc-consult-queries {
-  text-align: center;
-  line-height: 40px;
-}
+  .acheivement-img img {
+    width: 60% !important;
+  }
 
-.dc-consult-head {
-  margin-bottom: 2%;
+  button.btn-book {
+    width: 56%;
+    padding: 1%;
+    border: 0;
+    align-items: center;
+    border-radius: 7px;
+  }
+
+  p.btn-text {
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .dc-acheivements {
+      grid-template-columns: repeat(2, 1fr);
+      margin: 4% 2%;
+    }
+
+    .acheivement-img img {
+      width: 80%;
+      margin: 4% 0;
+    }
+  }
+
+  /**********************************************/
+
+  @media screen and (max-width: 450px) {
+    .dc-treatments {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      justify-items: center;
+    }
+    /* .dc-treatments .treatment .treatment-image{
+      width: 50%;
+    } */
+    p.treatment-text {
+      font-size: 12px;
+    }
+  }
+
+  .treatment {
+    width: 40%;
+  }
+
+  p.treatment-text {
+    width: 100%;
+    font-size: 15px;
+    font-style: italic;
+    font-family: Playfair Display;
+  }
+
+  /************************************************/
+  .dc-consult-queries {
+    text-align: center !important;
+    margin-top: 10%;
+    line-height: 20px;
+  }
+  .dc-consult-queries .dc-consult-head {
+    margin-bottom: 10px;
+  }
+  .dc-consult-queries .green {
+    margin: 7% 0;
+  }
 }
 
 .dc-selector {
@@ -373,6 +560,7 @@ p.question {
   padding: 0.5% 0;
   border-bottom: 1px solid;
   font-weight: 700;
+  text-align: left;
   background-image: url(./img/up-arrow.png);
   background-repeat: no-repeat;
   background-position: right;
@@ -382,8 +570,38 @@ p.answer {
   margin: 0;
   padding: 1% 0;
   font-size: 0.9rem;
+  text-align: left;
   font-weight: normal;
-  display: none;
+}
+
+@media screen and (max-width: 450px) {
+  .dc-consult-queries .dc-consult-head {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  p.answer {
+    font-size: 0.5rem;
+  }
+
+  p.question {
+    font-size: 0.5rem;
+    background-size: 4%;
+  }
+  .dc-consult-queries .faq {
+    font-size: 15px;
+    margin: 5% 0;
+  }
+
+  .dc-consult-queries .clickhere {
+    font-size: 12px;
+  }
+
+  .dc-consult-queries .feelfree {
+    font-size: 12px;
+  }
+  .dc-selector {
+    margin: 6% 0;
+  }
 }
 
 /****************************************************/
@@ -392,7 +610,84 @@ p.answer {
   text-align: center;
 }
 
+@media screen and (max-width: 450px) {
+  .dc-why-kapiva p {
+    font-size: 12px;
+  }
+
+  .dc-why-kapiva h3 {
+    font-size: 17px;
+  }
+  h3.why-head {
+    margin-top: 10px;
+  }
+}
+
 h3.why-head {
   font-weight: 300;
   font-family: "Open Sans";
+}
+
+/* ******************** */
+
+@media screen and (min-width: 451px) {
+  .mobile-slide {
+    display: none;
+  }
+}
+.mySlides {
+  display: none;
+}
+
+@media screen and (max-width: 450px) {
+  .dc-doctor-details {
+    text-align: center;
+  }
+
+  .dc-doctor-cards {
+    display: block;
+    width: 90%;
+    margin: 5% 5%;
+    justify-items: center;
+  }
+  .doctor-mobile {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .dc-card {
+    width: 100%;
+    padding: 5%;
+    display: none;
+  }
+  .dc-card p.doctor-info {
+    font-size: 12px;
+  }
+
+  .dc-card .doctor-image {
+    width: 158px;
+    height: 180px;
+  }
+
+  .dc-card h2.doctor-name {
+    font-size: 15px;
+    margin: 4% 0;
+  }
+  .doctor-experience p {
+    font-size: 11px;
+  }
+
+  p.doctor-detail {
+    margin: 0;
+    font-size: 11px;
+  }
+
+  .doctor-experience {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .doctor-experience p {
+    margin: 0;
+  }
 }

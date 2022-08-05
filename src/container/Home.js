@@ -7,6 +7,7 @@ import Form from "../component/Form";
 import Queries from "../component/Queries";
 import Treatments from "../component/Treatments";
 import axios from "axios";
+import DoctorCardMobile from "../component/DoctorCardMobile";
 
 function Home() {
   const [appointments, setAppointments] = useState([]);
@@ -70,6 +71,13 @@ function Home() {
           <DoctorCard />
           <DoctorCard />
           <DoctorCard />
+        </div>
+        <div class="dc-doctor-cards-mobile">
+          <div class="mobile-slide">
+            <DoctorCardMobile />
+            <DoctorCardMobile />
+            <DoctorCardMobile />
+          </div>
         </div>
       </div>
       <h3 className="dc-acheivement-head">

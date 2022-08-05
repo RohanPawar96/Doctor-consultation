@@ -10,7 +10,7 @@ function Banner() {
         </h2>
         <p>
           Don’t worry, we have got you covered. Kapiva has a team of <br />
-          experienced Ayurvedic practitioners andnutritionists who will guide
+          experienced Ayurvedic practitioners and nutritionists who will guide
           <br /> you at every step to get healthy and fit in a natural way.
         </p>
         <p className="green">
