@@ -13,13 +13,6 @@ import {
   getDateFormat,
   endTime,
 } from "../utils/common";
-import { FormErrors } from "./FormErrors";
-import {
-  validContact,
-  validEmailRegex,
-  validNameRegex,
-  validateForm,
-} from "../utils/validation";
 
 const Form = ({ appointments, UtmMedium, UtmSorce }) => {
   const [value, setValue] = useState(new Date());
@@ -85,7 +78,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       allValues.firstname === "" ||
       /\d/.test(allValues.firstname) === true
     ) {
-      //   document.getElementById("submit").style = "display: none";
+      //   document.getElementById("service").style = "display: none";
       //   document.getElementById("submit").textContent = "";
       document.getElementById("firstname").style = "display : block";
       document.getElementById("firstnameblock").style =
@@ -94,7 +87,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       allValues.lastname === "" ||
       /\d/.test(allValues.lastname) === true
     ) {
-      //   document.getElementById("services").style = "display : none";
+      document.getElementById("service").style = "display : none";
       document.getElementById("firstname").style = "display : none";
       document.getElementById("firstnameblock").style = "border : none";
       document.getElementById("lastname").style = "display : block";
@@ -106,7 +99,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       pattern.test(allValues.contact) ||
       allValues.contact.charAt(0) === "-"
     ) {
-      //   document.getElementById("services").style = "display : none";
+      document.getElementById("service").style = "display : none";
       document.getElementById("firstname").style = "display : none";
       document.getElementById("firstnameblock").style = "border : none";
       document.getElementById("lastname").style = "display : none";
@@ -118,7 +111,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       allValues.email === "" ||
       validator.isEmail(allValues.email) !== true
     ) {
-      //   document.getElementById("services").style = "display : none";
+      document.getElementById("service").style = "display : none";
       document.getElementById("firstname").style = "display : none";
       document.getElementById("firstnameblock").style = "border : none";
       document.getElementById("lastname").style = "display : none";
@@ -133,7 +126,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       value.toLocaleDateString() < new Date().toLocaleDateString() ||
       (diffDays < 14 && diffYears !== 0)
     ) {
-      //   document.getElementById("services").style = "display : none";
+      document.getElementById("service").style = "display : none";
       document.getElementById("firstname").style = "display : none";
       document.getElementById("firstnameblock").style = "border : none";
       document.getElementById("lastname").style = "display : none";
@@ -144,7 +137,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       document.getElementById("emailblock").style = "border : none";
       // alert("Please enter the valid Date");
     } else if (allValues.time === "") {
-      //   document.getElementById("services").style = "display : none";
+      document.getElementById("services").style = "display : none";
       document.getElementById("firstname").style = "display : none";
       document.getElementById("firstnameblock").style = "border : none";
       document.getElementById("lastname").style = "display : none";
@@ -221,6 +214,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
             cell_phone: "+91" + allValues.contact,
             comment: allValues.comment,
             utm_source: UtmSorce,
+            utm_medium: UtmMedium,
           },
           Appointment: {
             service_key: serviceId,

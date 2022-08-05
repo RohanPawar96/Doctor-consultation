@@ -54,9 +54,9 @@ function Therapys({ service, setServiceID, setSlots, slots }) {
       >
         <img
           src={
-            service
-              ? require("../assets/img/" + service.service_name + ".png")
-              : ""
+            "https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/" +
+            service.service_name +
+            ".png"
           }
           alt=""
         />

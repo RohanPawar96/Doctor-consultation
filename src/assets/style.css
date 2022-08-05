@@ -38,8 +38,8 @@ p.error {
 
 /************************************************/
 .dc-consultation {
-  background: scroll;
-  background-image: url("./img/dc-background.png");
+  background: round;
+  background-image: url("https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/dc-background.png");
   background-size: 100%;
   padding: 5%;
 }
@@ -266,6 +266,9 @@ input#date {
   .dc-consultation-form h1 {
     margin: 0 0 3% 0;
     font-size: larger;
+  }
+  .dc-therepys p {
+    font-size: 0.6rem;
   }
 
   p.error {
@@ -561,7 +564,7 @@ p.question {
   border-bottom: 1px solid;
   font-weight: 700;
   text-align: left;
-  background-image: url(./img/up-arrow.png);
+  background-image: url("https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/up-arrow.png");
   background-repeat: no-repeat;
   background-position: right;
 }

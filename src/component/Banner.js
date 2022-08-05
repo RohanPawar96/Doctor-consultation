@@ -18,7 +18,10 @@ function Banner() {
         </p>
       </div>
       <div className="dc-banner-img">
-        {/* <img src="./img/banner.png" alt="image" /> */}
+        <img
+          src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/banner.png"
+          alt="image"
+        />
       </div>
     </div>
   );

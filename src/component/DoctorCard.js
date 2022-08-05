@@ -4,7 +4,10 @@ function DoctorCard() {
   return (
     <div className="dc-card">
       <div className="doctor-image">
-        <img src="./img/image.png" alt="Doctor Image" />
+        <img
+          src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+          alt="Doctor Image"
+        />
       </div>
       <h2 className="doctor-name">Dr. Anand R Dwivedi</h2>
       <p className="doctor-detail">

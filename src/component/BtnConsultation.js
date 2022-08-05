@@ -6,7 +6,10 @@ function BtnConsultation() {
       <button className="btn-book">
         <div className="btn-initial">
           <div className="btn-image">
-            <img src="./img/dc-consult.png" alt="" />
+            <img
+              src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/dc-consult.png"
+              alt=""
+            />
           </div>
           <p className="btn-text">BOOK A FREE CONSULTATION</p>
         </div>

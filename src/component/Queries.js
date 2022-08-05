@@ -1,5 +1,4 @@
 import React from "react";
-import { dropdown } from "../utils/common";
 
 function Queries() {
   var count = 0;
@@ -10,11 +9,11 @@ function Queries() {
     if (count % 2 == 0) {
       document.getElementById(qa).style.display = "block";
       document.getElementById(`review-${qa}`).style.backgroundImage =
-        " url('./img/up-arrow.png') ";
+        " url('https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/up-arrow.png') ";
     } else {
       document.getElementById(qa).style.display = "none";
       document.getElementById(`review-${qa}`).style.backgroundImage =
-        " url('./img/down-arrow.png') ";
+        " url('https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/down-arrow.png') ";
     }
   }
   return (

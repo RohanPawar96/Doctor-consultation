@@ -6,7 +6,10 @@ function DoctorCardMobile() {
       <div class="mySlides mobile-view dc-card">
         <div class="doctor-mobile">
           <div class="doctor-image">
-            <img src="./img/image.png" alt="Doctor Image" />
+            <img
+              src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+              alt="Doctor Image"
+            />
           </div>
           <div class="doctor-info">
             <h2 class="doctor-name">Dr. Ranii R Dwivedi</h2>

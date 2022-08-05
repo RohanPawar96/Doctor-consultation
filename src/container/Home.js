@@ -31,6 +31,7 @@ function Home() {
         "https://h5vx3l2vwdiaobjnp3rp4hcyni0nkaid.lambda-url.ap-south-1.on.aws/"
       )
       .then((response) => {
+        console.log(response);
         setAppointments([...response.data]);
       }) //eslint-disable-line
       .catch((error) => {});
@@ -86,7 +87,10 @@ function Home() {
       <div className="dc-acheivements">
         <div className="acheiventent">
           <div className="acheivement-img">
-            <img src="./img/diabities.png" alt="" />
+            <img
+              src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/diabities.png"
+              alt=""
+            />
           </div>
           <p className="acheivement-description">
             <span className="bold">Diabetes</span> treated by <br /> Dr. Sheetal
