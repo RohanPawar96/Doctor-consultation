@@ -8,6 +8,7 @@ import Queries from "../component/Queries";
 import Treatments from "../component/Treatments";
 import axios from "axios";
 import DoctorCardMobile from "../component/DoctorCardMobile";
+import Carousel from "react-elastic-carousel";
 
 function Home() {
   const [appointments, setAppointments] = useState([]);
@@ -24,6 +25,12 @@ function Home() {
     UtmSorce = "";
     UtmMedium = "";
   }
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 3 },
+  ];
 
   useEffect(() => {
     axios
@@ -69,9 +76,12 @@ function Home() {
           <span style={{ fontWeight: 800 }}>AYURVEDIC DOCTORS</span>
         </h3>
         <div className="dc-doctor-cards">
-          <DoctorCard />
-          <DoctorCard />
-          <DoctorCard />
+          <Carousel breakPoints={breakPoints}>
+            <DoctorCard />
+            <DoctorCard />
+            <DoctorCard />
+            <DoctorCard />
+          </Carousel>
         </div>
         <div class="dc-doctor-cards-mobile">
           <div class="mobile-slide">

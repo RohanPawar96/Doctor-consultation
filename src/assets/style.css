@@ -231,6 +231,16 @@ input.therapy-input {
   font-size: 0.8rem;
 }
 
+.krmNah {
+  background-color: rgba(103, 58, 183, 0.5);
+  box-shadow: 0 0 1px 3px #80a03c !important;
+}
+
+.eWjCzc,
+.eAyARa {
+  display: none !important;
+}
+
 @media screen and (max-width: 370px) {
   .dc-therepys img {
     width: 50%;
@@ -272,6 +282,11 @@ input#date {
   }
   .dc-therepys p {
     font-size: 0.6rem;
+  }
+
+  .dc-selector {
+    margin: 3% 0;
+    padding: 0;
   }
 
   p.error {
@@ -364,10 +379,7 @@ input#date {
 }
 
 .dc-doctor-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 90%;
-  margin: 5% 5%;
+  width: 100%;
   column-gap: 5%;
   justify-items: center;
 }
@@ -663,36 +675,27 @@ h3.why-head {
     margin: 5% 5%;
     justify-items: center;
   }
-  .doctor-mobile {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
   .dc-card {
     width: 100%;
     padding: 5%;
-    display: none;
   }
   .dc-card p.doctor-info {
     font-size: 12px;
   }
 
   .dc-card .doctor-image {
-    width: 158px;
-    height: 180px;
+    width: 40%;
+    height: 100% !important;
   }
 
   .dc-card h2.doctor-name {
-    font-size: 15px;
+    font-size: 0.8rem;
     margin: 4% 0;
-  }
-  .doctor-experience p {
-    font-size: 11px;
   }
 
   p.doctor-detail {
     margin: 0;
-    font-size: 11px;
+    font-size: 0.6rem;
   }
 
   .doctor-experience {
