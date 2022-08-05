@@ -9,9 +9,9 @@ function Banner() {
           body and mind?
         </h2>
         <p>
-          Don’t worry, we have got you covered. Kapiva has a team of <br />
-          experienced Ayurvedic practitioners and nutritionists who will guide
-          <br /> you at every step to get healthy and fit in a natural way.
+          Don’t worry, we have got you covered. Kapiva has a team of experienced
+          Ayurvedic practitioners and nutritionists who will guide you at every
+          step to get healthy and fit in a natural way.
         </p>
         <p className="green">
           Get a 100% Private, Free Online Ayurvedic consultation.

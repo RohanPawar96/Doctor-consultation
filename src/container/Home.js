@@ -83,11 +83,6 @@ function Home() {
             <DoctorCard />
           </Carousel>
         </div>
-        <div class="dc-doctor-cards-mobile">
-          <div class="mobile-slide">
-            <DoctorCardMobile />
-          </div>
-        </div>
       </div>
       <h3 className="dc-acheivement-head">
         Our empanelled doctors have treated thousands of patients with:
