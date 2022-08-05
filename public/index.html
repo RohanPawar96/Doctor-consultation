@@ -45,35 +45,7 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 </body>
-<script>
-  count = 0
-  var dropdown = (id) => {
-    var qa = id.split("-")[1]
-    count += 1
-    if (count % 2 == 0) {
-      document.getElementById(qa).style.display = "block"
-      document.getElementById(`review-${qa}`).style.backgroundImage = " url('./img/up-arrow.png') "
-    }
-    else {
-      document.getElementById(qa).style.display = "none"
-      document.getElementById(`review-${qa}`).style.backgroundImage = " url('./img/down-arrow.png') "
-    }
-  }
 
-  var checkData = (id) => {
-    var checkbox = document.getElementById(id)
-    console.log(id)
-    if (checkbox.checked) {
-      document.getElementById("therapy-1").style.border = "3px solid #80a03c"
-      document.getElementById(id).style.display = "block"
-      document.getElementById(id).style.accentColor = "#80a03c"
-    }
-    else {
-      document.getElementById("therapy-1").style.border = "1px solid black"
-      document.getElementById(id).style.display = "none"
-    }
-  }
-</script>
 
 
 

@@ -76,8 +76,6 @@ function Home() {
         <div class="dc-doctor-cards-mobile">
           <div class="mobile-slide">
             <DoctorCardMobile />
-            <DoctorCardMobile />
-            <DoctorCardMobile />
           </div>
         </div>
       </div>

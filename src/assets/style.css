@@ -7,6 +7,9 @@
   color: #59702f;
   font-weight: 700;
 }
+a {
+  text-decoration: none;
+}
 
 .unl {
   text-decoration: underline;
@@ -314,6 +317,7 @@ input#date {
 
   .dc-whatsapp-tick label {
     font-size: 13px;
+    margin-left: 3%;
   }
 
   .dc-therepys img {
@@ -465,6 +469,12 @@ p.btn-text {
   width: 16%;
 }
 
+.dc-treatments {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 4% 0;
+}
+
 @media screen and (max-width: 450px) {
   h3.dc-acheivement-head {
     font-size: 1.25rem;
@@ -583,11 +593,11 @@ p.answer {
     font-size: 20px;
   }
   p.answer {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
   }
 
   p.question {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     background-size: 4%;
   }
   .dc-consult-queries .faq {

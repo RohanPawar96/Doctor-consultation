@@ -52,7 +52,6 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
     } else {
       setAllValues({ ...allValues, [e.target.name]: e.target.value });
     }
-    endindex = endTime(allValues.time);
   };
   const SlotLoot = (timing) => {
     console.log(value.toLocaleDateString() === new Date().toLocaleDateString());
@@ -197,6 +196,8 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
     }
   }
 
+  endindex = endTime(allValues.time);
+
   const submitHandler = () => {
     setSubmit("Submitting...");
     axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
@@ -232,7 +233,17 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
             document.getElementById("submit").textContent =
               "Slot not Available";
           } else if (response.data.staff !== null) {
+            alert("Appointment Booked Successfully....");
             setSubmit("Submit");
+            setAllValues({
+              ...allValues,
+              firstname: "",
+              lastname: "",
+              email: "",
+              contact: "",
+              comment: "",
+              time: "",
+            });
           } else {
             document.getElementById("submit").style = "display: block";
             document.getElementById("submit").textContent =
@@ -261,7 +272,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
   }, [slots, value]);
 
   return (
-    <form className="row g-3" onSubmit={handleSubmit}>
+    <form id="form" className="row g-3" onSubmit={handleSubmit}>
       <h3>Step 1: Personal Details</h3>
       <div className="dc-form">
         <div>
@@ -378,10 +389,11 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
               name="time"
               id="timeblock"
               // autoComplete="off"
+              value={allValues.time}
+              defaultValue={""}
               onChange={changeHandler}
             >
-              <option value={""}></option>
-              <option value="01:00">01:00 PM</option>
+              <option value={""}>None</option>
               {filteredList.map((t) => {
                 return <option value={t}>{t}</option>;
               })}
