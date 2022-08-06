@@ -53,6 +53,44 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       setAllValues({ ...allValues, [e.target.name]: e.target.value });
     }
   };
+
+  const setService = (service) => {
+    setServiceID(service);
+    axios
+      .get("https://kapiva.app/api/get_availability_slots.php", {
+        params: { service_id: service },
+      })
+      .then((resposnse) => {
+        console.log(resposnse.data.service_slots);
+        setSlots(resposnse.data.service_slots);
+      });
+  };
+  function checkData(id) {
+    // var radios = document.getElementsByTagName("input");
+    // for (var i = 0; i < radios.length; i++) {
+    //   if (radios[i].type === "radio" && radios[i].checked) {
+    //     document.getElementById(`therapy-${id}`).style.border =
+    //       "3px solid #80a03c";
+    //     document.getElementById(id).style.display = "block";
+    //     document.getElementById(id).style.accentColor = "#80a03c";
+    //   } else {
+    //     document.getElementById(`therapy-${id}`).style.border =
+    //       "1px solid black";
+    //     document.getElementById(id).style.display = "none";
+    //   }
+    // }
+    // var checkbox = document.getElementById(id);
+    // if (checkbox.checked) {
+    //   document.getElementById(`therapy-${id}`).style.border =
+    //     "3px solid #80a03c";
+    //   document.getElementById(id).style.display = "block";
+    //   document.getElementById(id).style.accentColor = "#80a03c";
+    // } else if (checkbox.checked == +false) {
+    //   // document.getElementById(`therapy-${id}`).style.border = "1px solid black";
+    //   document.getElementById(id).style.display = "none";
+    // }
+  }
+
   const SlotLoot = (timing) => {
     console.log(value.toLocaleDateString() === new Date().toLocaleDateString());
     timing.map((e) => {
@@ -336,7 +374,11 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       <div className="dc-whatsapp-tick">
         <input type="checkbox" id="whatsapp" />
         <label htmlFor="whatsapp">
-          Get updates on WhatsApp. You may opt out anytime
+          Get updates on{" "}
+          <span style={{ color: "#59702F", textDecoration: "underline" }}>
+            WhatsApp
+          </span>
+          . You may opt out anytime
         </label>
       </div>
       <h3>
@@ -346,12 +388,34 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
         {appointments &&
           appointments.map((service) => {
             return (
-              <Therapys
-                service={service}
-                setSlots={setSlots}
-                setServiceID={setServiceID}
-                slots={slots}
-              />
+              <div className="therapy">
+                <input
+                  type="radio"
+                  name="check"
+                  onClick={(event) => {
+                    setService(event.currentTarget.value);
+                    checkData(event.currentTarget.id);
+                  }}
+                  className="therapy-input"
+                  id={service.service_name}
+                  value={service.service_id}
+                />
+                <label
+                  //
+                  id={"therapy-" + service.service_name}
+                  for={service.service_name}
+                >
+                  <img
+                    src={
+                      "https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/" +
+                      service.service_name +
+                      ".png"
+                    }
+                    alt=""
+                  />
+                  <p>{service.service_name}</p>
+                </label>
+              </div>
             );
           })}
       </div>

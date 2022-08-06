@@ -195,6 +195,10 @@ input#concern {
   margin: 3% 0;
 }
 
+.dc-whatsapp-tick label {
+  margin-left: 1%;
+}
+
 .dc-therepys {
   width: 100%;
   display: grid;
@@ -202,6 +206,16 @@ input#concern {
   grid-column-gap: 3%;
   grid-row-gap: 12%;
   margin-bottom: 8%;
+}
+
+input[type="radio"]:checked + label {
+  border: 3px solid #80a03c;
+}
+
+input[type="radio"]:checked {
+  display: block;
+  accent-color: #80a03c;
+  transform: rotate(45deg);
 }
 
 .dc-therepys .therapy {
@@ -212,7 +226,7 @@ input#concern {
   text-align: center;
 }
 
-input.therapy-input {
+input[type="radio"] {
   position: absolute;
   z-index: 2;
   right: 0;

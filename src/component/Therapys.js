@@ -26,6 +26,9 @@ function Therapys({ service, setServiceID, setSlots, slots }) {
     }
   }
 
+  // the selector will match all input controls of type :checkbox
+  // and attach a click event handler
+
   return (
     <div className="therapy">
       <input
