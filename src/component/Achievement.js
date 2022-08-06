@@ -23,8 +23,8 @@ function Achievement() {
           />
         </div>
         <p className="acheivement-description">
-          <span className="bold">Diabetes</span> treated by <br /> Dr. Sheetal
-          Verma
+          <span className="bold">Skin & Hair</span> treated by <br /> Dr.
+          Sheetal Verma
         </p>
       </div>
       <div className="acheiventent">
@@ -35,8 +35,7 @@ function Achievement() {
           />
         </div>
         <p className="acheivement-description">
-          <span className="bold">Diabetes</span> treated by <br /> Dr. Sheetal
-          Verma
+          <span className="bold">PCOS</span> treated by <br /> Dr. Sheetal Verma
         </p>
       </div>
     </>

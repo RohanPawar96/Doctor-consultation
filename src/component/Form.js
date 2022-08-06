@@ -77,8 +77,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       allValues.firstname === "" ||
       /\d/.test(allValues.firstname) === true
     ) {
-      //   document.getElementById("service").style = "display: none";
-      //   document.getElementById("submit").textContent = "";
+      document.getElementById("service").style = "display: none";
       document.getElementById("firstname").style = "display : block";
       document.getElementById("firstnameblock").style =
         "border : 1px solid red !important";
@@ -383,14 +382,12 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
           </LocalizationProvider>
         </div>
         <div className="time">
-          <label htmlFor="date">Select a Date</label>
+          <label htmlFor="date">Select a Slot</label>
           <div>
             <select
               name="time"
               id="timeblock"
               // autoComplete="off"
-              value={allValues.time}
-              defaultValue={""}
               onChange={changeHandler}
             >
               <option value={""}>None</option>

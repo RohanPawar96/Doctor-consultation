@@ -134,6 +134,10 @@ p.error {
   margin-bottom: 5%;
 }
 
+.css-igs3ac {
+  border: 0 !important;
+}
+
 .dc-consultation-form h1 {
   margin: 0 0 3% 0;
   font-weight: bold;
@@ -144,7 +148,7 @@ p.error {
   text-align: left;
 }
 
-form.row.g-3.needs-validation.was-validated {
+form.row.g-3 {
   margin: 2% 0;
 }
 
@@ -157,6 +161,16 @@ form.row.g-3.needs-validation.was-validated {
   width: 100%;
   margin: 3% 0;
   padding: 0 !important;
+}
+
+.row {
+  --bs-gutter-x: 0 !important;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: 0 !important;
+  margin-left: 0 !important;
 }
 
 input[type="text"],
@@ -178,7 +192,7 @@ input#concern {
 }
 
 .dc-whatsapp-tick {
-  margin-bottom: 5%;
+  margin: 3% 0;
 }
 
 .dc-therepys {
@@ -194,7 +208,7 @@ input#concern {
   position: relative;
   height: fit-content;
   width: 100%;
-  height: 6rem;
+  height: 100%;
   text-align: center;
 }
 
@@ -231,13 +245,19 @@ input.therapy-input {
   font-size: 1rem;
 }
 
-.krmNah {
+.dc-consultation h3 {
+  margin: 7% 0;
+}
+
+.jYxeHE {
   background-color: rgba(128, 160, 60, 1) !important;
   box-shadow: 0 0 1px 3px #80a03c !important;
 }
 
 .eWjCzc,
-.eAyARa {
+.eAyARa,
+.hJJzxj,
+.hJKYRZ {
   display: none !important;
 }
 
@@ -285,12 +305,23 @@ input#date {
     font-size: larger;
   }
   .dc-therepys p {
-    font-size: 0.6rem;
+    font-size: 0.59rem;
+    margin: 0;
+    padding: 2%;
+    width: 100%;
   }
 
   .dc-selector {
     margin: 3% 0;
-    padding: 0;
+    padding: 0 !important;
+  }
+
+  input[type="date"],
+  input[type="email"],
+  input[type="number"],
+  input[type="text"],
+  select {
+    font-size: 0.8rem !important;
   }
 
   p.error {
@@ -306,7 +337,6 @@ input#date {
   }
 
   .dc-consultation-form h3 {
-    font-size: larger;
     text-align: center;
   }
 
@@ -332,7 +362,7 @@ input#date {
   }
 
   .dc-whatsapp-tick label {
-    font-size: 13px !important;
+    font-size: 0.7rem !important;
     margin-left: 3%;
   }
 
@@ -342,12 +372,14 @@ input#date {
   }
 
   .dc-therepys img {
-    width: 25%;
-    height: 38%;
-    margin-top: 12%;
+    height: 38% !important;
+    margin-top: 6% !important;
+    width: 25% !important;
   }
   .dc-form-submit input[type="Submit"] {
-    font: bold 0.8rem "Open Sans";
+    font: 700 1.1rem Open Sans;
+    width: 47%;
+    padding: 2% 2%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -475,6 +507,7 @@ button.btn-book {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  padding: 0 4%;
 }
 
 p.btn-text {
@@ -497,6 +530,10 @@ p.btn-text {
   h3.dc-acheivement-head {
     font-size: 1.25rem;
     font-weight: 600;
+  }
+
+  .btn-image {
+    width: 28%;
   }
 
   .dc-acheivements {
@@ -522,6 +559,7 @@ p.btn-text {
     border: 0;
     align-items: center;
     border-radius: 7px;
+    place-items: baseline;
   }
 
   p.btn-text {
@@ -552,12 +590,13 @@ p.btn-text {
       width: 50%;
     } */
     p.treatment-text {
-      font-size: 12px;
+      font-size: 12px !important;
     }
   }
 
   .treatment {
     width: 40%;
+    height: 11rem;
   }
 
   p.treatment-text {
@@ -697,6 +736,7 @@ h3.why-head {
 
   .dc-card p.doctor-info {
     font-size: 12px;
+    margin-bottom: 0;
   }
 
   .dc-card .doctor-image {

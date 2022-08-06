@@ -1,7 +1,8 @@
+import { set } from "date-fns";
 import React from "react";
 import styled from "styled-components";
 
-function DoctorCard() {
+const DoctorCard = (setContent) => {
   styled.div`
     display: flex;
     justify-content: center;
@@ -50,6 +51,6 @@ function DoctorCard() {
       </p>
     </div>
   );
-}
+};
 
 export default DoctorCard;

@@ -2,9 +2,7 @@ import React from "react";
 import axios from "axios";
 
 function Therapys({ service, setServiceID, setSlots, slots }) {
-  console.log(service);
   const setService = (service) => {
-    console.log(service);
     setServiceID(service);
     axios
       .get("https://kapiva.app/api/get_availability_slots.php", {
