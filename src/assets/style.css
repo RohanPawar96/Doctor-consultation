@@ -218,6 +218,25 @@ input[type="radio"]:checked {
   transform: rotate(45deg);
 }
 
+/* input[type="radio"]:checked + label {
+  background-color: #212121;
+}
+
+input[type="radio"]:checked ::after {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 5px;
+  border: 1px solid #fff;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotate(45deg);
+  border-top-color: transperent;
+  border-left-color: transparent;
+} */
+
 .dc-therepys .therapy {
   position: relative;
   height: fit-content;
