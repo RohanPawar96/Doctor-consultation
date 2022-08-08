@@ -56,6 +56,10 @@ p.error {
   margin-bottom: 2.5%;
 }
 
+input#whatsapp {
+  accent-color: #80a03c;
+}
+
 .dc-banner .dc-banner-text {
   width: 100%;
   margin-left: 1%;
@@ -80,6 +84,21 @@ p.error {
     display: block;
     justify-content: right;
     margin-bottom: 2.5%;
+  }
+
+  .date,
+  .time {
+    grid-row-gap: 25%;
+    display: grid;
+    row-gap: 6% !important;
+  }
+
+  .date,
+  .time {
+    /* grid-row-gap: 25%; */
+    display: grid;
+    /* row-gap: 25%; */
+    margin-top: 5% !important;
   }
 
   .dc-banner .dc-banner-text h2 {
@@ -112,7 +131,7 @@ p.error {
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 800px) and (max-width: 1024px) {
   .dc-consultation {
     padding: 5% 10% 5% 10%;
   }
@@ -123,6 +142,16 @@ p.error {
 
   .dc-banner .dc-banner-text p {
     font-size: 1.1rem;
+  }
+  .dc-therepys img {
+    align-self: center;
+    height: 75% !important;
+    width: 21% !important;
+  }
+  .dc-therepys p {
+    font-size: 0.7rem !important;
+    margin: 4% 0;
+    width: 50% !important;
   }
 }
 
@@ -180,7 +209,7 @@ input[type="date"],
 select {
   font-size: 1.2rem !important;
   font-weight: 500 !important;
-  border: 0;
+  border: 0.3px solid #cbcbcb;
   padding: 4% 2% 4% 5% !important;
   background-color: #fffbf6 !important;
   width: 100%;
@@ -202,10 +231,11 @@ input#concern {
 .dc-therepys {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-auto-columns: max-content;
+  justify-content: center;
+  grid-template-columns: repeat(4, minmax(min-content, max-content));
   grid-column-gap: 3%;
   grid-row-gap: 12%;
-  margin-bottom: 8%;
 }
 
 input[type="radio"]:checked + label {
@@ -216,6 +246,12 @@ input[type="radio"]:checked {
   display: block;
   accent-color: #80a03c;
   transform: rotate(45deg);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* input[type="radio"]:checked + label {
@@ -243,6 +279,7 @@ input[type="radio"]:checked ::after {
   width: 100%;
   height: 100%;
   text-align: center;
+  padding: 1%;
 }
 
 input[type="radio"] {
@@ -273,7 +310,7 @@ input[type="radio"] {
 }
 
 .dc-therepys p {
-  width: 35%;
+  width: 45%;
   margin: 4% 0%;
   font-size: 1rem;
 }
@@ -298,12 +335,37 @@ input[type="radio"] {
   border-color: rgba(0, 0, 0, 0) !important;
 }
 
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 375px) {
   .dc-therepys img {
     width: 50%;
   }
+  .date,
+  .time {
+    /* grid-row-gap: 25%; */
+    display: grid;
+    /* row-gap: 25%; */
+    margin-top: 5%;
+  }
   .dc-therepys p {
     font-size: 0.6rem !important;
+  }
+  .dc-therepys {
+    grid-template-columns: repeat(
+      2,
+      minmax(min-content, max-content)
+    ) !important;
+  }
+  .dc-form {
+    display: inline-block !important;
+  }
+
+  input[type="date"],
+  input[type="email"],
+  input[type="number"],
+  input[type="text"],
+  select {
+    font-size: 0.6rem !important;
+    margin-bottom: 3%;
   }
 }
 
@@ -333,6 +395,10 @@ input#date {
 }
 
 @media screen and (max-width: 450px) {
+  .dc-form {
+    display: inline-block !important;
+  }
+
   .dc-consultation-form h1 {
     margin: 0 0 3% 0;
     font-size: larger;
@@ -348,13 +414,17 @@ input#date {
     margin: 3% 0;
     padding: 0 !important;
   }
+  .dc-therepys {
+    grid-template-columns: repeat(3, minmax(min-content, max-content));
+  }
 
   input[type="date"],
   input[type="email"],
   input[type="number"],
   input[type="text"],
   select {
-    font-size: 0.8rem !important;
+    font-size: 0.7rem !important;
+    margin-bottom: 5%;
   }
 
   p.error {

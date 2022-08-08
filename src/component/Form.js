@@ -16,7 +16,7 @@ import {
 
 const Form = ({ appointments, UtmMedium, UtmSorce }) => {
   const [value, setValue] = useState(new Date());
-  const [submit, setSubmit] = useState("Submit");
+  const [submit, setSubmit] = useState("Book Now");
   const [filteredList, setFilteredList] = useState([]);
   const [serviceId, setServiceID] = useState(""); //eslint-disable-line
   const [slots, setSlots] = useState([]);
@@ -172,21 +172,24 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       document.getElementById("email").style = "display : none";
       document.getElementById("emailblock").style = "border : none";
       // alert("Please enter the valid Date");
-    } else if (allValues.time === "") {
-      document.getElementById("services").style = "display : none";
-      document.getElementById("firstname").style = "display : none";
-      document.getElementById("firstnameblock").style = "border : none";
-      document.getElementById("lastname").style = "display : none";
-      document.getElementById("lastnameblock").style = "border : none";
-      document.getElementById("contact").style = "display : none";
-      document.getElementById("contactblock").style = "border : none";
-      document.getElementById("email").style = "display : none";
-      document.getElementById("emailblock").style = "border : none";
-      // alert("Please enter time");
-      document.getElementById("time").style = "display : block";
-      document.getElementById("timeblock").style =
-        "border : 1px solid red !important";
-    } else {
+    }
+    // else if (allValues.time === "") {
+    //       console.log("sdsdas");
+    //       document.getElementById("services").style = "display : none";
+    //       document.getElementById("firstname").style = "display : none";
+    //       document.getElementById("firstnameblock").style = "border : none";
+    //       document.getElementById("lastname").style = "display : none";
+    //       document.getElementById("lastnameblock").style = "border : none";
+    //       document.getElementById("contact").style = "display : none";
+    //       document.getElementById("contactblock").style = "border : none";
+    //       document.getElementById("email").style = "display : none";
+    //       document.getElementById("emailblock").style = "border : none";
+    //       // alert("Please enter time");
+    //       document.getElementById("time").style = "display : block";
+    //       document.getElementById("timeblock").style =
+    //         "border : 1px solid red !important";
+    //     }
+    else {
       onChecked();
       document.getElementById("firstname").style = "display : none";
       document.getElementById("firstnameblock").style = "border : none";
@@ -196,8 +199,8 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       document.getElementById("emailblock").style = "border : none";
       document.getElementById("contact").style = "display : none";
       document.getElementById("contactblock").style = "border : none";
-      document.getElementById("time").style = "display : none";
-      document.getElementById("timeblock").style = "border : none";
+      // document.getElementById("time").style = "display : none";
+      // document.getElementById("timeblock").style = "border : none";
       submitHandler();
     }
   }
@@ -236,7 +239,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
   endindex = endTime(allValues.time);
 
   const submitHandler = () => {
-    setSubmit("Submitting...");
+    setSubmit("Booking...");
     axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
       method: "POST",
       headers: {
@@ -270,8 +273,6 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
             document.getElementById("submit").textContent =
               "Slot not Available";
           } else if (response.data.staff !== null) {
-            alert("Appointment Booked Successfully....");
-            setSubmit("Submit");
             setAllValues({
               ...allValues,
               firstname: "",
@@ -281,6 +282,9 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
               comment: "",
               time: "",
             });
+            alert("Appointment Booked Successfully....");
+            setSubmit("Book Now");
+            document.location.reload();
           } else {
             document.getElementById("submit").style = "display: block";
             document.getElementById("submit").textContent =
@@ -384,7 +388,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       <h3>
         Step 2: Pick your therapy <p className="error" id="service"></p>
       </h3>
-      <div className="dc-therepys">
+      <div className="dc-therepys" id="dc-therepys">
         {appointments &&
           appointments.map((service) => {
             return (
@@ -427,7 +431,6 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
           <label htmlFor="date">Select a Date</label>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <MobileDatePicker
-              label="-"
               id="date"
               inputFormat="dd/MM/yyyy"
               value={value}
@@ -446,22 +449,21 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
           </LocalizationProvider>
         </div>
         <div className="time">
-          <label htmlFor="date">Select a Slot</label>
+          <label htmlFor="date">Pick a Slot</label>
           <div>
             <select
+              class="form-select"
               name="time"
-              id="timeblock"
-              // autoComplete="off"
               onChange={changeHandler}
+              required
             >
-              <option value={""}>None</option>
+              <option value="" selected>
+                Open this select menu
+              </option>
               {filteredList.map((t) => {
                 return <option value={t}>{t}</option>;
               })}
             </select>
-            <p className="error" id="time">
-              Select the slot...
-            </p>
           </div>
         </div>
       </div>
