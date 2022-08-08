@@ -47,7 +47,7 @@ p.error {
   padding: 5%;
 }
 
-.dc-consultation .dc-banner {
+.dc-consultation .dc-banners {
   display: grid;
   width: 100%;
   justify-content: right;
@@ -60,27 +60,27 @@ input#whatsapp {
   accent-color: #80a03c;
 }
 
-.dc-banner .dc-banner-text {
+.dc-banners .dc-banner-text {
   width: 100%;
   margin-left: 1%;
 }
 
-.dc-banner .dc-banner-text h2 {
+.dc-banners .dc-banner-text h2 {
   margin: 0 0 2% 0;
   font-size: 2.4rem;
 }
 
-.dc-banner .dc-banner-text p {
+.dc-banners .dc-banner-text p {
   margin: 0 0 2% 0;
   font-size: 1.5rem;
 }
 
-.dc-banner .dc-banner-img {
+.dc-banners .dc-banner-img {
   width: 100%;
 }
 
 @media screen and (max-width: 450px) {
-  .dc-consultation .dc-banner {
+  .dc-consultation .dc-banners {
     display: block;
     justify-content: right;
     margin-bottom: 2.5%;
@@ -101,18 +101,18 @@ input#whatsapp {
     margin-top: 5% !important;
   }
 
-  .dc-banner .dc-banner-text h2 {
+  .dc-banners .dc-banner-text h2 {
     font-size: 1.25rem !important;
     text-align: center;
   }
 
-  .dc-banner .dc-banner-text p {
+  .dc-banners .dc-banner-text p {
     margin: 0 0 4% 0;
     font-size: 0.8rem !important;
     text-align: center;
   }
 
-  .dc-banner .dc-banner-img {
+  .dc-banners .dc-banner-img {
     display: none;
   }
 }
@@ -122,11 +122,11 @@ input#whatsapp {
     padding: 5% 10%;
   }
 
-  .dc-banner .dc-banner-text h2 {
+  .dc-banners .dc-banner-text h2 {
     font-size: 1.5rem;
   }
 
-  .dc-banner .dc-banner-text p {
+  .dc-banners .dc-banner-text p {
     font-size: 1.1rem;
   }
 }
@@ -136,11 +136,11 @@ input#whatsapp {
     padding: 5% 10% 5% 10%;
   }
 
-  .dc-banner .dc-banner-text h2 {
+  .dc-banners .dc-banner-text h2 {
     font-size: 2rem !important;
   }
 
-  .dc-banner .dc-banner-text p {
+  .dc-banners .dc-banner-text p {
     font-size: 1.1rem;
   }
   .dc-therepys img {
@@ -355,9 +355,6 @@ input[type="radio"] {
       minmax(min-content, max-content)
     ) !important;
   }
-  .dc-form {
-    display: inline-block !important;
-  }
 
   input[type="date"],
   input[type="email"],
@@ -395,10 +392,6 @@ input#date {
 }
 
 @media screen and (max-width: 450px) {
-  .dc-form {
-    display: inline-block !important;
-  }
-
   .dc-consultation-form h1 {
     margin: 0 0 3% 0;
     font-size: larger;

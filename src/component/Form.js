@@ -425,7 +425,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       </div>
       <h3>Tell us more about your concern</h3>
       <input type="text" id="concern" placeholder="Optional" />
-      <h3>Step 2: Pick your therapy</h3>
+      <h3>Step 3: Choose Date & Time</h3>
       <div className="dc-form">
         <div className="date">
           <label htmlFor="date">Select a Date</label>

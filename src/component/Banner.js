@@ -2,7 +2,7 @@ import React from "react";
 
 function Banner() {
   return (
-    <div className="dc-banner">
+    <div className="dc-banners">
       <div className="dc-banner-text">
         <h2>
           Want to know the root cause of illness and various imbalances of the
