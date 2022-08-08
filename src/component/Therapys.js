@@ -9,7 +9,7 @@ function Therapys({ service, setServiceID, setSlots, slots }) {
         params: { service_id: service },
       })
       .then((resposnse) => {
-        console.log(resposnse.data.service_slots);
+        // console.log(resposnse.data.service_slots);
         setSlots(resposnse.data.service_slots);
       });
   };

@@ -61,7 +61,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
         params: { service_id: service },
       })
       .then((resposnse) => {
-        console.log(resposnse.data.service_slots);
+        // console.log(resposnse.data.service_slots);
         setSlots(resposnse.data.service_slots);
       });
   };
@@ -92,7 +92,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
   }
 
   const SlotLoot = (timing) => {
-    console.log(value.toLocaleDateString() === new Date().toLocaleDateString());
+    // console.log(value.toLocaleDateString() === new Date().toLocaleDateString());
     timing.map((e) => {
       if (value.toLocaleDateString() === new Date().toLocaleDateString()) {
         if (convertTime12to24fornowTime(nowTime) < convertTime12to24(e)) {
@@ -171,25 +171,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       document.getElementById("contactblock").style = "border : none";
       document.getElementById("email").style = "display : none";
       document.getElementById("emailblock").style = "border : none";
-      // alert("Please enter the valid Date");
-    }
-    // else if (allValues.time === "") {
-    //       console.log("sdsdas");
-    //       document.getElementById("services").style = "display : none";
-    //       document.getElementById("firstname").style = "display : none";
-    //       document.getElementById("firstnameblock").style = "border : none";
-    //       document.getElementById("lastname").style = "display : none";
-    //       document.getElementById("lastnameblock").style = "border : none";
-    //       document.getElementById("contact").style = "display : none";
-    //       document.getElementById("contactblock").style = "border : none";
-    //       document.getElementById("email").style = "display : none";
-    //       document.getElementById("emailblock").style = "border : none";
-    //       // alert("Please enter time");
-    //       document.getElementById("time").style = "display : block";
-    //       document.getElementById("timeblock").style =
-    //         "border : 1px solid red !important";
-    //     }
-    else {
+    } else {
       onChecked();
       document.getElementById("firstname").style = "display : none";
       document.getElementById("firstnameblock").style = "border : none";
