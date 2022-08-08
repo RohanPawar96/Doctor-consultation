@@ -9,6 +9,7 @@ import Treatments from "../component/Treatments";
 import axios from "axios";
 import Carousel from "react-elastic-carousel";
 import Experience from "../component/Experience";
+import Header from "../component/Header";
 
 function Home() {
   const [appointments, setAppointments] = useState([]);
@@ -59,6 +60,7 @@ function Home() {
   }, []);
   return (
     <div className="dc-consultation">
+      <Header />
       <Banner />
       <div className="dc-consultation-form ">
         <h1>

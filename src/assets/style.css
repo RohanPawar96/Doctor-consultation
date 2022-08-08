@@ -44,7 +44,20 @@ p.error {
   background: round;
   background-image: url("https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/dc-background.png");
   background-size: 100%;
-  padding: 5%;
+  padding: 1% 5%;
+}
+
+.dc-header {
+  margin: 2% 0 4% 0;
+  text-align: left;
+}
+
+.mobile {
+  display: none;
+}
+
+.dc-header img {
+  width: 20%;
 }
 
 .dc-consultation .dc-banners {
@@ -86,6 +99,18 @@ input#whatsapp {
     margin-bottom: 2.5%;
   }
 
+  .desktop {
+    display: none !important;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .dc-header img {
+    width: 45%;
+  }
+
   .date,
   .time {
     grid-row-gap: 25%;
@@ -113,7 +138,7 @@ input#whatsapp {
   }
 
   .dc-banners .dc-banner-img {
-    display: none;
+    margin-bottom: 8%;
   }
 }
 
@@ -339,6 +364,7 @@ input[type="radio"] {
   .dc-therepys img {
     width: 50%;
   }
+
   .date,
   .time {
     /* grid-row-gap: 25%; */
@@ -346,6 +372,16 @@ input[type="radio"] {
     /* row-gap: 25%; */
     margin-top: 5%;
   }
+
+  .dc-whatsapp-tick {
+    margin: 2% 0 important;
+  }
+
+  .dc-form {
+    margin: 0% 0 !important;
+    padding: 0 !important;
+  }
+
   .dc-therepys p {
     font-size: 0.6rem !important;
   }
@@ -392,6 +428,10 @@ input#date {
 }
 
 @media screen and (max-width: 450px) {
+  .dc-consultation {
+    padding: 3% 9% !important;
+  }
+
   .dc-consultation-form h1 {
     margin: 0 0 3% 0;
     font-size: larger;
@@ -401,6 +441,20 @@ input#date {
     margin: 0;
     padding: 2%;
     width: 100%;
+  }
+
+  .dc-header img {
+    width: 35% !important;
+  }
+
+  input#concern {
+    margin-bottom: 0% !important;
+  }
+
+  h3.tellusmore {
+    font-size: 0.7rem;
+    text-align: left !important;
+    margin-bottom: 1%;
   }
 
   .dc-selector {
@@ -437,13 +491,7 @@ input#date {
   }
 
   .dc-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-end: 4;
-    column-gap: 4%;
-    row-gap: 14%;
-    width: 100%;
-    margin: 3% 0;
+    margin: 0% 0 !important;
     padding: 0 !important;
   }
 
@@ -454,7 +502,7 @@ input#date {
 
   .dc-whatsapp-tick {
     padding: 0 !important;
-    margin-bottom: 5%;
+    margin: 2% 0 !important;
   }
 
   .dc-whatsapp-tick label {
