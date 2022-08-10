@@ -24,7 +24,7 @@ a {
 }
 
 h1 {
-  font-family: "Playfair Display";
+  font-family: "Open Sans";
   font-size: 2.2rem;
   font-weight: bold;
 }
@@ -71,7 +71,7 @@ p.error {
   width: 100%;
   justify-content: right;
   column-gap: 2%;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   margin-bottom: 2.5%;
 }
 
@@ -83,6 +83,7 @@ input#whatsapp {
   width: 100%;
   margin-left: 1%;
   text-align: left;
+  display: none;
 }
 
 .dc-banners .dc-banner-text h1 {
@@ -443,7 +444,7 @@ input#date {
 
   .dc-consultation-form h1 {
     margin: 0 0 3% 0;
-    font-size: larger;
+    font-size: 1rem;
   }
   .dc-therepys p {
     font-size: 0.5rem !important;
@@ -706,8 +707,15 @@ p.btn-text {
     margin: 4% 2%;
   }
 
+  .doctor-experience {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    font-size: 0.68rem;
+  }
+
   p.acheivement-description {
     font-size: 0.9rem;
+    width: 52%;
   }
 
   .acheivement-img {

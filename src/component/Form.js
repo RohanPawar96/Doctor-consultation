@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Therapys from "./Therapys";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -14,12 +13,14 @@ import {
   endTime,
 } from "../utils/common";
 
-const Form = ({ appointments, UtmMedium, UtmSorce }) => {
+const Form = ({ appointments, UtmMedium, UtmSorce, token }) => {
   const [value, setValue] = useState(new Date());
   const [submit, setSubmit] = useState("Book Now");
   const [filteredList, setFilteredList] = useState([]);
   const [serviceId, setServiceID] = useState(""); //eslint-disable-line
   const [slots, setSlots] = useState([]);
+  const [slot_id, setSlot_id] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [allValues, setAllValues] = useState({
     firstname: "",
     lastname: "",
@@ -61,8 +62,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
         params: { service_id: service },
       })
       .then((resposnse) => {
-        // console.log(resposnse.data.service_slots);
-        setSlots(resposnse.data.service_slots);
+        setSlots(resposnse.data);
       });
   };
   function checkData(id) {
@@ -92,20 +92,21 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
   }
 
   const SlotLoot = (timing) => {
-    // console.log(value.toLocaleDateString() === new Date().toLocaleDateString());
+    // timing = timing.split("##")[1];
     timing.map((e) => {
+      e = e.split("##")[1];
       if (value.toLocaleDateString() === new Date().toLocaleDateString()) {
-        if (
-          convertTime12to24fornowTime(nowTime) < convertTime12to24fornowTime(e)
-        ) {
-          setFilteredList((fl) => [...fl, convertAmpm(e)]);
+        if (convertTime12to24fornowTime(nowTime) < convertTime12to24(e)) {
+          setFilteredList((fl) => [...fl, e]);
           slot_list.concat(filteredList);
         }
       } else {
-        setFilteredList((fl) => [...fl, convertAmpm(e)]);
+        setFilteredList((fl) => [...fl, e]);
       }
     });
   };
+
+  endindex = endTime(allValues.time);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -207,14 +208,19 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
     }
   }
 
-  endindex = endTime(allValues.time);
-
   const submitHandler = () => {
     setSubmit("Booking...");
     axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
       method: "POST",
+      // axios
+      //   .post(
+      //     `https://kapiva.app/api/save_appointment.php?access_token=${token}`,
+      //     {
       headers: {
         "Content-Type": "application/json",
+        // "Access-Control-Allow-Origin": "*",
+        // "Access-Control-Allow-Methods":
+        //   "GET, POST, OPTIONS, PUT, PATCH, DELETE",
       },
 
       data: {
@@ -223,21 +229,41 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
             first_name: allValues.firstname,
             last_name: allValues.lastname,
             email_id: allValues.email,
-            cell_phone: "+91" + allValues.contact,
+            cell_phone: allValues.contact,
             comment: allValues.comment,
             utm_source: UtmSorce,
             utm_medium: UtmMedium,
           },
           Appointment: {
             service_key: serviceId,
+            // slot_id: slot_id,
             start_time:
               getDateFormat({ date: value }) + "T" + allValues.time + "Z",
             end_time: getDateFormat({ date: value }) + "T" + endindex + "Z",
           },
         },
       },
+
+      // data: {
+      //   first_name: allValues.firstname,
+      //   last_name: allValues.lastname,
+      //   email_id: allValues.email,
+      //   cell_phone: allValues.contact,
+      //   comment: allValues.comment,
+      //   utm_source: UtmSorce,
+      //   utm_medium: UtmMedium,
+      //   service_key: serviceId,
+      //   slot_id: slot_id,
+      //   start_time:
+      //     getDateFormat({ date: value }) +
+      //     "T" +
+      //     convertTime12to24(allValues.time) +
+      //     "Z",
+      //   end_time: getDateFormat({ date: value }) + "T" + endDate + "Z",
+      // },
     })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) {
           if (response.data.error === "Slot not available") {
             alert("Slots Not Avialable");
@@ -261,22 +287,49 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
             );
             setSubmit("Book Now");
           }
+        } else if (response.status === 504) {
+          alert("Internal Server Error");
+          setSubmit("Book Now");
         }
       })
       .catch((error) => {
-        if (error) {
-          alert("Slots Not Avialable");
+        console.log(error);
+        if (error.message === "Network Error") {
+          alert("Internal Server Error");
+          setSubmit("Book Now");
+        } else if (error) {
+          alert(error);
           setSubmit("Book Now");
         }
       });
   };
 
+  // const slotId = (val) => {
+  //   endindex = convertTime12to24(val);
+  //   if (slots) {
+  //     for (const i in slots) {
+  //       if (
+  //         slots[i]["service_slots"]["date"] === getDateFormat({ date: value })
+  //       ) {
+  //         slots[i]["service_slots"].slots.map((d) => {
+  //           if (d.split("##")[1] === val) {
+  //             setSlot_id(d.split("##")[0]);
+  //             setEndDate(endTime(endindex));
+  //           }
+  //         });
+  //       }
+  //     }
+  //   }
+  // };
+
   useEffect(() => {
     if (slots) {
       for (const i in slots) {
-        if (slots[i]["date"] === getDateFormat({ date: value })) {
+        if (
+          slots[i]["service_slots"]["date"] === getDateFormat({ date: value })
+        ) {
           setFilteredList([]);
-          SlotLoot(slots[i].slots);
+          SlotLoot(slots[i]["service_slots"].slots);
           break;
         }
       }
@@ -434,6 +487,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
               name="time"
               id="time"
               onChange={changeHandler}
+              // slotId(event.target.value);
               required
             >
               <option value="" selected></option>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Achievement from "../component/Achievement";
 import Banner from "../component/Banner";
 import BtnConsultation from "../component/BtnConsultation";
-import DoctorCard from "../component/DoctorCard";
+// import DoctorCard from "../component/DoctorCard";
 import Form from "../component/Form";
 import Queries from "../component/Queries";
 import Treatments from "../component/Treatments";
@@ -15,9 +15,9 @@ function Home() {
   const [appointments, setAppointments] = useState([]);
   const [token, setToken] = useState([]);
   const [status, setStatus] = useState(""); //eslint-disable-line
-  let ques = "";
-  let ans = "";
-  let val = "";
+  // let ques = "";
+  // let ans = "";
+  // let val = "";
   let UtmSorce = "";
   let UtmMedium = "";
   let queryString = window.location.search;
@@ -57,6 +57,10 @@ function Home() {
         setStatus(response.status);
       })
       .catch((error) => console.log(error));
+
+    axios.get(
+      "https://kapiva.app/api/get_doc_services.php?refreshToken=r1/cb72dbe0098HDmS_Ax0lw1FK4iDn3S0H056uWSl55q9vl"
+    );
   }, []);
   return (
     <div className="dc-consultation">
@@ -71,6 +75,7 @@ function Home() {
             appointments={appointments}
             UtmMedium={UtmMedium}
             UtmSorce={UtmSorce}
+            token={token}
           />
         </div>
       </div>
@@ -92,15 +97,15 @@ function Home() {
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Anand R Dwivedi</h2>
                   <p className="doctor-detail">
-                    Ayurvedacharya, Mumbai University, 1987.
+                    {/* Ayurvedacharya, Mumbai University, 1987. */}
                     <div className="doctor-experience">
                       <p>
                         <span className="green">Years of Experience</span>: 34
                         Yrs
                       </p>
                       <p>
-                        <span className="green">Specialization</span>: Diabetes,
-                        Skin & Hair
+                        <span className="green">Specialization</span>: Weight
+                        management, Sexual Wellness
                       </p>
                       <p>
                         <span className="green">Languages</span>: Hindi, English
@@ -110,232 +115,12 @@ function Home() {
                   </p>
                 </div>
               </div>
-              <p className="doctor-info">
-                Dr. Anand R Dwivedi has been practicing Ayurveda since 1988. He
-                has a special interest in the treatment of chronic illnesses
-                with the help of Ayurveda. He has been associated with Kapiva
-                since 2015 and helps people lead a well-balanced lifestyle
-                through his deep knowledge of Ayurveda.
-              </p>
-            </div>
-            <div className="dc-card">
-              <div className="dc-card-mobile">
-                <div className="doctor-image">
-                  <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Sheetal.jpg"
-                    alt="Doctor Image"
-                  />
-                </div>
-                <div className="mobile-detail">
-                  <h2 className="doctor-name">Dr. Sheetal Verma</h2>
-                  <p className="doctor-detail">
-                    BAMS (Bachelors of Ayurvedic Medicine and Surgery)
-                    <div className="doctor-experience">
-                      <p>
-                        <span className="green">Years of Experience</span>: 7
-                        Yrs
-                      </p>
-                      <p>
-                        <span className="green">Specialization</span>: Diabetes,
-                        Skin & Hair
-                      </p>
-                      <p>
-                        <span className="green">Languages</span>: Hindi &
-                        English
-                      </p>
-                    </div>
-                  </p>
-                </div>
-              </div>
-              <p className="doctor-info">
-                Dr. Sheetal has been working as an Ayurvedic physician. She has
-                a great command over Ayurvedic practices like Panchkarma,
-                Pathya, and Apathya. She is specifically good in the treatment
-                of Obesity, GIT disorders, Renal and Gall bladder stones, skin
-                and hair diseases, and Gynecological diseases.
-              </p>
-            </div>
-            <div className="dc-card">
-              <div className="dc-card-mobile">
-                <div className="doctor-image">
-                  <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Aswathy.jpg"
-                    alt="Doctor Image"
-                  />
-                </div>
-                <div className="mobile-detail">
-                  <h2 className="doctor-name">Dr. Aswathy E.S.</h2>
-                  <p className="doctor-detail">
-                    BAMS (Bachelors of Ayurvedic Medicine and Surgery)
-                    <div className="doctor-experience">
-                      <p>
-                        <span className="green">Years of Experience</span>: 10+
-                        Yrs
-                      </p>
-                      <p>
-                        <span className="green">Specialization</span>: Diabetes,
-                        Skin & Hair
-                      </p>
-                      <p>
-                        <span className="green">Languages</span>Hindi, English,
-                        Malayalam and Kannada
-                      </p>
-                    </div>
-                  </p>
-                </div>
-              </div>
-              <p className="doctor-info">
-                She has worked as an Ayurvedic consultant and medical officer in
-                different nursing homes and hospitals. She has a deep knowledge
-                of classical texts, Ayurvedic treatments, and Panchkarma.
-              </p>
-            </div>
-            <div className="dc-card">
-              <div className="dc-card-mobile">
-                <div className="doctor-image">
-                  <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Ninny_Sunny.jpg"
-                    alt="Doctor Image"
-                  />
-                </div>
-                <div className="mobile-detail">
-                  <h2 className="doctor-name">Ninny Sunny</h2>
-                  <p className="doctor-detail">
-                    Masters in Food Service Management and Dietetics
-                    <div className="doctor-experience">
-                      <p>
-                        <span className="green">Years of Experience</span>: 6+
-                        Yrs
-                      </p>
-                      <p>
-                        <span className="green">Specialization</span>: Medical
-                        Nutritionist
-                      </p>
-                      <p>
-                        <span className="green">Languages</span>: Tamil,
-                        Malayalam & English
-                      </p>
-                    </div>
-                  </p>
-                </div>
-              </div>
-              <p className="doctor-info">
-                Ninny Sunny is a certified nutritionist and has worked with
-                brands like HealthifyMe and CureFit. She is an expert in
-                evaluating the nutritional status of people and can advise a
-                balanced nutritional plan for optimizing overall health and
-                wellness.
-              </p>
-            </div>
-            <div className="dc-card">
-              <div className="dc-card-mobile">
-                <div className="doctor-image">
-                  <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Manjula.jpg"
-                    alt="Doctor Image"
-                  />
-                </div>
-                <div className="mobile-detail">
-                  <h2 className="doctor-name">Dr. Manjula P.Badiger</h2>
-                  <p className="doctor-detail">
-                    BAMS (Bachelors of Ayurvedic Medicine and Surgery)
-                    <div className="doctor-experience">
-                      <p>
-                        <span className="green">Years of Experience</span>: 12
-                        Yrs
-                      </p>
-                      <p>
-                        <span className="green">Specialization</span>:
-                        Panchkarma
-                      </p>
-                      <p>
-                        <span className="green">Languages</span>Hindi, English,
-                        Telugu & Kannada
-                      </p>
-                    </div>
-                  </p>
-                </div>
-              </div>
-              <p className="doctor-info">
-                Dr. Manjula has worked as a Consultant and General Physician for
-                over 5 years before starting her private practice. In addition
-                to BAMS, she also has an Advanced Diploma in Clinical Research
-                and is trained in Panchkarma. She is an expert at diagnosis of
-                the root cause and planning effective treatment for multiple
-                issues.
-              </p>
-            </div>
-            <div className="dc-card">
-              <div className="dc-card-mobile">
-                <div className="doctor-image">
-                  <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Irfan.jpg"
-                    alt="Doctor Image"
-                  />
-                </div>
-                <div className="mobile-detail">
-                  <h2 className="doctor-name">Dr. Irfan Ali</h2>
-                  <p className="doctor-detail">
-                    BAMS (Bachelors of Ayurvedic Medicine and Surgery)
-                    <div className="doctor-experience">
-                      <p>
-                        <span className="green">Years of Experience</span>: 5
-                        Yrs
-                      </p>
-                      <p>
-                        <span className="green">Specialization</span>: Diabetes,
-                        Skin & Hair
-                      </p>
-                      <p>
-                        <span className="green">Languages</span>Hindi, English,
-                        & Bengali
-                      </p>
-                    </div>
-                  </p>
-                </div>
-              </div>
-              <p className="doctor-info">
-                Dr. Irfan has spent two years as House Physician in the Dept. Of
-                Panchakarma including Atyika Chikitsa (Emergency Management). He
-                was a Chief Instructor and Senior physician in the Panchakarma
-                Dept. of Ayurjyoti Wellness Ayurveda.
-              </p>
-            </div>
-            <div className="dc-card">
-              <div className="dc-card-mobile">
-                <div className="doctor-image">
-                  <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Kalpana.jpg"
-                    alt="Doctor Image"
-                  />
-                </div>
-                <div className="mobile-detail">
-                  <h2 className="doctor-name">Dr. Kalpana Dongare</h2>
-                  <p className="doctor-detail">
-                    BAMS (Bachelors of Ayurvedic Medicine and Surgery)
-                    <div className="doctor-experience">
-                      <p>
-                        <span className="green">Years of Experience</span>: 13
-                        Yrs
-                      </p>
-                      <p>
-                        <span className="green">Specialization</span>: Ayurvedic
-                        consultation & Allopathic treatment
-                      </p>
-                      <p>
-                        <span className="green">Languages</span>Hindi, English &
-                        Marathi
-                      </p>
-                    </div>
-                  </p>
-                </div>
-              </div>
-              <p className="doctor-info">
-                Dr. Kalpana Dongare is adept in the treatment of infertility,
-                PCOD, Joint disease, Skin diseases, etc with more than 95%
-                patient follow up and more than 80% success rate. She is also an
-                expert in all types of Panchakarma procedures.
-              </p>
+              {/* <p className="doctor-info">
+                Ayurvedacharya, Mumbai University, 1987. Dr. Anand R Dwivedi has
+                been practicing Ayurveda since 1988 and has been associated with
+                Kapiva since 2015 and helps people lead a well-balanced
+                lifestyle through his deep knowledge of Ayurveda.
+              </p> */}
             </div>
             <div className="dc-card">
               <div className="dc-card-mobile">
@@ -348,30 +133,249 @@ function Home() {
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Meena Sharma</h2>
                   <p className="doctor-detail">
-                    BAMS (Bachelors of Ayurvedic Medicine and Surgery)
+                    {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
                     <div className="doctor-experience">
                       <p>
                         <span className="green">Years of Experience</span>: 8
                         Yrs
                       </p>
                       <p>
-                        <span className="green">Specialization</span>: Ayurvedic
-                        Consultation
+                        <span className="green">Specialization</span>: Skin &
+                        Hair and General wellness
                       </p>
                       <p>
-                        <span className="green">Languages</span>Hindi, English,
-                        Dogri & Kannada
+                        <span className="green">Languages</span>: Hindi,
+                        English, Dogri & Kannada
                       </p>
                     </div>
                   </p>
                 </div>
               </div>
-              <p className="doctor-info">
+              {/* <p className="doctor-info">
                 She has conducted over 20 medical camps & has a good knowledge
                 of Panchkarma and Gynaecology. She also has an understanding of
                 yoga practices and is an expert in making Ayurvedic medicines as
                 well.
-              </p>
+              </p> */}
+            </div>
+            <div className="dc-card">
+              <div className="dc-card-mobile">
+                <div className="doctor-image">
+                  <img
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Irfan.jpg"
+                    alt="Doctor Image"
+                  />
+                </div>
+                <div className="mobile-detail">
+                  <h2 className="doctor-name">Dr. Irfan Ali</h2>
+                  <p className="doctor-detail">
+                    {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
+                    <div className="doctor-experience">
+                      <p>
+                        <span className="green">Years of Experience</span>: 5
+                        Yrs
+                      </p>
+                      <p>
+                        <span className="green">Specialization</span>: Weight
+                        management and Sexual wellness
+                      </p>
+                      <p>
+                        <span className="green">Languages</span>: Hindi,
+                        English, & Bengali
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              {/* <p className="doctor-info">
+                Dr. Irfan has spent two years as House Physician in the Dept. Of
+                Panchakarma including Atyika Chikitsa (Emergency Management). He
+                was a Chief Instructor and Senior physician in the Panchakarma
+                Dept. of Ayurjyoti Wellness Ayurveda.
+              </p> */}
+            </div>
+            <div className="dc-card">
+              <div className="dc-card-mobile">
+                <div className="doctor-image">
+                  <img
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Sheetal.jpg"
+                    alt="Doctor Image"
+                  />
+                </div>
+                <div className="mobile-detail">
+                  <h2 className="doctor-name">Dr. Sheetal Verma</h2>
+                  <p className="doctor-detail">
+                    {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
+                    <div className="doctor-experience">
+                      <p>
+                        <span className="green">Years of Experience</span>: 7
+                        Yrs
+                      </p>
+                      <p>
+                        <span className="green">Specialization</span>: Weight
+                        management, Skin & Hair
+                      </p>
+                      <p>
+                        <span className="green">Languages</span>: Hindi &
+                        English
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              {/* <p className="doctor-info">
+                Dr. Sheetal has been working as an Ayurvedic physician. She has
+                a great command over Ayurvedic practices like Panchkarma,
+                Pathya, and Apathya. She is specifically good in the treatment
+                of Obesity, GIT disorders, Renal and Gall bladder stones, skin
+                and hair diseases, and Gynecological diseases.
+              </p> */}
+            </div>
+            <div className="dc-card">
+              <div className="dc-card-mobile">
+                <div className="doctor-image">
+                  <img
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Aswathy.jpg"
+                    alt="Doctor Image"
+                  />
+                </div>
+                <div className="mobile-detail">
+                  <h2 className="doctor-name">Dr. Aswathy E.S.</h2>
+                  <p className="doctor-detail">
+                    {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
+                    <div className="doctor-experience">
+                      <p>
+                        <span className="green">Years of Experience</span>: 10
+                        Yrs
+                      </p>
+                      <p>
+                        <span className="green">Specialization</span>: General
+                        wellness, Lifestyle issues
+                      </p>
+                      <p>
+                        <span className="green">Languages</span>: Hindi,
+                        English, Malayalam and Kannada
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              {/* <p className="doctor-info">
+                She has worked as an Ayurvedic consultant and medical officer in
+                different nursing homes and hospitals. She has a deep knowledge
+                of classical texts, Ayurvedic treatments, and Panchkarma.
+              </p> */}
+            </div>
+            <div className="dc-card">
+              <div className="dc-card-mobile">
+                <div className="doctor-image">
+                  <img
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Ninny_Sunny.jpg"
+                    alt="Doctor Image"
+                  />
+                </div>
+                <div className="mobile-detail">
+                  <h2 className="doctor-name">Ninny Sunny</h2>
+                  <p className="doctor-detail">
+                    {/* Masters in Food Service Management and Dietetics */}
+                    <div className="doctor-experience">
+                      <p>
+                        <span className="green">Years of Experience</span>: 6
+                        Yrs
+                      </p>
+                      <p>
+                        <span className="green">Specialization</span>: Medical
+                        nutritionist
+                      </p>
+                      <p>
+                        <span className="green">Languages</span>: Tamil,
+                        Malayalam & English
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              {/* <p className="doctor-info">
+                Ninny Sunny is a certified nutritionist and has worked with
+                brands like HealthifyMe and CureFit. She is an expert in
+                evaluating the nutritional status of people and can advise a
+                balanced nutritional plan for optimizing overall health and
+                wellness.
+              </p> */}
+            </div>
+            <div className="dc-card">
+              <div className="dc-card-mobile">
+                <div className="doctor-image">
+                  <img
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Manjula.jpg"
+                    alt="Doctor Image"
+                  />
+                </div>
+                <div className="mobile-detail">
+                  <h2 className="doctor-name">Dr. Manjula P.Badiger</h2>
+                  <p className="doctor-detail">
+                    {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
+                    <div className="doctor-experience">
+                      <p>
+                        <span className="green">Years of Experience</span>: 12
+                        Yrs
+                      </p>
+                      <p>
+                        <span className="green">Specialization</span>: General
+                        wellness and Listyle issues
+                      </p>
+                      <p>
+                        <span className="green">Languages</span>: Hindi,
+                        English, Telugu & Kannada
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              {/* <p className="doctor-info">
+                Dr. Manjula has worked as a Consultant and General Physician for
+                over 5 years before starting her private practice. In addition
+                to BAMS, she also has an Advanced Diploma in Clinical Research
+                and is trained in Panchkarma. She is an expert at diagnosis of
+                the root cause and planning effective treatment for multiple
+                issues.
+              </p> */}
+            </div>
+            <div className="dc-card">
+              <div className="dc-card-mobile">
+                <div className="doctor-image">
+                  <img
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Kalpana.jpg"
+                    alt="Doctor Image"
+                  />
+                </div>
+                <div className="mobile-detail">
+                  <h2 className="doctor-name">Dr. Kalpana Dongare</h2>
+                  <p className="doctor-detail">
+                    {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
+                    <div className="doctor-experience">
+                      <p>
+                        <span className="green">Years of Experience</span>: 13
+                        Yrs
+                      </p>
+                      <p>
+                        <span className="green">Specialization</span>: Weight
+                        management and Skin & Hair
+                      </p>
+                      <p>
+                        <span className="green">Languages</span>: Hindi, English
+                        & Marathi
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              {/* <p className="doctor-info">
+                Dr. Kalpana Dongare is adept in the treatment of infertility,
+                PCOD, Joint disease, Skin diseases, etc with more than 95%
+                patient follow up and more than 80% success rate. She is also an
+                expert in all types of Panchakarma procedures.
+              </p> */}
             </div>
             {/* <div className="dc-card">
               <div className="dc-card-mobile">
@@ -417,30 +421,30 @@ function Home() {
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Shreyas Bharadwaj K</h2>
                   <p className="doctor-detail">
-                    BAMS (Bachelors of Ayurvedic Medicine and Surgery)
+                    {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
                     <div className="doctor-experience">
                       <p>
                         <span className="green">Years of Experience</span>: 8
                         Yrs
                       </p>
                       <p>
-                        <span className="green">Specialization</span>:
-                        Panchakarma Procedures
+                        <span className="green">Specialization</span>: Men's
+                        health
                       </p>
                       <p>
-                        <span className="green">Languages</span>Hindi, Hindi,
+                        <span className="green">Languages</span>: Hindi, Hindi,
                         English, Kannada, Tulu, Tamil, Telugu & Malayalam
                       </p>
                     </div>
                   </p>
                 </div>
               </div>
-              <p className="doctor-info">
+              {/* <p className="doctor-info">
                 Dr. Shreyas has worked as a consultant doctor and can handle all
                 Panchkarma procedures with personalized guidance on daily diet
                 and nutrition. He frequently conducts medical camps, awareness
                 workshops, yoga, and meditation classes.
-              </p>
+              </p> */}
             </div>
             <div className="dc-card">
               <div className="dc-card-mobile">
@@ -453,31 +457,31 @@ function Home() {
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Anu Bahl</h2>
                   <p className="doctor-detail">
-                    PG Diploma in Dietetics
+                    {/* PG Diploma in Dietetics */}
                     <div className="doctor-experience">
                       <p>
                         <span className="green">Years of Experience</span>: 6
                         Yrs
                       </p>
                       <p>
-                        <span className="green">Specialization</span>: Certified
-                        Diabetic Educator
+                        <span className="green">Specialization</span>: Weight
+                        management, Diabities, Lifstyle
                       </p>
                       <p>
-                        <span className="green">Languages</span>Hindi, English,
-                        Gujarati & Punjabi.
+                        <span className="green">Languages</span>: Hindi,
+                        English, Gujarati & Punjabi.
                       </p>
                     </div>
                   </p>
                 </div>
               </div>
-              <p className="doctor-info">
+              {/* <p className="doctor-info">
                 Anu Bahl is a certified nutritionist specializing in Weight
                 Management. She guides people towards positive lifestyle changes
                 with customized diet plans. She is also a Certified Diabetic
                 Educator and can help in diabetes lifestyle planning and
                 management.
-              </p>
+              </p> */}
             </div>
             <div className="dc-card">
               <div className="dc-card-mobile">
@@ -490,7 +494,7 @@ function Home() {
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Anjali Geetha</h2>
                   <p className="doctor-detail">
-                    BAMS, MD (AM)
+                    {/* BAMS, MD (AM) */}
                     <div className="doctor-experience">
                       <p>
                         <span className="green">Years of Experience</span>: 11
@@ -498,23 +502,23 @@ function Home() {
                       </p>
                       <p>
                         <span className="green">Specialization</span>: Weight
-                        management, Skin care, Lifestyle diseases.
+                        management, Skin & Hair
                       </p>
                       <p>
-                        <span className="green">Languages</span>English, Hindi &
-                        Malayalam.
+                        <span className="green">Languages</span>: English, Hindi
+                        & Malayalam.
                       </p>
                     </div>
                   </p>
                 </div>
               </div>
-              <p className="doctor-info">
+              {/* <p className="doctor-info">
                 Dr. Anjali is an experienced ayurvedic consultant with hands on
                 expertise in Panchkarma and fitness training. She specializes in
                 Weight Management, Skin care and Lifestyle diseases. She has
                 demonstrated records of accomplishment in skilled patient
                 evaluation, diagnostics and treatment planning.
-              </p>
+              </p> */}
             </div>
           </Carousel>
         </div>
@@ -523,18 +527,6 @@ function Home() {
         Our empanelled doctors have treated thousands of patients with:
       </h3>
       <div className="dc-acheivements">
-        <div className="acheiventent">
-          <div className="acheivement-img">
-            <img
-              src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/diabities.png"
-              alt=""
-            />
-          </div>
-          <p className="acheivement-description">
-            <span className="bold">Diabetes</span> treated by <br /> Dr. Sheetal
-            Verma
-          </p>
-        </div>
         <Achievement />
       </div>
       <BtnConsultation />
@@ -546,13 +538,13 @@ function Home() {
         <Treatments />
       </div>
       <div className="dc-consult-queries">
-        <h3 className="dc-consult-head">
+        {/* <h3 className="dc-consult-head">
           Still not very clear with whom you need to consult?
         </h3>
         <p>
           Don’t worry, take this small online test to understand which
           consultation will benefit you.
-        </p>
+        </p> */}
         <p className="green">Get a 100% Private and Free Online Test.</p>
       </div>
       <div className="dc-selector">
@@ -616,9 +608,8 @@ function Home() {
         </h3>
         <p>
           Kapiva has a team of experienced Ayurvedic practitioners and
-          nutritionists who will guide you at every
-          <br />
-          step to get healthy and fit in a natural way.
+          nutritionists who will guide you at every step to get healthy and fit
+          in a natural way.
         </p>
         <div className="dc-treatments">
           <Experience />
