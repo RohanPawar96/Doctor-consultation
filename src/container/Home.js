@@ -85,7 +85,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Anand.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -114,7 +114,7 @@ function Home() {
                 Dr. Anand R Dwivedi has been practicing Ayurveda since 1988. He
                 has a special interest in the treatment of chronic illnesses
                 with the help of Ayurveda. He has been associated with Kapiva
-                since 2015, helping people lead a well-balanced lifestyle
+                since 2015 and helps people lead a well-balanced lifestyle
                 through his deep knowledge of Ayurveda.
               </p>
             </div>
@@ -122,7 +122,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Sheetal.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -148,20 +148,18 @@ function Home() {
                 </div>
               </div>
               <p className="doctor-info">
-                Dr. Sheetal has been working as an Ayurvedic physician for the
-                last 7 years. She is working as a physician in the clinic and as
-                a doctor in an ESIC dispensary giving medication of Ayurveda and
-                allopathy. She has a great command over Ayurvedic practices like
-                Panchkarma, Pathya, and Apathya. She is specifically good in the
-                treatment of Obesity, GIT disorders, Renal and Gall bladder
-                stones, skin and hair diseases, and Gynecological diseases.
+                Dr. Sheetal has been working as an Ayurvedic physician. She has
+                a great command over Ayurvedic practices like Panchkarma,
+                Pathya, and Apathya. She is specifically good in the treatment
+                of Obesity, GIT disorders, Renal and Gall bladder stones, skin
+                and hair diseases, and Gynecological diseases.
               </p>
             </div>
             <div className="dc-card">
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Aswathy.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -171,7 +169,7 @@ function Home() {
                     BAMS (Bachelors of Ayurvedic Medicine and Surgery)
                     <div className="doctor-experience">
                       <p>
-                        <span className="green">Years of Experience</span>: 34
+                        <span className="green">Years of Experience</span>: 10+
                         Yrs
                       </p>
                       <p>
@@ -180,26 +178,23 @@ function Home() {
                       </p>
                       <p>
                         <span className="green">Languages</span>Hindi, English,
-                        Malayalam & Kannada
+                        Malayalam and Kannada
                       </p>
                     </div>
                   </p>
                 </div>
               </div>
               <p className="doctor-info">
-                10+ years of experience as an Ayurvedic consultant and medical
-                officer in different nursing homes and hospitals. She has a deep
-                knowledge of classical texts, Ayurvedic treatments, and
-                Panchkarma. Dr. Aswathy is proficient in diagnosis through
-                traditional Ayurvedic means and plans treatment that is specific
-                to an individual’s constitution.
+                She has worked as an Ayurvedic consultant and medical officer in
+                different nursing homes and hospitals. She has a deep knowledge
+                of classical texts, Ayurvedic treatments, and Panchkarma.
               </p>
             </div>
             <div className="dc-card">
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Ninny_Sunny.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -209,7 +204,7 @@ function Home() {
                     Masters in Food Service Management and Dietetics
                     <div className="doctor-experience">
                       <p>
-                        <span className="green">Years of Experience</span>: 6
+                        <span className="green">Years of Experience</span>: 6+
                         Yrs
                       </p>
                       <p>
@@ -217,27 +212,26 @@ function Home() {
                         Nutritionist
                       </p>
                       <p>
-                        <span className="green">Languages</span>: Hindi &
-                        English
+                        <span className="green">Languages</span>: Tamil,
+                        Malayalam & English
                       </p>
                     </div>
                   </p>
                 </div>
               </div>
               <p className="doctor-info">
-                With 6+ years of experience as a medical nutritionist, Nini
-                Sunny has worked with hospitals and brands like HealthifyMe and
-                CureFit to guide people on lifestyle and nutritional issues. She
-                is an expert in evaluating the nutritional status of people and
-                can advise a balanced nutritional plan for optimizing overall
-                health and wellness.
+                Ninny Sunny is a certified nutritionist and has worked with
+                brands like HealthifyMe and CureFit. She is an expert in
+                evaluating the nutritional status of people and can advise a
+                balanced nutritional plan for optimizing overall health and
+                wellness.
               </p>
             </div>
             <div className="dc-card">
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Manjula.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -256,26 +250,26 @@ function Home() {
                       </p>
                       <p>
                         <span className="green">Languages</span>Hindi, English,
-                        Telugu & Bengali
+                        Telugu & Kannada
                       </p>
                     </div>
                   </p>
                 </div>
               </div>
               <p className="doctor-info">
-                Dr. Manjula has 12 years of experience in the field of Ayurveda
-                and worked as a Consultant and General Physician for over 5
-                years before starting her private practice. In addition to BAMS,
-                she also has an Advanced Diploma in Clinical Research and is
-                trained in Panchkarma. She is an expert at diagnosis of the root
-                cause and planning effective treatment for multiple issues.
+                Dr. Manjula has worked as a Consultant and General Physician for
+                over 5 years before starting her private practice. In addition
+                to BAMS, she also has an Advanced Diploma in Clinical Research
+                and is trained in Panchkarma. She is an expert at diagnosis of
+                the root cause and planning effective treatment for multiple
+                issues.
               </p>
             </div>
             <div className="dc-card">
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Irfan.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -294,27 +288,24 @@ function Home() {
                       </p>
                       <p>
                         <span className="green">Languages</span>Hindi, English,
-                        Telugu & Bengali
+                        & Bengali
                       </p>
                     </div>
                   </p>
                 </div>
               </div>
               <p className="doctor-info">
-                Dr. Irfan has over 5 years of experience as an Ayurvedic
-                physician. He spent two years as House Physician in the Dept. Of
+                Dr. Irfan has spent two years as House Physician in the Dept. Of
                 Panchakarma including Atyika Chikitsa (Emergency Management). He
                 was a Chief Instructor and Senior physician in the Panchakarma
-                Dept. of Ayurjyoti Wellness Ayurveda. He is proficient at
-                understanding the root cause of issues and recommends a holistic
-                treatment approach suited to the individual.
+                Dept. of Ayurjyoti Wellness Ayurveda.
               </p>
             </div>
             <div className="dc-card">
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Kalpana.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -340,19 +331,17 @@ function Home() {
                 </div>
               </div>
               <p className="doctor-info">
-                With 13+ years of experience in Ayurvedic consultation &
-                Allopathic treatment (ICU & General Hospital), Dr. Kalpana
-                Dongare is adept in the treatment of infertility, PCOD, Joint
-                disease, Skin diseases, etc with more than 95% patient follow up
-                and more than 80% success rate. She is also an expert in all
-                types of Panchkarma procedures.
+                Dr. Kalpana Dongare is adept in the treatment of infertility,
+                PCOD, Joint disease, Skin diseases, etc with more than 95%
+                patient follow up and more than 80% success rate. She is also an
+                expert in all types of Panchakarma procedures.
               </p>
             </div>
             <div className="dc-card">
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Meena.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -378,14 +367,13 @@ function Home() {
                 </div>
               </div>
               <p className="doctor-info">
-                Dr. Meena has 8+ years of experience in Ayurvedic treatments.
                 She has conducted over 20 medical camps & has a good knowledge
                 of Panchkarma and Gynaecology. She also has an understanding of
                 yoga practices and is an expert in making Ayurvedic medicines as
                 well.
               </p>
             </div>
-            <div className="dc-card">
+            {/* <div className="dc-card">
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
@@ -407,7 +395,7 @@ function Home() {
                         Skin & Hair
                       </p>
                       <p>
-                        <span className="green">Languages</span>Hindi, Hindi,
+                        <span className="green">Languages</span>: Hindi,
                         English & Bengali
                       </p>
                     </div>
@@ -415,18 +403,14 @@ function Home() {
                 </div>
               </div>
               <p className="doctor-info">
-                Dr. Khwaja has an experience of more than 5 years as an
-                Ayurvedic vaidya in different centers. He has a good command of
-                Ayurvedic practices like Panchkarma. He can understand the
-                unique Ayurvedic constitution to recommend a personalized plan
-                of treatment suited to the individual.
+                He has an experienced consultant and has good command on Ayurvedic practices like Panchkarma. He can understand the unique Ayurvedic constitution to recommend a personalized plan of treatment suited to the individual.
               </p>
-            </div>
+            </div> */}
             <div className="dc-card">
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Shreyas.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -452,8 +436,7 @@ function Home() {
                 </div>
               </div>
               <p className="doctor-info">
-                Dr. Shreyas has 8+ years of experience as a Consultant Doctor &
-                can treat patients with Ayurvedic medicines. He can handle all
+                Dr. Shreyas has worked as a consultant doctor and can handle all
                 Panchkarma procedures with personalized guidance on daily diet
                 and nutrition. He frequently conducts medical camps, awareness
                 workshops, yoga, and meditation classes.
@@ -463,7 +446,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Anu_Bahl.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -489,11 +472,48 @@ function Home() {
                 </div>
               </div>
               <p className="doctor-info">
-                Anu Bahl is a certified nutritionist with 6 years of experience.
-                She specializes in weight management and guides people towards
-                positive lifestyle changes with customized diet plans.She is
-                also a Certified Diabetic Educator and can help in diabetes
-                lifestyle planning and management.
+                Anu Bahl is a certified nutritionist specializing in Weight
+                Management. She guides people towards positive lifestyle changes
+                with customized diet plans. She is also a Certified Diabetic
+                Educator and can help in diabetes lifestyle planning and
+                management.
+              </p>
+            </div>
+            <div className="dc-card">
+              <div className="dc-card-mobile">
+                <div className="doctor-image">
+                  <img
+                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Anjali.jpg"
+                    alt="Doctor Image"
+                  />
+                </div>
+                <div className="mobile-detail">
+                  <h2 className="doctor-name">Dr. Anjali Geetha</h2>
+                  <p className="doctor-detail">
+                    BAMS, MD (AM)
+                    <div className="doctor-experience">
+                      <p>
+                        <span className="green">Years of Experience</span>: 11
+                        Yrs
+                      </p>
+                      <p>
+                        <span className="green">Specialization</span>: Weight
+                        management, Skin care, Lifestyle diseases.
+                      </p>
+                      <p>
+                        <span className="green">Languages</span>English, Hindi &
+                        Malayalam.
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              <p className="doctor-info">
+                Dr. Anjali is an experienced ayurvedic consultant with hands on
+                expertise in Panchkarma and fitness training. She specializes in
+                Weight Management, Skin care and Lifestyle diseases. She has
+                demonstrated records of accomplishment in skilled patient
+                evaluation, diagnostics and treatment planning.
               </p>
             </div>
           </Carousel>
@@ -534,17 +554,6 @@ function Home() {
           consultation will benefit you.
         </p>
         <p className="green">Get a 100% Private and Free Online Test.</p>
-        <div className="faq">
-          <p>
-            ONLINE AYURVEDIC CONSULTATION <br />
-            <span className="bold">FAQs</span>
-          </p>
-        </div>
-        <p>
-          Feel free to connect with us if you have any questions which are not
-          covered in the FAQs below.
-        </p>
-        <p className="green unl">Click Here - I have a question</p>
       </div>
       <div className="dc-selector">
         <Queries
@@ -558,21 +567,46 @@ function Home() {
           val="2"
           ques={"Does Ayurveda work for all ages??"}
           ans={
-            "It is completely Free, there are no charges for your online Ayurvedic Consultation at Kapiva."
+            "Ayurveda is an effective cure for many lifestyle issues and works for all ages. The medicines and treatments may differ person to person basis their age groups, lifestyle choices, comorbidities and adherence to medicines."
           }
         />
         <Queries
           val="3"
           ques={"How fast is the medicine shipped?"}
           ans={
-            "It is completely Free, there are no charges for your online Ayurvedic Consultation at Kapiva."
+            "The Products will be dispatched within 24 hours of you placing the order. However it takes 3 – 7 days to reach your location depending on the location. Some areas have varied degrees of covid-related restircition, due to which delivery might be delayed. Kapiva provides you with links to track your order in real time."
           }
         />
         <Queries
           val="4"
-          ques={"Are Ayurvedic treatments safe?"}
+          ques={"How can I reschedule my appointment?"}
           ans={
-            "It is completely Free, there are no charges for your online Ayurvedic Consultation at Kapiva."
+            "The Customer has the option to reschedule their appointments from the confirmation email they receive after booking the first appointment. Alternatively, customers can follow the same steps and book another appointment for the next available slot from the website."
+          }
+        />
+        <Queries
+          val="5"
+          ques={"What is the mode of consultation?"}
+          ans={
+            "The consultation will be online through a telephonic call. The doctor will reach out to you on your number at your appointment time for the consultation."
+          }
+        />
+        <Queries
+          val="6"
+          ques={
+            "Whom do I need to reach out if I have any queries regarding the products?"
+          }
+          ans={
+            "For any concerns regarding the products, the customer can reach out to us on the toll free number 18002742575 or can also write to us at info@kapiva.in. Our support team will resolve your concerns at the earliest."
+          }
+        />
+        <Queries
+          val="7"
+          ques={
+            "Is it safe to share personal information and reports with the doctors?"
+          }
+          ans={
+            "All consultations at Kapiva are 100% Private, the medical information shared by the customers shall not be divulged to others without the consent of the customer."
           }
         />
       </div>

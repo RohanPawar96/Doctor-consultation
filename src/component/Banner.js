@@ -6,10 +6,10 @@ function Banner() {
       <div className="desktop">
         <div className="dc-banners">
           <div className="dc-banner-text">
-            <h2>
+            <h1>
               Want to know the root cause of illness and various imbalances of
               the body and mind?
-            </h2>
+            </h1>
             <p>
               Don’t worry, we have got you covered. Kapiva has a team of
               experienced Ayurvedic practitioners and nutritionists who will
@@ -36,10 +36,10 @@ function Banner() {
             />
           </div>
           <div className="dc-banner-text">
-            <h2>
+            <h1>
               Want to know the root cause of illness and various imbalances of
               the body and mind?
-            </h2>
+            </h1>
             <p>
               Don’t worry, we have got you covered. Kapiva has a team of
               experienced Ayurvedic practitioners and nutritionists who will

@@ -1,10 +1,9 @@
 import React from "react";
-import Logo from "../assets/img/kapiva-logo.svg";
 
 export default function Header() {
   return (
     <div className="dc-header">
-      <img src={Logo} />
+      <img src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/kapiva-logo.svg" />
     </div>
   );
 }

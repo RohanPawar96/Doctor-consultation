@@ -95,7 +95,9 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
     // console.log(value.toLocaleDateString() === new Date().toLocaleDateString());
     timing.map((e) => {
       if (value.toLocaleDateString() === new Date().toLocaleDateString()) {
-        if (convertTime12to24fornowTime(nowTime) < convertTime12to24(e)) {
+        if (
+          convertTime12to24fornowTime(nowTime) < convertTime12to24fornowTime(e)
+        ) {
           setFilteredList((fl) => [...fl, convertAmpm(e)]);
           slot_list.concat(filteredList);
         }
@@ -158,19 +160,6 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       document.getElementById("emailblock").style =
         "border : 1px solid red !important";
       // alert("Please enter valid email");
-    } else if (
-      value.toLocaleDateString() < new Date().toLocaleDateString() ||
-      (diffDays < 14 && diffYears !== 0)
-    ) {
-      document.getElementById("service").style = "display : none";
-      document.getElementById("firstname").style = "display : none";
-      document.getElementById("firstnameblock").style = "border : none";
-      document.getElementById("lastname").style = "display : none";
-      document.getElementById("lastnameblock").style = "border : none";
-      document.getElementById("contact").style = "display : none";
-      document.getElementById("contactblock").style = "border : none";
-      document.getElementById("email").style = "display : none";
-      document.getElementById("emailblock").style = "border : none";
     } else {
       onChecked();
       document.getElementById("firstname").style = "display : none";
@@ -251,9 +240,8 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
       .then((response) => {
         if (response.status === 200) {
           if (response.data.error === "Slot not available") {
-            document.getElementById("submit").style = "display: block";
-            document.getElementById("submit").textContent =
-              "Slot not Available";
+            alert("Slots Not Avialable");
+            setSubmit("Book Now");
           } else if (response.data.staff !== null) {
             setAllValues({
               ...allValues,
@@ -268,16 +256,17 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
             setSubmit("Book Now");
             document.location.reload();
           } else {
-            document.getElementById("submit").style = "display: block";
-            document.getElementById("submit").textContent =
-              "Appointment booking is unavailable please try again after some time";
+            alert(
+              "Appointment booking is unavailable please try again after some time"
+            );
+            setSubmit("Book Now");
           }
         }
       })
       .catch((error) => {
         if (error) {
-          document.getElementById("submit").style = "display: block";
-          document.getElementById("submit").textContent = "Slot not Available";
+          alert("Slots Not Avialable");
+          setSubmit("Book Now");
         }
       });
   };
@@ -301,7 +290,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
         <div>
           <input
             type="text"
-            placeholder="Enter your First Name"
+            placeholder="First Name"
             name="firstname"
             id="firstnameblock"
             value={allValues.firstname}
@@ -315,7 +304,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
         <div>
           <input
             type="text"
-            placeholder="Enter your Last Name"
+            placeholder="Last Name"
             name="lastname"
             id="lastnameblock"
             value={allValues.lastname}
@@ -323,15 +312,14 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
             required
           />
           <p className="error" id="lastname">
-            Enter Valid First Name...
+            Enter Valid Last Name...
           </p>
         </div>
         <div>
           <input
             type="number"
-            min="1"
             maxLength="10"
-            placeholder="Enter your Contact"
+            placeholder="Phone No"
             name="contact"
             id="contactblock"
             value={allValues.contact}
@@ -345,7 +333,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
         <div>
           <input
             type="email"
-            placeholder="Enter your Email"
+            placeholder="Email"
             name="email"
             id="emailblock"
             value={allValues.email}
@@ -353,7 +341,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
             required
           />
           <p className="error" id="email">
-            Enter valid Contactt...
+            Enter valid email...
           </p>
         </div>
       </div>
@@ -385,6 +373,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
                   className="therapy-input"
                   id={service.service_name}
                   value={service.service_id}
+                  required
                 />
                 <label
                   //
@@ -394,7 +383,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
                   <img
                     src={
                       "https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/" +
-                      service.service_name +
+                      service.service_id +
                       ".png"
                     }
                     alt=""
@@ -406,7 +395,13 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
           })}
       </div>
       <h3 className="tellusmore">Tell us more about your concern</h3>
-      <input type="text" id="concern" placeholder="Optional" />
+      <input
+        type="text"
+        id="concern"
+        name="comment"
+        onChange={changeHandler}
+        placeholder="Optional"
+      />
       <h3>Step 3: Choose Date & Time</h3>
       <div className="dc-form">
         <div className="date">
@@ -420,28 +415,28 @@ const Form = ({ appointments, UtmMedium, UtmSorce }) => {
               placeholder="Please select date"
               disablePast={true}
               minDate={new Date()}
+              showToolbar={false}
               maxDate={futureDate}
-              disableToolbar
               onChange={(value) => setValue(value)}
-              InputProps={{
-                disableUnderline: true,
-              }}
-              renderInput={(params) => <TextField {...params} />}
+              InputProps={{ readOnly: true }}
+              renderInput={(params) => <TextField readOnly {...params} />}
             />
           </LocalizationProvider>
         </div>
+
         <div className="time">
-          <label htmlFor="date">Pick a Slot</label>
+          <label htmlFor="date">
+            Pick a Slot <span id="date-time">(Select therapy first)</span>{" "}
+          </label>
           <div>
             <select
               class="form-select"
               name="time"
+              id="time"
               onChange={changeHandler}
               required
             >
-              <option value="" selected>
-                Open this select menu
-              </option>
+              <option value="" selected></option>
               {filteredList.map((t) => {
                 return <option value={t}>{t}</option>;
               })}

@@ -26,6 +26,7 @@ a {
 h1 {
   font-family: "Playfair Display";
   font-size: 2.2rem;
+  font-weight: bold;
 }
 
 p {
@@ -45,6 +46,11 @@ p.error {
   background-image: url("https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/dc-background.png");
   background-size: 100%;
   padding: 1% 5%;
+}
+
+#date-time {
+  font-size: 1rem;
+  margin: 0;
 }
 
 .dc-header {
@@ -76,9 +82,10 @@ input#whatsapp {
 .dc-banners .dc-banner-text {
   width: 100%;
   margin-left: 1%;
+  text-align: left;
 }
 
-.dc-banners .dc-banner-text h2 {
+.dc-banners .dc-banner-text h1 {
   margin: 0 0 2% 0;
   font-size: 2.4rem;
 }
@@ -92,11 +99,20 @@ input#whatsapp {
   width: 100%;
 }
 
+h3.tellusmore {
+  font-size: 1.3rem;
+}
+
 @media screen and (max-width: 450px) {
   .dc-consultation .dc-banners {
     display: block;
     justify-content: right;
     margin-bottom: 2.5%;
+  }
+
+  #date-time {
+    font-size: 0.6rem !important;
+    margin: 0;
   }
 
   .desktop {
@@ -118,6 +134,11 @@ input#whatsapp {
     row-gap: 6% !important;
   }
 
+  label {
+    display: inline-block;
+    font-size: 0.8rem !important;
+  }
+
   .date,
   .time {
     /* grid-row-gap: 25%; */
@@ -126,7 +147,7 @@ input#whatsapp {
     margin-top: 5% !important;
   }
 
-  .dc-banners .dc-banner-text h2 {
+  .dc-banners .dc-banner-text h1 {
     font-size: 1.25rem !important;
     text-align: center;
   }
@@ -194,7 +215,6 @@ input#whatsapp {
 
 .dc-consultation-form h1 {
   margin: 0 0 3% 0;
-  font-weight: bold;
 }
 
 .dc-consultation-form-step-1 {
@@ -258,9 +278,10 @@ input#concern {
   display: grid;
   grid-auto-columns: max-content;
   justify-content: center;
-  grid-template-columns: repeat(4, minmax(min-content, max-content));
+  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 3%;
   grid-row-gap: 12%;
+  margin-bottom: 3%;
 }
 
 input[type="radio"]:checked + label {
@@ -270,7 +291,7 @@ input[type="radio"]:checked + label {
 input[type="radio"]:checked {
   display: block;
   accent-color: #80a03c;
-  transform: rotate(45deg);
+  right: 0.8px;
 }
 
 input::-webkit-outer-spin-button,
@@ -279,28 +300,8 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* input[type="radio"]:checked + label {
-  background-color: #212121;
-}
-
-input[type="radio"]:checked ::after {
-  position: absolute;
-  content: "";
-  height: 15px;
-  width: 5px;
-  border: 1px solid #fff;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  transform: rotate(45deg);
-  border-top-color: transperent;
-  border-left-color: transparent;
-} */
-
 .dc-therepys .therapy {
   position: relative;
-  height: fit-content;
   width: 100%;
   height: 100%;
   text-align: center;
@@ -324,7 +325,7 @@ input[type="radio"] {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-  height: 100%;
+  height: 100px;
   align-items: center;
 }
 
@@ -341,7 +342,7 @@ input[type="radio"] {
 }
 
 .dc-consultation h3 {
-  margin: 7% 0;
+  margin: 2% 0;
 }
 
 .jYxeHE {
@@ -358,6 +359,16 @@ input[type="radio"] {
 
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0) !important;
+}
+
+.form-select {
+  line-height: 1.4 !important;
+  border-radius: 0 !important;
+}
+
+label {
+  display: inline-block;
+  font-size: 1.3rem;
 }
 
 @media screen and (max-width: 375px) {
@@ -384,12 +395,6 @@ input[type="radio"] {
 
   .dc-therepys p {
     font-size: 0.6rem !important;
-  }
-  .dc-therepys {
-    grid-template-columns: repeat(
-      2,
-      minmax(min-content, max-content)
-    ) !important;
   }
 
   input[type="date"],
@@ -432,12 +437,16 @@ input#date {
     padding: 3% 9% !important;
   }
 
+  input[type="radio"] {
+    zoom: 1 !important;
+  }
+
   .dc-consultation-form h1 {
     margin: 0 0 3% 0;
     font-size: larger;
   }
   .dc-therepys p {
-    font-size: 0.59rem;
+    font-size: 0.5rem !important;
     margin: 0;
     padding: 2%;
     width: 100%;
@@ -462,7 +471,15 @@ input#date {
     padding: 0 !important;
   }
   .dc-therepys {
-    grid-template-columns: repeat(3, minmax(min-content, max-content));
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .dc-therepys label {
+    height: 59px !important;
+  }
+
+  .dc-therepys {
+    margin-bottom: 9% !important;
   }
 
   input[type="date"],
@@ -575,6 +592,10 @@ input#date {
 .dc-card .doctor-image {
   width: 158px;
   height: 180px;
+}
+
+.dc-card .doctor-image img {
+  border-radius: 6%;
 }
 
 .dc-card h2.doctor-name {
@@ -795,11 +816,11 @@ p.answer {
     font-size: 20px;
   }
   p.answer {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 
   p.question {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     background-size: 4%;
   }
   .dc-consult-queries .faq {
