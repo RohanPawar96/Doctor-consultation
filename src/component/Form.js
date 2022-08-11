@@ -295,7 +295,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token }) => {
       .catch((error) => {
         console.log(error);
         if (error.message === "Network Error") {
-          alert("Internal Server Error");
+          alert("Session TimeOut. Please try again after some time...");
           setSubmit("Book Now");
         } else if (error) {
           alert(error);
