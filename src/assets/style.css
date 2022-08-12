@@ -617,6 +617,12 @@ p.doctor-detail {
   margin: 0;
 }
 
+h3.dc._thankyou {
+  text-align: center;
+  margin: 0;
+  font-size: 2.2rem;
+}
+
 /**********************************************************/
 
 h3.dc-acheivement-head {
@@ -696,6 +702,10 @@ p.btn-text {
   h3.dc-acheivement-head {
     font-size: 1.25rem;
     font-weight: 600;
+  }
+
+  h3.dc._thankyou {
+    font-size: 1rem;
   }
 
   .btn-image {

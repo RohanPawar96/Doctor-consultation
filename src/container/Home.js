@@ -10,9 +10,11 @@ import axios from "axios";
 import Carousel from "react-elastic-carousel";
 import Experience from "../component/Experience";
 import Header from "../component/Header";
+import Popup from "../component/Popup";
 
 function Home() {
   const [appointments, setAppointments] = useState([]);
+  const [count, setCount] = useState(1);
   const [token, setToken] = useState([]);
   const [status, setStatus] = useState(""); //eslint-disable-line
   // let ques = "";
@@ -71,12 +73,17 @@ function Home() {
           Ayurvedic consultation with experienced doctors and nutritionists
         </h1>
         <div className="dc-consultation-form-step-1">
-          <Form
-            appointments={appointments}
-            UtmMedium={UtmMedium}
-            UtmSorce={UtmSorce}
-            token={token}
-          />
+          {count === 1 ? (
+            <Form
+              appointments={appointments}
+              UtmMedium={UtmMedium}
+              UtmSorce={UtmSorce}
+              token={token}
+              setCount={setCount}
+            />
+          ) : (
+            <Popup setCount={setCount} />
+          )}
         </div>
       </div>
       <div className="dc-doctor-details">

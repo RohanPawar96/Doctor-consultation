@@ -13,7 +13,7 @@ import {
   endTime,
 } from "../utils/common";
 
-const Form = ({ appointments, UtmMedium, UtmSorce, token }) => {
+const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
   const [value, setValue] = useState(new Date());
   const [submit, setSubmit] = useState("Book Now");
   const [filteredList, setFilteredList] = useState([]);
@@ -45,14 +45,14 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token }) => {
   let nowTime = `${hours}:${minutes}`;
   let endindex = "";
   const changeHandler = (e) => {
-    if (e.target.name == "time") {
-      setAllValues({
-        ...allValues,
-        [e.target.name]: e.target.value.substring(0, 5),
-      });
-    } else {
-      setAllValues({ ...allValues, [e.target.name]: e.target.value });
-    }
+    // if (e.target.name == "time") {
+    //   setAllValues({
+    //     ...allValues,
+    //     [e.target.name]: e.target.value.substring(0, 5),
+    //   });
+    // } else {
+    setAllValues({ ...allValues, [e.target.name]: e.target.value });
+    // }
   };
 
   const setService = (service) => {
@@ -91,6 +91,34 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token }) => {
     // }
   }
 
+  const dc_appointment = () => {
+    axios.post("https://api.webengage.com/v1/accounts/~15ba20105/events", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer 83ca9bef-1471-4e61-ba2e-4c2fde6e3300",
+      },
+      data: {
+        userId: allValues.email,
+        eventName: "dc_appointment_created",
+        eventData: {
+          Customer_Id: "",
+          Phone: "msg.customer.cell_phone",
+          Email: "msg.customer.email_id",
+          dc_solution_category:
+            "msg.payload.appointment_details.data.appointment.service_key",
+          dc_appointment_date:
+            "msg.payload.appointment_details.data.appointment.start_time",
+          dc_appointment_id: "msg.payload.appointment_id",
+          dc_appointment_time:
+            "msg.payload.appointment_details.data.appointment.start_time",
+          dc_doc_id:
+            "msg.payload.appointment_details.data.appointment.staff_key",
+        },
+      },
+    });
+  };
+
   const SlotLoot = (timing) => {
     // timing = timing.split("##")[1];
     timing.map((e) => {
@@ -105,8 +133,9 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token }) => {
       }
     });
   };
+  console.log(allValues.time);
 
-  endindex = endTime(allValues.time);
+  // endindex = endTime(allValues.time);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -209,58 +238,57 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token }) => {
   }
 
   const submitHandler = () => {
+    console.log(token);
+    console.log();
     setSubmit("Booking...");
-    axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
+    // axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
+    //   method: "POST",
+    axios(`https://kapiva.app/api/save_appointment.php?access_token=${token}`, {
       method: "POST",
-      // axios
-      //   .post(
-      //     `https://kapiva.app/api/save_appointment.php?access_token=${token}`,
-      //     {
-      headers: {
-        "Content-Type": "application/json",
-        // "Access-Control-Allow-Origin": "*",
-        // "Access-Control-Allow-Methods":
-        //   "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-      },
-
-      data: {
-        data: {
-          Customer: {
-            first_name: allValues.firstname,
-            last_name: allValues.lastname,
-            email_id: allValues.email,
-            cell_phone: allValues.contact,
-            comment: allValues.comment,
-            utm_source: UtmSorce,
-            utm_medium: UtmMedium,
-          },
-          Appointment: {
-            service_key: serviceId,
-            // slot_id: slot_id,
-            start_time:
-              getDateFormat({ date: value }) + "T" + allValues.time + "Z",
-            end_time: getDateFormat({ date: value }) + "T" + endindex + "Z",
-          },
-        },
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Access-Control-Allow-Origin": "*",
+      // },
 
       // data: {
-      //   first_name: allValues.firstname,
-      //   last_name: allValues.lastname,
-      //   email_id: allValues.email,
-      //   cell_phone: allValues.contact,
-      //   comment: allValues.comment,
-      //   utm_source: UtmSorce,
-      //   utm_medium: UtmMedium,
-      //   service_key: serviceId,
-      //   slot_id: slot_id,
-      //   start_time:
-      //     getDateFormat({ date: value }) +
-      //     "T" +
-      //     convertTime12to24(allValues.time) +
-      //     "Z",
-      //   end_time: getDateFormat({ date: value }) + "T" + endDate + "Z",
+      //   data: {
+      //     Customer: {
+      //       first_name: allValues.firstname,
+      //       last_name: allValues.lastname,
+      //       email_id: allValues.email,
+      //       cell_phone: allValues.contact,
+      //       comment: allValues.comment,
+      //       utm_source: UtmSorce,
+      //       utm_medium: UtmMedium,
+      //     },
+      //     Appointment: {
+      //       service_key: serviceId,
+      //       // slot_id: slot_id,
+      //       start_time:
+      //         getDateFormat({ date: value }) + "T" + allValues.time + "Z",
+      //       end_time: getDateFormat({ date: value }) + "T" + endindex + "Z",
+      //     },
+      //   },
       // },
+
+      data: {
+        access_token: token,
+        first_name: allValues.firstname,
+        last_name: allValues.lastname,
+        email_id: allValues.email,
+        cell_phone: allValues.contact,
+        comment: allValues.comment,
+        utm_source: UtmSorce,
+        utm_medium: UtmMedium,
+        service_key: serviceId,
+        slot_id: slot_id,
+        start_time:
+          getDateFormat({ date: value }) +
+          "T" +
+          convertTime12to24(allValues.time) +
+          "Z",
+        end_time: getDateFormat({ date: value }) + "T" + endDate + "Z",
+      },
     })
       .then((response) => {
         console.log(response);
@@ -269,18 +297,20 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token }) => {
             alert("Slots Not Avialable");
             setSubmit("Book Now");
           } else if (response.data.staff !== null) {
-            setAllValues({
-              ...allValues,
-              firstname: "",
-              lastname: "",
-              email: "",
-              contact: "",
-              comment: "",
-              time: "",
-            });
-            alert("Appointment Booked Successfully....");
+            setCount(0);
+            // setAllValues({
+            //   ...allValues,
+            //   firstname: "",
+            //   lastname: "",
+            //   email: "",
+            //   contact: "",
+            //   comment: "",
+            //   time: "",
+            // });
+            console.log(response.data);
+            // alert("Appointment Booked Successfully....");
             setSubmit("Book Now");
-            document.location.reload();
+            // document.location.reload();
           } else {
             alert(
               "Appointment booking is unavailable please try again after some time"
@@ -304,23 +334,23 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token }) => {
       });
   };
 
-  // const slotId = (val) => {
-  //   endindex = convertTime12to24(val);
-  //   if (slots) {
-  //     for (const i in slots) {
-  //       if (
-  //         slots[i]["service_slots"]["date"] === getDateFormat({ date: value })
-  //       ) {
-  //         slots[i]["service_slots"].slots.map((d) => {
-  //           if (d.split("##")[1] === val) {
-  //             setSlot_id(d.split("##")[0]);
-  //             setEndDate(endTime(endindex));
-  //           }
-  //         });
-  //       }
-  //     }
-  //   }
-  // };
+  const slotId = (val) => {
+    endindex = convertTime12to24(val);
+    if (slots) {
+      for (const i in slots) {
+        if (
+          slots[i]["service_slots"]["date"] === getDateFormat({ date: value })
+        ) {
+          slots[i]["service_slots"].slots.map((d) => {
+            if (d.split("##")[1] === val) {
+              setSlot_id(d.split("##")[0]);
+              setEndDate(endTime(endindex));
+            }
+          });
+        }
+      }
+    }
+  };
 
   useEffect(() => {
     if (slots) {
@@ -486,8 +516,10 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token }) => {
               class="form-select"
               name="time"
               id="time"
-              onChange={changeHandler}
-              // slotId(event.target.value);
+              onChange={(event) => {
+                changeHandler(event);
+                slotId(event.target.value);
+              }}
               required
             >
               <option value="" selected></option>
