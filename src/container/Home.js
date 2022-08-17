@@ -39,14 +39,24 @@ function Home() {
   ];
 
   useEffect(() => {
-    axios
-      .get(
-        "https://h5vx3l2vwdiaobjnp3rp4hcyni0nkaid.lambda-url.ap-south-1.on.aws/"
-      )
+    axios(
+      "https://kapiva.app/api/get_doc_services.php?refreshToken=r1/cb72dbe0098HDmS_Ax0lw1FK4iDn3S0H056uWSl55q9vl",
+      { method: "GET" }
+    )
       .then((response) => {
-        setAppointments([...response.data]);
+        // console.log(response.data.data);
+        setAppointments([...response.data.data.services]);
       }) //eslint-disable-line
       .catch((error) => {});
+
+    // axios
+    //   .get(
+    //     "https://h5vx3l2vwdiaobjnp3rp4hcyni0nkaid.lambda-url.ap-south-1.on.aws/"
+    //   )
+    //   .then((response) => {
+    //     setAppointments([...response.data]);
+    //   }) //eslint-disable-line
+    //   .catch((error) => {});
 
     axios
       .get("https://developer.setmore.com/api/v1/o/oauth2/token", {
@@ -59,10 +69,6 @@ function Home() {
         setStatus(response.status);
       })
       .catch((error) => console.log(error));
-
-    axios.get(
-      "https://kapiva.app/api/get_doc_services.php?refreshToken=r1/cb72dbe0098HDmS_Ax0lw1FK4iDn3S0H056uWSl55q9vl"
-    );
   }, []);
   return (
     <div className="dc-consultation">

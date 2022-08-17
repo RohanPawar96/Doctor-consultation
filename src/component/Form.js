@@ -12,11 +12,15 @@ import {
   getDateFormat,
   endTime,
 } from "../utils/common";
+import Alerts from "./Alerts";
 
 const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
   const [value, setValue] = useState(new Date());
   const [submit, setSubmit] = useState("Book Now");
+  const [fade, setFade] = useState(false);
   const [filteredList, setFilteredList] = useState([]);
+  const [alerts, setAlerts] = useState("");
+  const [displayAlert, setDisplayAlert] = useState(false);
   const [serviceId, setServiceID] = useState(""); //eslint-disable-line
   const [slots, setSlots] = useState([]);
   const [slot_id, setSlot_id] = useState("");
@@ -133,7 +137,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
       }
     });
   };
-  console.log(allValues.time);
+  // console.log(allValues.time);
 
   // endindex = endTime(allValues.time);
 
@@ -238,8 +242,8 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
   }
 
   const submitHandler = () => {
-    console.log(token);
-    console.log();
+    // console.log(token);
+    // console.log();
     setSubmit("Booking...");
     // axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
     //   method: "POST",
@@ -291,46 +295,43 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
       },
     })
       .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          if (response.data.error === "Slot not available") {
-            alert("Slots Not Avialable");
-            setSubmit("Book Now");
-          } else if (response.data.staff !== null) {
-            setCount(0);
-            // setAllValues({
-            //   ...allValues,
-            //   firstname: "",
-            //   lastname: "",
-            //   email: "",
-            //   contact: "",
-            //   comment: "",
-            //   time: "",
-            // });
-            console.log(response.data);
-            // alert("Appointment Booked Successfully....");
-            setSubmit("Book Now");
-            // document.location.reload();
-          } else {
-            alert(
-              "Appointment booking is unavailable please try again after some time"
-            );
-            setSubmit("Book Now");
-          }
-        } else if (response.status === 504) {
-          alert("Internal Server Error");
+        // console.log(response);
+        setAlerts(response.data);
+        if (response.data.status === "200") {
+          setAllValues({
+            ...allValues,
+            firstname: "",
+            lastname: "",
+            email: "",
+            contact: "",
+            comment: "",
+            time: "",
+          });
+          document.querySelector('input[name="check"]:checked').checked = false;
+          document.getElementById("time").value = "";
+          setCount(0);
+          setFilteredList([]);
+          setSubmit("Book Now");
+        } else {
+          setFade(true);
+          setDisplayAlert(true);
+          setAllValues({
+            ...allValues,
+            firstname: "",
+            lastname: "",
+            email: "",
+            contact: "",
+            comment: "",
+            time: "",
+          });
+          document.querySelector('input[name="check"]:checked').checked = false;
+          document.getElementById("time").value = "";
+          setFilteredList([]);
           setSubmit("Book Now");
         }
       })
       .catch((error) => {
         console.log(error);
-        if (error.message === "Network Error") {
-          alert("Session TimeOut. Please try again after some time...");
-          setSubmit("Book Now");
-        } else if (error) {
-          alert(error);
-          setSubmit("Book Now");
-        }
       });
   };
 
@@ -367,173 +368,187 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
   }, [slots, value]);
 
   return (
-    <form id="form" className="row g-3" onSubmit={handleSubmit}>
-      <h3>Step 1: Personal Details</h3>
-      <div className="dc-form">
-        <div>
-          <input
-            type="text"
-            placeholder="First Name"
-            name="firstname"
-            id="firstnameblock"
-            value={allValues.firstname}
-            onChange={changeHandler}
-            required
-          />
-          <p className="error" id="firstname">
-            Enter Valid First Name...
-          </p>
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Last Name"
-            name="lastname"
-            id="lastnameblock"
-            value={allValues.lastname}
-            onChange={changeHandler}
-            required
-          />
-          <p className="error" id="lastname">
-            Enter Valid Last Name...
-          </p>
-        </div>
-        <div>
-          <input
-            type="number"
-            maxLength="10"
-            placeholder="Phone No"
-            name="contact"
-            id="contactblock"
-            value={allValues.contact}
-            onChange={changeHandler}
-            required
-          />
-          <p className="error" id="contact">
-            Enter Valid Contact...
-          </p>
-        </div>
-        <div>
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            id="emailblock"
-            value={allValues.email}
-            onChange={changeHandler}
-            required
-          />
-          <p className="error" id="email">
-            Enter valid email...
-          </p>
-        </div>
-      </div>
-      <div className="dc-whatsapp-tick">
-        <input type="checkbox" id="whatsapp" />
-        <label htmlFor="whatsapp">
-          Get updates on{" "}
-          <span style={{ color: "#59702F", textDecoration: "underline" }}>
-            WhatsApp
-          </span>
-          . You may opt out anytime
-        </label>
-      </div>
-      <h3>
-        Step 2: Pick your therapy <p className="error" id="service"></p>
-      </h3>
-      <div className="dc-therepys" id="dc-therepys">
-        {appointments &&
-          appointments.map((service) => {
-            return (
-              <div className="therapy">
-                <input
-                  type="radio"
-                  name="check"
-                  onClick={(event) => {
-                    setService(event.currentTarget.value);
-                    checkData(event.currentTarget.id);
-                  }}
-                  className="therapy-input"
-                  id={service.service_name}
-                  value={service.service_id}
-                  required
-                />
-                <label
-                  //
-                  id={"therapy-" + service.service_name}
-                  for={service.service_name}
-                >
-                  <img
-                    src={
-                      "https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/" +
-                      service.service_id +
-                      ".png"
-                    }
-                    alt=""
-                  />
-                  <p>{service.service_name}</p>
-                </label>
-              </div>
-            );
-          })}
-      </div>
-      <h3 className="tellusmore">Tell us more about your concern</h3>
-      <input
-        type="text"
-        id="concern"
-        name="comment"
-        onChange={changeHandler}
-        placeholder="Optional"
-      />
-      <h3>Step 3: Choose Date & Time</h3>
-      <div className="dc-form">
-        <div className="date">
-          <label htmlFor="date">Select a Date</label>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <MobileDatePicker
-              id="date"
-              inputFormat="dd/MM/yyyy"
-              value={value}
-              toolbarPlaceholder="Please select date"
-              placeholder="Please select date"
-              disablePast={true}
-              minDate={new Date()}
-              showToolbar={false}
-              maxDate={futureDate}
-              onChange={(value) => setValue(value)}
-              InputProps={{ readOnly: true }}
-              renderInput={(params) => <TextField readOnly {...params} />}
+    <>
+      {displayAlert === true && (
+        <div className="alert_background">
+          <div className="dc-alerts">
+            <Alerts
+              alerts={alerts}
+              fade={fade}
+              setDisplayAlert={setDisplayAlert}
+              setFade={setFade}
             />
-          </LocalizationProvider>
-        </div>
-
-        <div className="time">
-          <label htmlFor="date">
-            Pick a Slot <span id="date-time">(Select therapy first)</span>{" "}
-          </label>
-          <div>
-            <select
-              class="form-select"
-              name="time"
-              id="time"
-              onChange={(event) => {
-                changeHandler(event);
-                slotId(event.target.value);
-              }}
-              required
-            >
-              <option value="" selected></option>
-              {filteredList.map((t) => {
-                return <option value={t}>{t}</option>;
-              })}
-            </select>
           </div>
         </div>
-      </div>
-      <div className="dc-form-submit">
-        <input type="Submit" value={submit} />
-      </div>
-    </form>
+      )}
+      <form id="form" className="row g-3" onSubmit={handleSubmit}>
+        <h3>Step 1: Personal Details</h3>
+        <div className="dc-form">
+          <div>
+            <input
+              type="text"
+              placeholder="First Name"
+              name="firstname"
+              id="firstnameblock"
+              value={allValues.firstname}
+              onChange={changeHandler}
+              required
+            />
+            <p className="error" id="firstname">
+              Enter Valid First Name...
+            </p>
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Last Name"
+              name="lastname"
+              id="lastnameblock"
+              value={allValues.lastname}
+              onChange={changeHandler}
+              required
+            />
+            <p className="error" id="lastname">
+              Enter Valid Last Name...
+            </p>
+          </div>
+          <div>
+            <input
+              type="number"
+              maxLength="10"
+              placeholder="Phone No"
+              name="contact"
+              id="contactblock"
+              value={allValues.contact}
+              onChange={changeHandler}
+              required
+            />
+            <p className="error" id="contact">
+              Enter Valid Contact...
+            </p>
+          </div>
+          <div>
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              id="emailblock"
+              value={allValues.email}
+              onChange={changeHandler}
+              required
+            />
+            <p className="error" id="email">
+              Enter valid email...
+            </p>
+          </div>
+        </div>
+        <div className="dc-whatsapp-tick">
+          <input type="checkbox" id="whatsapp" />
+          <label htmlFor="whatsapp">
+            Get updates on{" "}
+            <span style={{ color: "#59702F", textDecoration: "underline" }}>
+              WhatsApp
+            </span>
+            . You may opt out anytime
+          </label>
+        </div>
+        <h3>
+          Step 2: Pick your therapy <p className="error" id="service"></p>
+        </h3>
+        <div className="dc-therepys" id="dc-therepys">
+          {appointments &&
+            appointments.map((service) => {
+              return (
+                <div className="therapy">
+                  <input
+                    type="radio"
+                    name="check"
+                    onClick={(event) => {
+                      setService(event.currentTarget.value);
+                      checkData(event.currentTarget.id);
+                    }}
+                    className="therapy-input"
+                    id={service.service_name}
+                    value={service.key}
+                    required
+                  />
+                  <label
+                    //
+                    id={"therapy-" + service.service_name}
+                    for={service.service_name}
+                  >
+                    <img
+                      src={
+                        "https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/" +
+                        service.key +
+                        ".png"
+                      }
+                      alt=""
+                    />
+                    <p>{service.service_name}</p>
+                  </label>
+                </div>
+              );
+            })}
+        </div>
+        <h3 className="tellusmore">Tell us more about your concern</h3>
+        <input
+          type="text"
+          id="concern"
+          name="comment"
+          onChange={changeHandler}
+          placeholder="Optional"
+        />
+        <h3>Step 3: Choose Date & Time</h3>
+        <div className="dc-form">
+          <div className="date">
+            <label htmlFor="date">Select a Date</label>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <MobileDatePicker
+                id="date"
+                inputFormat="dd/MM/yyyy"
+                value={value}
+                toolbarPlaceholder="Please select date"
+                placeholder="Please select date"
+                disablePast={true}
+                minDate={new Date()}
+                showToolbar={false}
+                maxDate={futureDate}
+                onChange={(value) => setValue(value)}
+                InputProps={{ readOnly: true }}
+                renderInput={(params) => <TextField readOnly {...params} />}
+              />
+            </LocalizationProvider>
+          </div>
+
+          <div className="time">
+            <label htmlFor="date">
+              Pick a Slot <span id="date-time">(Select therapy first)</span>{" "}
+            </label>
+            <div>
+              <select
+                class="form-select"
+                name="time"
+                id="time"
+                onChange={(event) => {
+                  changeHandler(event);
+                  slotId(event.target.value);
+                }}
+                required
+              >
+                {allValues.time === "" ? <option value=""></option> : ""}
+                {filteredList.map((t) => {
+                  return <option value={t}>{t}</option>;
+                })}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="dc-form-submit">
+          <input type="Submit" value={submit} />
+        </div>
+      </form>
+    </>
   );
 };
 
