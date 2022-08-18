@@ -65,11 +65,12 @@ function Home() {
         },
       })
       .then((response) => {
-        setToken(response.data.data.token.access_token);
+        setToken((token) => response.data.data.token.access_token);
         setStatus(response.status);
       })
       .catch((error) => console.log(error));
   }, []);
+  console.log(token);
   return (
     <div className="dc-consultation">
       <Header />
@@ -445,7 +446,7 @@ function Home() {
                         health
                       </p>
                       <p>
-                        <span className="green">Languages</span>: Hindi, Hindi,
+                        <span className="green">Languages</span>: Hindi,
                         English, Kannada, Tulu, Tamil, Telugu & Malayalam
                       </p>
                     </div>

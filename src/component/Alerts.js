@@ -1,17 +1,14 @@
 import * as React from "react";
 import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
 import Stack from "@mui/material/Stack";
-import Fade from "@mui/material/Fade";
-import Button from "@mui/material/Button";
 import { Grow } from "@mui/material";
 
 const Alerts = ({ alerts, fade, setFade, setDisplayAlert }) => {
-  console.log(alerts);
+  // console.log(alerts);
   const close = () => {
     setFade((fade) => !fade);
     setDisplayAlert(false);
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (
