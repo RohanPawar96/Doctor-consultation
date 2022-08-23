@@ -16,7 +16,7 @@ import Alerts from "./Alerts";
 
 const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
   const [value, setValue] = useState(new Date());
-  const [submit, setSubmit] = useState("Book Now");
+  const [submit, setSubmit] = useState("BOOK NOW");
   const [fade, setFade] = useState(false);
   const [filteredList, setFilteredList] = useState([]);
   const [alerts, setAlerts] = useState("");
@@ -244,7 +244,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
   const submitHandler = () => {
     // console.log(token);
     // console.log();
-    setSubmit("Booking...");
+    setSubmit("BOOKING...");
     // axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
     //   method: "POST",
     axios(
@@ -483,7 +483,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
                     >
                       <img
                         src={
-                          "https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/" +
+                          "https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/" +
                           service.key +
                           ".png"
                         }

@@ -21,7 +21,7 @@ function Banner() {
           </div>
           <div className="dc-banner-img">
             <img
-              src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/banner.png"
+              src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/banner.png"
               alt="image"
             />
           </div>
@@ -31,7 +31,7 @@ function Banner() {
         <div className="dc-banners">
           <div className="dc-banner-img">
             <img
-              src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/banner.png"
+              src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/banner.png"
               alt="image"
             />
           </div>

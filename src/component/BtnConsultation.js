@@ -8,7 +8,7 @@ function BtnConsultation() {
           <div className="btn-initial">
             <div className="btn-image">
               <img
-                src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/dc-consult.png"
+                src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/dc-consult.png"
                 alt=""
               />
             </div>
@@ -16,7 +16,7 @@ function BtnConsultation() {
           </div>
           <div className="btn-secondary">
             <img
-              src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/right-arrow.png"
+              src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/right-arrow.png"
               alt=""
             />
           </div>

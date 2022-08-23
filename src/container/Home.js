@@ -44,7 +44,6 @@ function Home() {
       { method: "GET" }
     )
       .then((response) => {
-        // console.log(response.data.data);
         setAppointments([...response.data.data.services]);
       }) //eslint-disable-line
       .catch((error) => {});
@@ -70,9 +69,9 @@ function Home() {
       })
       .catch((error) => console.log(error));
   }, []);
-  console.log(token);
   return (
     <div className="dc-consultation">
+      {/* <img src="" /> */}
       <Header />
       <Banner />
       <div className="dc-consultation-form ">
@@ -104,7 +103,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Anand.jpg"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Dr_Anand.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -140,7 +139,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Meena.jpg"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Dr_Meena.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -150,7 +149,7 @@ function Home() {
                     {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
                     <div className="doctor-experience">
                       <p>
-                        <span className="green">Years of Experience</span>: 8
+                        <span className="green">Years of Experience</span>: 14
                         Yrs
                       </p>
                       <p>
@@ -176,7 +175,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Irfan.jpg"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Dr_Irfan.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -212,7 +211,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Sheetal.jpg"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Dr_Sheetal.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -249,7 +248,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Aswathy.jpg"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Dr_Aswathy.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -284,7 +283,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Ninny_Sunny.jpg"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Ninny_Sunny.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -321,7 +320,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Manjula.jpg"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Dr_Manjula.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -359,7 +358,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Kalpana.jpg"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Dr_Kalpana.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -395,7 +394,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/image.png"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/image.png"
                     alt="Doctor Image"
                   />
                 </div>
@@ -428,7 +427,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Shreyas.jpg"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Dr_Shreyas.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -438,12 +437,12 @@ function Home() {
                     {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
                     <div className="doctor-experience">
                       <p>
-                        <span className="green">Years of Experience</span>: 8
+                        <span className="green">Years of Experience</span>: 12
                         Yrs
                       </p>
                       <p>
                         <span className="green">Specialization</span>: Men's
-                        health
+                        health, chronic
                       </p>
                       <p>
                         <span className="green">Languages</span>: Hindi,
@@ -464,7 +463,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Anu_Bahl.jpg"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Anu_Bahl.jpg"
                     alt="Doctor Image"
                   />
                 </div>
@@ -501,7 +500,7 @@ function Home() {
               <div className="dc-card-mobile">
                 <div className="doctor-image">
                   <img
-                    src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/doctors/Dr_Anjali.jpg"
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Dr_Anjali.jpg"
                     alt="Doctor Image"
                   />
                 </div>

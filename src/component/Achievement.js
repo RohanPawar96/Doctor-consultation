@@ -4,9 +4,9 @@ function Achievement() {
   return (
     <>
       <div className="acheiventent">
-        <div className="acheivement-img">
+        <div className="acheivement-img extended-size">
           <img
-            src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/diabities.png"
+            src="https://store-5h8rqg02f8.mybigcommerce.com/content/health-tech-doc-consult/img/icon/diabities.png"
             alt=""
           />
         </div>
@@ -15,9 +15,9 @@ function Achievement() {
         </p>
       </div>
       <div className="acheiventent">
-        <div className="acheivement-img">
+        <div className="acheivement-img ">
           <img
-            src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/skin-hair.png"
+            src="https://store-5h8rqg02f8.mybigcommerce.com/content/health-tech-doc-consult/img/icon/skin-hair.png"
             alt=""
           />
         </div>
@@ -29,7 +29,7 @@ function Achievement() {
       <div className="acheiventent">
         <div className="acheivement-img">
           <img
-            src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/obesity.png"
+            src="https://store-5h8rqg02f8.mybigcommerce.com/content/health-tech-doc-consult/img/icon/obesity.png"
             alt=""
           />
         </div>
@@ -40,11 +40,11 @@ function Achievement() {
       <div className="acheiventent">
         <div className="acheivement-img">
           <img
-            src="https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/pocs.png"
+            src="https://store-5h8rqg02f8.mybigcommerce.com/content/health-tech-doc-consult/img/icon/pocs.png"
             alt=""
           />
         </div>
-        <p className="acheivement-description">
+        <p className="acheivement-description ">
           <span className="bold">PCOS</span> treated by <br /> Dr. Kalpana
         </p>
       </div>

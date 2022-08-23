@@ -14,12 +14,12 @@ const Queries = ({ ques, ans, val }) => {
       // console.log(qa);
       document.getElementById(`result-${qa}`).style.display = "block";
       document.getElementById(`review-${qa}`).style.backgroundImage =
-        " url('https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/down-arrow.png') ";
+        " url('https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/up-arrow.png') ";
     } else {
       // console.log(qa);
       document.getElementById(`result-${qa}`).style.display = "none";
       document.getElementById(`review-${qa}`).style.backgroundImage =
-        " url('https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/up-arrow.png') ";
+        " url('https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/down-arrow.png') ";
     }
   };
 

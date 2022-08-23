@@ -3,6 +3,10 @@
   max-width: 100%;
 }
 
+body {
+  font-family: "Jost" !important;
+}
+
 .green {
   color: #59702f;
   font-weight: 700;
@@ -24,18 +28,12 @@ a {
 }
 
 h1 {
-  font-family: "Open Sans";
   font-size: 2.2rem;
   font-weight: bold;
 }
 
-p {
-  font-family: "Open Sans";
-}
-
 p.error {
   color: red;
-  font-family: Poppons, sans-serif;
   font-size: medium;
   display: none;
 }
@@ -46,7 +44,6 @@ p.error {
   background-image: url("https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/dc-background.png");
   background-size: 100%;
   padding: 1% 5%;
-  position: relative;
 }
 
 #date-time {
@@ -106,6 +103,13 @@ h3.tellusmore {
 }
 
 @media screen and (max-width: 450px) {
+  .dc-consultation {
+    background: none;
+    background-image: url(https://store-5h8rqg02f8.mybigcommerce.com/content/health-tech-doc-consult/img/dc-background-mobile.png);
+    background-size: 100% 108%;
+    padding: 1% 5%;
+    position: relative;
+  }
   .dc-consultation .dc-banners {
     display: block;
     justify-content: right;
@@ -329,16 +333,16 @@ input[type="radio"] {
   width: 100%;
   height: 100px;
   align-items: center;
+  background-color: rgba(242, 241, 235, 100%);
 }
 
 .dc-therepys img {
   width: 30%;
-  height: 70%;
   align-self: center;
 }
 
 .dc-therepys p {
-  width: 45%;
+  width: 50%;
   margin: 4% 0%;
   font-size: 1rem;
 }
@@ -439,6 +443,10 @@ input#date {
     padding: 3% 9% !important;
   }
 
+  img.default-size {
+    height: 90px !important;
+  }
+
   input[type="radio"] {
     zoom: 1 !important;
   }
@@ -531,7 +539,7 @@ input#date {
 
   .treatment img {
     width: 100%;
-    height: 44%;
+    height: 74px;
   }
 
   .dc-therepys img {
@@ -648,6 +656,7 @@ h3.dc-acheivement-head {
   border-radius: 66px;
   height: 105px;
   text-align: center;
+  width: 34.5%;
 }
 
 .acheivement-img img {
@@ -684,7 +693,7 @@ button.btn-book {
 }
 
 p.btn-text {
-  color: wheat;
+  color: white;
   font-weight: 700;
   margin: 0;
 }
@@ -945,13 +954,21 @@ input#alert-submit {
   padding: 0 6%;
 }
 
+.dc-card-mobile {
+  border: 1px solid rgb(176 166 166 / 59%);
+  padding: 4% 1%;
+  height: 380px;
+  margin: 1%;
+  border-radius: 5px;
+}
+
 p.question {
   margin: 1.5% 0;
-  padding: 0.5% 0;
+  padding: 0.25% 5% 0.25% 0;
   border-bottom: 1px solid;
   font-weight: 700;
   text-align: left;
-  background-image: url(https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/up-arrow.png);
+  background-image: url(https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/down-arrow.png);
   background-repeat: no-repeat;
   background-position: right;
   font-size: 1.2rem;
@@ -1046,12 +1063,17 @@ h3.why-head {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin-bottom: 4%;
+    border: 0;
+    height: 100% !important;
+    margin: 1%;
   }
 
   .dc-card {
     width: 100%;
     padding: 0;
+    border: 1px solid rgb(176 166 166 / 59%);
+    padding: 2% 2%;
+    border-radius: 5px;
   }
 
   .dc-card p.doctor-info {
