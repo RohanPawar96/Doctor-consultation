@@ -247,56 +247,53 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
     setSubmit("BOOKING...");
     // axios("https://cs-nr.kapiva.in/public/doc_consult/appointment/create", {
     //   method: "POST",
-    axios(
-      `https://kapiva.app/api/save_appointment.php?refreshToken=r1/cb72dbe0098HDmS_Ax0lw1FK4iDn3S0H056uWSl55q9vl`,
-      {
-        method: "POST",
-        // headers: {
-        //   "Content-Type": "application/json",
-        //   "Access-Control-Allow-Origin": "*",
-        // },
+    axios(`https://kapiva.app/api/save_appointment.php`, {
+      method: "POST",
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Access-Control-Allow-Origin": "*",
+      // },
 
-        // data: {
-        //   data: {
-        //     Customer: {
-        //       first_name: allValues.firstname,
-        //       last_name: allValues.lastname,
-        //       email_id: allValues.email,
-        //       cell_phone: allValues.contact,
-        //       comment: allValues.comment,
-        //       utm_source: UtmSorce,
-        //       utm_medium: UtmMedium,
-        //     },
-        //     Appointment: {
-        //       service_key: serviceId,
-        //       // slot_id: slot_id,
-        //       start_time:
-        //         getDateFormat({ date: value }) + "T" + allValues.time + "Z",
-        //       end_time: getDateFormat({ date: value }) + "T" + endindex + "Z",
-        //     },
-        //   },
-        // },
+      // data: {
+      //   data: {
+      //     Customer: {
+      //       first_name: allValues.firstname,
+      //       last_name: allValues.lastname,
+      //       email_id: allValues.email,
+      //       cell_phone: allValues.contact,
+      //       comment: allValues.comment,
+      //       utm_source: UtmSorce,
+      //       utm_medium: UtmMedium,
+      //     },
+      //     Appointment: {
+      //       service_key: serviceId,
+      //       // slot_id: slot_id,
+      //       start_time:
+      //         getDateFormat({ date: value }) + "T" + allValues.time + "Z",
+      //       end_time: getDateFormat({ date: value }) + "T" + endindex + "Z",
+      //     },
+      //   },
+      // },
 
-        data: {
-          // access_token: token,
-          first_name: allValues.firstname,
-          last_name: allValues.lastname,
-          email_id: allValues.email,
-          cell_phone: allValues.contact,
-          comment: allValues.comment,
-          utm_source: UtmSorce,
-          utm_medium: UtmMedium,
-          service_key: serviceId,
-          slot_id: slot_id,
-          start_time:
-            getDateFormat({ date: value }) +
-            "T" +
-            convertTime12to24(allValues.time) +
-            "Z",
-          end_time: getDateFormat({ date: value }) + "T" + endDate + "Z",
-        },
-      }
-    )
+      data: {
+        // access_token: token,
+        first_name: allValues.firstname,
+        last_name: allValues.lastname,
+        email_id: allValues.email,
+        cell_phone: allValues.contact,
+        comment: allValues.comment,
+        utm_source: UtmSorce,
+        utm_medium: UtmMedium,
+        service_key: serviceId,
+        slot_id: slot_id,
+        start_time:
+          getDateFormat({ date: value }) +
+          "T" +
+          convertTime12to24(allValues.time) +
+          "Z",
+        end_time: getDateFormat({ date: value }) + "T" + endDate + "Z",
+      },
+    })
       .then((response) => {
         // console.log(response);
         setAlerts(response.data);

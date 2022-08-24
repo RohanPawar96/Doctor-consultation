@@ -39,10 +39,7 @@ function Home() {
   ];
 
   useEffect(() => {
-    axios(
-      "https://kapiva.app/api/get_doc_services.php?refreshToken=r1/cb72dbe0098HDmS_Ax0lw1FK4iDn3S0H056uWSl55q9vl",
-      { method: "GET" }
-    )
+    axios("https://kapiva.app/api/get_doc_services.php", { method: "GET" })
       .then((response) => {
         setAppointments([...response.data.data.services]);
       }) //eslint-disable-line
@@ -58,11 +55,7 @@ function Home() {
     //   .catch((error) => {});
 
     axios
-      .get("https://developer.setmore.com/api/v1/o/oauth2/token", {
-        params: {
-          refreshToken: "r1/cb72dbe0098HDmS_Ax0lw1FK4iDn3S0H056uWSl55q9vl",
-        },
-      })
+      .get("https://developer.setmore.com/api/v1/o/oauth2/token", {})
       .then((response) => {
         setToken((token) => response.data.data.token.access_token);
         setStatus(response.status);

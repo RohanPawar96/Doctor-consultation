@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: "Jost" !important;
+  font-family: Jost;
 }
 
 .green {
@@ -106,7 +106,7 @@ h3.tellusmore {
   .dc-consultation {
     background: none;
     background-image: url(https://store-5h8rqg02f8.mybigcommerce.com/content/health-tech-doc-consult/img/dc-background-mobile.png);
-    background-size: 100% 108%;
+    background-size: 100% 95%;
     padding: 1% 5%;
     position: relative;
   }
@@ -435,16 +435,21 @@ input#date {
   background-color: #80a03c;
   border: 0;
   color: #ffffff;
-  font: bold 19px "Open Sans";
+  font-weight: bold;
+  font-size: 19px;
+}
+
+h1.treatment-count {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 0;
+  margin-top: 4%;
+  color: #425f2c;
 }
 
 @media screen and (max-width: 450px) {
   .dc-consultation {
     padding: 3% 9% !important;
-  }
-
-  img.default-size {
-    height: 90px !important;
   }
 
   input[type="radio"] {
@@ -476,6 +481,14 @@ input#date {
     margin-bottom: 1%;
   }
 
+  h1.treatment-count {
+    font-size: 0.9rem;
+    font-weight: 800;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: #425f2c;
+  }
+
   .dc-selector {
     margin: 3% 0;
     padding: 0 !important;
@@ -503,7 +516,6 @@ input#date {
 
   p.error {
     color: red;
-    font-family: Poppons, sans-serif;
     font-size: 0.5rem;
     display: none;
   }
@@ -537,9 +549,17 @@ input#date {
     margin-left: 3%;
   }
 
-  .treatment img {
+  .treatment-image {
+    width: 40%;
+    height: 45%;
+  }
+
+  .mobile-width {
+    width: 82% !important;
+  }
+
+  .treatment .treatment-image img {
     width: 100%;
-    height: 74px;
   }
 
   .dc-therepys img {
@@ -548,7 +568,8 @@ input#date {
     width: 25% !important;
   }
   .dc-form-submit input[type="Submit"] {
-    font: 700 1.1rem Open Sans;
+    font-weight: 700;
+    font-size: 1.1rem;
     width: 47%;
     padding: 2% 2%;
   }
@@ -924,15 +945,15 @@ input#alert-submit {
   }
 
   .treatment {
-    width: 40%;
+    width: 100%;
     height: 11rem;
+    text-align: -webkit-center;
   }
 
   p.treatment-text {
-    width: 100%;
+    width: 80%;
     font-size: 15px;
     font-style: italic;
-    font-family: Playfair Display;
   }
 
   /************************************************/
@@ -1033,7 +1054,6 @@ p.answer {
 
 h3.why-head {
   font-weight: 300;
-  font-family: "Open Sans";
 }
 
 /* ******************** */
