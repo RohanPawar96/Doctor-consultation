@@ -102,6 +102,7 @@ function Home() {
                 </div>
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Anand R Dwivedi</h2>
+                  <h2 class="doctor-qualification">B.A.M.S.</h2>
                   <p className="doctor-detail">
                     {/* Ayurvedacharya, Mumbai University, 1987. */}
                     <div className="doctor-experience">
@@ -116,6 +117,13 @@ function Home() {
                       <p>
                         <span className="green">Languages</span>: Hindi, English
                         & Marathi
+                      </p>{" "}
+                      <p>
+                        <span className="green">RM</span>: I-19169
+                      </p>
+                      <p>
+                        <span className="green">Contact</span>:
+                        ananddwdr@gmail.com
                       </p>
                     </div>
                   </p>
@@ -138,6 +146,7 @@ function Home() {
                 </div>
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Meena Sharma</h2>
+                  <h2 class="doctor-qualification">B.A.M.S.</h2>
                   <p className="doctor-detail">
                     {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
                     <div className="doctor-experience">
@@ -152,6 +161,13 @@ function Home() {
                       <p>
                         <span className="green">Languages</span>: Hindi,
                         English, Dogri & Kannada
+                      </p>
+                      <p>
+                        <span className="green">RM</span>: 787
+                      </p>
+                      <p>
+                        <span className="green">Contact</span>:
+                        drmeenasharma8@gmail.com
                       </p>
                     </div>
                   </p>
@@ -174,11 +190,12 @@ function Home() {
                 </div>
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Irfan Ali</h2>
+                  <h2 class="doctor-qualification">B.A.M.S.</h2>
                   <p className="doctor-detail">
                     {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
                     <div className="doctor-experience">
                       <p>
-                        <span className="green">Years of Experience</span>: 5
+                        <span className="green">Years of Experience</span>: 8
                         Yrs
                       </p>
                       <p>
@@ -188,6 +205,13 @@ function Home() {
                       <p>
                         <span className="green">Languages</span>: Hindi,
                         English, & Bengali
+                      </p>
+                      <p>
+                        <span className="green">RM</span>: 12190
+                      </p>
+                      <p>
+                        <span className="green">Contact</span>:
+                        aliirfany2k@gmail.com
                       </p>
                     </div>
                   </p>
@@ -210,6 +234,7 @@ function Home() {
                 </div>
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Sheetal Verma</h2>
+                  <h2 class="doctor-qualification">B.A.M.S.</h2>
                   <p className="doctor-detail">
                     {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
                     <div className="doctor-experience">
@@ -224,6 +249,13 @@ function Home() {
                       <p>
                         <span className="green">Languages</span>: Hindi &
                         English
+                      </p>
+                      <p>
+                        <span className="green">RM</span>: 53242
+                      </p>
+                      <p>
+                        <span className="green">Contact</span>:
+                        sheetalverma1409@gmail.com
                       </p>
                     </div>
                   </p>
@@ -247,6 +279,7 @@ function Home() {
                 </div>
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Aswathy E.S.</h2>
+                  <h2 class="doctor-qualification">B.A.M.S.</h2>
                   <p className="doctor-detail">
                     {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
                     <div className="doctor-experience">
@@ -256,11 +289,18 @@ function Home() {
                       </p>
                       <p>
                         <span className="green">Specialization</span>: General
-                        wellness, Lifestyle issues
+                        wellness, lifestyle issues
                       </p>
                       <p>
                         <span className="green">Languages</span>: Hindi,
                         English, Malayalam and Kannada
+                      </p>
+                      <p>
+                        <span className="green">RM</span>: 10991
+                      </p>
+                      <p>
+                        <span className="green">Contact</span>:
+                        draswathyes.es@gmail.com
                       </p>
                     </div>
                   </p>
@@ -319,6 +359,7 @@ function Home() {
                 </div>
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Manjula P.Badiger</h2>
+                  <h2 class="doctor-qualification">B.A.M.S.</h2>
                   <p className="doctor-detail">
                     {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
                     <div className="doctor-experience">
@@ -328,11 +369,18 @@ function Home() {
                       </p>
                       <p>
                         <span className="green">Specialization</span>: General
-                        wellness and Listyle issues
+                        wellness and lifestyle issues
                       </p>
                       <p>
                         <span className="green">Languages</span>: Hindi,
                         English, Telugu & Kannada
+                      </p>
+                      <p>
+                        <span className="green">RM</span>: 24993
+                      </p>
+                      <p>
+                        <span className="green">Contact</span>:
+                        drmanjulayu@gmail.com
                       </p>
                     </div>
                   </p>
@@ -357,6 +405,7 @@ function Home() {
                 </div>
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Kalpana Dongare</h2>
+                  <h2 class="doctor-qualification">B.A.M.S.</h2>
                   <p className="doctor-detail">
                     {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
                     <div className="doctor-experience">
@@ -371,6 +420,13 @@ function Home() {
                       <p>
                         <span className="green">Languages</span>: Hindi, English
                         & Marathi
+                      </p>
+                      <p>
+                        <span className="green">RM</span>: I-60404 - A
+                      </p>
+                      <p>
+                        <span className="green">Contact</span>:
+                        drkalpanadongre@gmail.com
                       </p>
                     </div>
                   </p>
@@ -426,6 +482,7 @@ function Home() {
                 </div>
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Shreyas Bharadwaj K</h2>
+                  <h2 class="doctor-qualification">B.A.M.S.</h2>
                   <p className="doctor-detail">
                     {/* BAMS (Bachelors of Ayurvedic Medicine and Surgery) */}
                     <div className="doctor-experience">
@@ -440,6 +497,13 @@ function Home() {
                       <p>
                         <span className="green">Languages</span>: Hindi,
                         English, Kannada, Tulu, Tamil, Telugu & Malayalam
+                      </p>
+                      <p>
+                        <span className="green">RM</span>: 25950
+                      </p>
+                      <p>
+                        <span className="green">Contact</span>:
+                        s.kedila87@gmail.com
                       </p>
                     </div>
                   </p>
@@ -471,7 +535,7 @@ function Home() {
                       </p>
                       <p>
                         <span className="green">Specialization</span>: Weight
-                        management, Diabities, Lifstyle
+                        management, Diabities, lifestyle
                       </p>
                       <p>
                         <span className="green">Languages</span>: Hindi,
@@ -499,6 +563,7 @@ function Home() {
                 </div>
                 <div className="mobile-detail">
                   <h2 className="doctor-name">Dr. Anjali Geetha</h2>
+                  <h2 class="doctor-qualification">B.A.M.S.</h2>
                   <p className="doctor-detail">
                     {/* BAMS, MD (AM) */}
                     <div className="doctor-experience">
@@ -514,6 +579,13 @@ function Home() {
                         <span className="green">Languages</span>: English, Hindi
                         & Malayalam.
                       </p>
+                      <p>
+                        <span className="green">RM</span>: 12149
+                      </p>
+                      <p>
+                        <span className="green">Contact</span>:
+                        dranjaligeetha@gmail.com
+                      </p>
                     </div>
                   </p>
                 </div>
@@ -524,6 +596,44 @@ function Home() {
                 Weight Management, Skin care and Lifestyle diseases. She has
                 demonstrated records of accomplishment in skilled patient
                 evaluation, diagnostics and treatment planning.
+              </p> */}
+            </div>
+            <div className="dc-card">
+              <div className="dc-card-mobile">
+                <div className="doctor-image">
+                  <img
+                    src="https://cdn11.bigcommerce.com/s-5h8rqg02f8/content/health-tech-doc-consult/img/doctors/Dr_Sindhu_Vas.jpg"
+                    alt="Doctor Image"
+                  />
+                </div>
+                <div className="mobile-detail">
+                  <h2 className="doctor-name">Sindhu Vas</h2>
+                  <p className="doctor-detail">
+                    {/* PG Diploma in Dietetics */}
+                    <div className="doctor-experience">
+                      <p>
+                        <span className="green">Years of Experience</span>: 4
+                        Yrs
+                      </p>
+                      <p>
+                        <span className="green">Specialization</span>: Nutrition
+                        Counsellin, Diet Planning, Diabities, weight loss and
+                        weight management
+                      </p>
+                      <p>
+                        <span className="green">Languages</span>: Hindi,
+                        Kannada, English.
+                      </p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              {/* <p className="doctor-info">
+                Anu Bahl is a certified nutritionist specializing in Weight
+                Management. She guides people towards positive lifestyle changes
+                with customized diet plans. She is also a Certified Diabetic
+                Educator and can help in diabetes lifestyle planning and
+                management.
               </p> */}
             </div>
           </Carousel>

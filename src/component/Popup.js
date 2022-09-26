@@ -2,10 +2,10 @@ import React from "react";
 
 const Popup = ({ setCount }) => {
   return (
-    <div>
+    <div className="thankyou">
       <h3 id="form" className="dc _thankyou">
-        We appreciate you contacting{" "}
-        <span style={{ fontWeight: 700 }}>Kapiva</span>.<br />
+        Thankyou for contacting <span style={{ fontWeight: 700 }}>Kapiva</span>.
+        <br />
         One of our doctors will get back in touch with you soon!
         <br />
         <br /> Have a great day!

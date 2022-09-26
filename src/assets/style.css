@@ -40,7 +40,6 @@ p.error {
 
 /************************************************/
 .dc-consultation {
-  background: round;
   background-image: url("https://cdn11.bigcommerce.com/s-2qk49wb9fq/content/health-tech-doc-consult/img/dc-background.png");
   background-size: 100%;
   padding: 1% 5%;
@@ -105,9 +104,9 @@ h3.tellusmore {
 @media screen and (max-width: 450px) {
   .dc-consultation {
     background: none;
-    background-image: url(https://store-5h8rqg02f8.mybigcommerce.com/content/health-tech-doc-consult/img/dc-background-mobile.png);
-    background-size: 100% 95%;
-    padding: 1% 5%;
+    background-image: url("https://store-5h8rqg02f8.mybigcommerce.com/content/health-tech-doc-consult/img/dc-background-mobile.png");
+    background-size: 100%;
+    padding: 1% 3%;
     position: relative;
   }
   .dc-consultation .dc-banners {
@@ -171,7 +170,7 @@ h3.tellusmore {
 
 @media screen and (max-width: 768px) {
   .dc-consultation {
-    padding: 5% 10%;
+    padding: 5% 5%;
   }
 
   .dc-banners .dc-banner-text h2 {
@@ -449,7 +448,7 @@ h1.treatment-count {
 
 @media screen and (max-width: 450px) {
   .dc-consultation {
-    padding: 3% 9% !important;
+    padding: 8% 5% 5% 5% !important;
   }
 
   input[type="radio"] {
@@ -461,7 +460,7 @@ h1.treatment-count {
     font-size: 1rem;
   }
   .dc-therepys p {
-    font-size: 0.5rem !important;
+    font-size: 0.79rem !important;
     margin: 0;
     padding: 2%;
     width: 100%;
@@ -491,14 +490,13 @@ h1.treatment-count {
 
   .dc-selector {
     margin: 3% 0;
-    padding: 0 !important;
   }
   .dc-therepys {
     grid-template-columns: repeat(4, 1fr) !important;
   }
 
   .dc-therepys label {
-    height: 59px !important;
+    height: 75px !important;
   }
 
   .dc-therepys {
@@ -551,7 +549,7 @@ h1.treatment-count {
 
   .treatment-image {
     width: 40%;
-    height: 45%;
+    height: 55%;
   }
 
   .mobile-width {
@@ -631,11 +629,16 @@ h1.treatment-count {
 
 .dc-card h2.doctor-name {
   font-size: 1.5rem;
-  margin: 4% 0;
+  margin: 4% 0 0;
 }
 
 p.doctor-detail {
   margin: 0;
+}
+
+h2.doctor-qualification {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .doctor-experience {
@@ -976,11 +979,18 @@ input#alert-submit {
 }
 
 .dc-card-mobile {
-  border: 1px solid rgb(176 166 166 / 59%);
-  padding: 4% 1%;
-  height: 380px;
-  margin: 1%;
+  border: 1px solid hsla(0, 6%, 67%, 0.59);
   border-radius: 5px;
+  height: 420px;
+  margin: 1%;
+  padding: 4% 1%;
+}
+
+.thankyou {
+  box-shadow: 0px 0px 5px 0px #80a03c;
+  box-shadow: inset 0px 0px 5px #80a03c;
+  width: 100%;
+  padding: 5% 5%;
 }
 
 p.question {
@@ -1030,6 +1040,7 @@ p.answer {
   }
   .dc-selector {
     margin: 6% 0;
+    padding: 0 6%;
   }
 }
 
@@ -1074,25 +1085,25 @@ h3.why-head {
 
   .dc-doctor-cards {
     display: block;
-    width: 90%;
-    margin: 5% 5%;
     justify-items: center;
+    margin: 5% 0;
+    width: 100%;
   }
 
   .dc-card-mobile {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
     border: 0;
+    display: flex;
     height: 100% !important;
+    justify-content: space-between;
     margin: 1%;
+    width: 100%;
   }
 
   .dc-card {
     width: 100%;
     padding: 0;
     border: 1px solid rgb(176 166 166 / 59%);
-    padding: 2% 2%;
+    padding: 2% 1%;
     border-radius: 5px;
   }
 

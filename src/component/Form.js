@@ -142,6 +142,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
   // endindex = endTime(allValues.time);
 
   function handleSubmit(event) {
+    document.getElementById("submit").disbled = true;
     event.preventDefault();
     if (!serviceId) {
       document.getElementById("service").style = "display: block";
@@ -242,6 +243,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
   }
 
   const submitHandler = () => {
+    document.getElementById("submit").disabled = true;
     // console.log(token);
     // console.log();
     setSubmit("BOOKING...");
@@ -551,7 +553,7 @@ const Form = ({ appointments, UtmMedium, UtmSorce, token, setCount }) => {
           </div>
         </div>
         <div className="dc-form-submit">
-          <input type="Submit" value={submit} />
+          <input type="Submit" id="submit" value={submit} />
         </div>
       </form>
     </>
