@@ -31,7 +31,7 @@ export const endTime = (endtime) => {
   var endTime = "";
   if (splitTime[1] === "40") {
     if (splitTime[0] === "12") {
-      endTime = `01:00`;
+      endTime = `13:00`;
     } else {
       endTime = `${(parseInt(splitTime[0]) + 1)
         .toString()
